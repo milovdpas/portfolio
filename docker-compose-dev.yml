@@ -1,0 +1,10 @@
+version: '3'
+services:
+  dev-frontend:
+    build:
+      context: .
+      dockerfile: DevDockerfile
+      args:
+        API_URL: '${VITE_API_URL}'
+    ports:
+      - "8080:80"

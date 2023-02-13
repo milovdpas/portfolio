@@ -1,0 +1,34 @@
+.footer{
+  background: $dark-blue;
+  height: 100vh;
+  color: $white;
+  padding: 8em 5em;
+
+  .left{
+    text-align: left;
+  }
+
+  .footer-header{
+    color: $white;
+    font-weight: bold;
+    text-align: left;
+  }
+}
+.footer-link{
+  display:flex;
+  align-items: center;
+  color:$white;
+  text-decoration: none;
+  font-size: 20px;
+  .right-arrow{
+    height: 40px;
+    filter: brightness(0) invert(1);
+    margin-left: 20px;
+  }
+}
+
+@include mobile {
+  .right{
+    margin-top: 6em;
+  }
+}

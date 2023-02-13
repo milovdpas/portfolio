@@ -1,0 +1,41 @@
+.cta{
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  color: $black;
+  text-decoration: none;
+  font-size: 30px;
+  -webkit-filter: brightness(100%);
+  pointer-events: all;
+
+  transition: all ease-in-out 0.4s;
+  img {
+    width: 48px;
+    height: 48px;
+  }
+}
+.cta:hover{
+  -webkit-filter: brightness(80%);
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  transition: all 1s ease;
+  color: $black;
+  cursor: pointer;
+}
+
+.cta.orange{
+  background-color: $orange;
+}
+.cta.green{
+  background-color: $green;
+}
+.cta.red{
+  background-color: $red;
+}
+.cta.yellow{
+  background-color: $yellow;
+}
+

@@ -1,0 +1,32 @@
+on:
+  push:
+    branches:
+      - development
+
+name: Okteto Dev Deployment
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@master
+
+      - name: context
+        uses: okteto/context@latest
+        with:
+          token: ${{ secrets.OKTETO_TOKEN }}
+
+      - name: "Activate Namespace"
+        uses: okteto/namespace@latest
+        with:
+          name: portfolio-mvpdsolutions
+
+      - name: "Trigger the pipeline"
+        uses: okteto/pipeline@latest
+        with:
+          namespace: portfolio-mvpdsolutions
+          name: portfolio
+          variables: APP_ENV=testing, API_URL=${{ secrets.DEV_API_URL }}
+          timeout: 8m
+          skipIfExists: false

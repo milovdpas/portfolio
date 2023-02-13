@@ -1,0 +1,12 @@
+FROM node:lts-alpine
+
+WORKDIR /app
+COPY /frontend /app
+
+RUN npm install
+
+RUN cp -f .env.dist .env
+ARG API_URL
+RUN sed -i "s|VITE_API_URL=|VITE_API_URL=${API_URL}|g" .env
+
+CMD ["npm", "run", "dev"]

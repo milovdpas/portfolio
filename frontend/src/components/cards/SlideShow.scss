@@ -1,0 +1,38 @@
+.slide-show{
+  display: flex;
+  justify-content: start;
+  flex-flow: row;
+  flex-wrap: wrap;
+}
+
+.swiper-wrapper {
+  align-items: center;
+  padding-top: 0.5em;
+  padding-bottom: 20px;
+}
+
+.swiper-pagination {
+  position: absolute;
+  margin-top: 2em;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  pointer-events: none;
+}
+
+.swiper-pagination-bullet{
+  pointer-events: all;
+}
+
+.swiper-pagination-bullet-active{
+  background: $dark-blue;
+}
+
+@include mobile {
+  .swiper-slide{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
+}
