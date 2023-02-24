@@ -29,6 +29,85 @@
   background: $dark-blue;
 }
 
+
+/* Progress bars */
+.bar-container {
+  width: 80%;
+  margin: 10px auto 25px;
+  .title {
+    font-weight: bold;
+    font-size: 15px;
+    text-align: start;
+    margin-bottom: 2px;
+  }
+  .bar {
+    width: 100%;
+    height: 32.5px;
+    background: #fff;
+    border-radius: 5px;
+    position: relative;
+    transition: all 2s linear;
+    box-shadow: 0.5px 0 0.5px 0.5px;
+  }
+  .bar-inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 0;
+    height: 100%;
+    line-height: 30px;
+    border-radius: 5px 0 0 5px;
+    color: black!important;
+  }
+}
+.bar-container:nth-child(2) {
+  .title{
+    color: darken($red, 30%);
+  }
+  .bar > .bar-inner{
+    background-color: $red;
+  }
+}
+.bar-container:nth-child(3) {
+  .title{
+    color: darken($green, 30%);
+  }
+  .bar > .bar-inner{
+    background-color: $green;
+  }
+}
+.bar-container:nth-child(4) {
+  .title{
+    color: darken($blue, 10%);
+  }
+  .bar > .bar-inner{
+    background-color: $blue;
+  }
+}
+.bar-container:nth-child(5) {
+  .title{
+    color: darken($orange, 30%);
+  }
+  .bar > .bar-inner{
+    background-color: $orange;
+  }
+}
+.bar-container:nth-child(6) {
+  .title{
+    color: darken($yellow, 30%);
+  }
+  .bar > .bar-inner{
+    background-color: $yellow;
+  }
+}
+.bar-container:nth-child(7) {
+  .title{
+    color: darken($pink, 30%);
+  }
+  .bar > .bar-inner{
+    background-color: $pink;
+  }
+}
 @include mobile {
   .swiper-slide{
     display: flex;

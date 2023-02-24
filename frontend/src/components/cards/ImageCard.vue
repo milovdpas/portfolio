@@ -3,7 +3,7 @@
     <div class="card">
       <img :src="image" class="card-img-top" alt="card image">
       <div class="card-body">
-        <h5 class="card-title">{{ title }}</h5>
+        <h3 class="card-title">{{ title }}</h3>
         <div class="card-text mb-3" v-html="description"></div>
       </div>
     </div>
@@ -11,8 +11,6 @@
 </template>
 
 <script>
-// Import Swiper Vue.js components
-import {SwiperSlide} from 'swiper/vue';
 
 export default {
   name: "ImageCard",
@@ -22,7 +20,6 @@ export default {
     description: String
   },
   components: {
-    SwiperSlide,
   }
 }
 </script>

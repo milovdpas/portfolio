@@ -1,58 +1,25 @@
-.color-card {
+.normal-card {
   min-height: 100%;
+  padding: 5px;
   .card {
     height: 100%;
     .card-body {
+      text-align: left;
       .card-title {
-        display: flex;
-        align-items: center;
-        justify-content: center;
         text-align: center;
-        font-family: Barlow, sans-serif;
         font-weight: bold;
-        font-size: 32px;
+        font-size: 32px!important;
         line-height: 1em;
         color: $black;
-        border-bottom: 4px solid;
         padding-bottom: 6px;
-      }
-    }
-  }
-}
-
-.color-card:nth-child(1){
-  .card {
-    .card-body {
-      .card-title {
-        border-color: $yellow;
-      }
-    }
-  }
-}
-
-
-.color-card:nth-child(2){
-  .card {
-    .card-body {
-      .card-title {
-        border-color: $orange;
-      }
-    }
-  }
-}
-
-.color-card:nth-child(3){
-  .card {
-    .card-body {
-      .card-title {
-        border-color: $red;
+        border-bottom: $black 5px solid;
       }
     }
   }
 }
 
 @include tablet {
-  .color-card {
+  .normal-card {
     .card {
       .card-body {
         .card-title {
@@ -62,4 +29,3 @@
     }
   }
 }
-

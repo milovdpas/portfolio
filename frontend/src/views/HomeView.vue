@@ -18,11 +18,18 @@
           </h2>
         </div>
       </section>
-      <section id="projects" class="projects">
+      <section id="projects" class="section">
         <h2>Projects</h2>
         <SlideShow :cards="projectCards"/>
         <div class="button-container">
           <MoreButton link="/projects">SHOW MORE</MoreButton>
+        </div>
+      </section>
+      <section id="experience" class="section">
+        <h2>Experience</h2>
+        <SlideShow :cards="experienceCards"/>
+        <div class="button-container">
+          <MoreButton link="/experience">READ MORE</MoreButton>
         </div>
       </section>
     </main>
@@ -50,20 +57,92 @@ export default {
     return {
       projectCards: [
         {
+          type: 'image',
           image: new URL(`../assets/images/placeholder.png`, import.meta.url).href,
           title: "McDonalds Games",
           description: "Tijdens mijn stage heb ik meegewerkt aan meerdere McDonalds games."
         },
         {
+          type: 'image',
           image: new URL(`../assets/images/placeholder.png`, import.meta.url).href,
           title: "McDonalds Games",
           description: "Tijdens mijn stage heb ik meegewerkt aan meerdere McDonalds games."
         },
         {
+          type: 'image',
           image: new URL(`../assets/images/placeholder.png`, import.meta.url).href,
           title: "McDonalds Games",
           description: "Tijdens mijn stage heb ik meegewerkt aan meerdere McDonalds games."
         },
+      ],
+      experienceCards: [
+        {
+          type: 'skill',
+          title: "Program Skills",
+          skills: [
+            {
+              label: 'Frontend (html/css3/bootstrap/vue)',
+              placeholder: 'Intermediate',
+              percentage: 80
+            },
+            {
+              label: 'Javascript (NodeJs, Express.js, typescript)',
+              placeholder: 'Expert',
+              percentage: 90
+            },
+            {
+              label: 'C (C++, C#, .net core)',
+              placeholder: 'Intermediate',
+              percentage: 85
+            },
+            {
+              label: 'PHP (Laravel, Laravel orchid)',
+              placeholder: 'Expert',
+              percentage: 90
+            },
+            {
+              label: 'Mobile (React native, swift,  java)',
+              placeholder: 'Beginner',
+              percentage: 60
+            },
+            {
+              label: 'Database (MySQL, MongoDB)',
+              placeholder: 'Expert',
+              percentage: 90
+            }
+          ],
+        },
+        {
+          type: 'skill',
+          title: "Social Skills",
+          skills: [
+            {
+              label: 'Problem solving ability',
+              placeholder: '',
+              percentage: 80
+            },
+            {
+              label: 'Flexibility & adaptability',
+              placeholder: '',
+              percentage: 90
+            },
+            {
+              label: 'Team player',
+              placeholder: '',
+              percentage: 80
+            },
+            {
+              label: 'Honesty',
+              placeholder: '',
+              percentage: 85
+            },
+            {
+              label: 'Loyalty',
+              placeholder: '',
+              percentage: 90
+            }
+          ],
+        }
       ]
     }
   },
@@ -181,7 +260,7 @@ h1:nth-child(2) {
 
   h2 {
     color: #333;
-    font-family: tahoma;
+    font-family: tahoma, serif;
     font-size: 3rem;
     font-weight: 100;
     line-height: 1.5;
@@ -214,7 +293,7 @@ h1:nth-child(2) {
 }
 
 .word1, .word2, .word3 {
-  font-family: tahoma;
+  font-family: tahoma, serif;
 }
 
 @keyframes openclose {
@@ -283,7 +362,7 @@ h1:nth-child(2) {
 }
 
 /* projects */
-.projects {
+.section {
   display: flex;
   flex-flow: column;
   justify-content: center;
@@ -308,7 +387,7 @@ h1:nth-child(2) {
     font-size: 4em;
   }
 
-  .projects {
+  .section {
     padding: 0 !important;
 
     .swiper{

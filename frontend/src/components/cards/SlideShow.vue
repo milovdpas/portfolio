@@ -7,13 +7,31 @@
           @slideChange="onSlideChange"
   >
     <swiper-slide v-for="card in cards">
-      <ImageCard :image="card.image" :title="card.title"
+      <ImageCard v-if="card.type === 'image'" :image="card.image" :title="card.title"
                  :description="card.description"></ImageCard>
+      <NormalCard v-else-if="card.type === 'skill'" :title="card.title">
+        <skill class="bar-container" v-for="skill in card.skills">
+          <div class="title">{{ skill.label }}</div>
+          <div class="bar" :data-width="skill.percentage + '%'">
+            <div class="bar-inner">{{skill.placeholder}}</div>
+          </div>
+        </skill>
+      </NormalCard>
     </swiper-slide>
   </swiper>
   <div v-else class="slide-show">
-    <ImageCard v-for="card in cards" class="col-sm-12 col-md-4" :image="card.image" :title="card.title"
-               :description="card.description"></ImageCard>
+    <div v-for="card in cards" class="col-sm-12 col-md-4">
+      <ImageCard v-if="card.type === 'image'" :image="card.image" :title="card.title"
+                 :description="card.description"></ImageCard>
+      <NormalCard v-else-if="card.type === 'skill'" :title="card.title">
+        <skill class="bar-container" v-for="skill in card.skills">
+          <div class="title">{{ skill.label }}</div>
+          <div class="bar" :data-width="skill.percentage + '%'">
+            <div class="bar-inner">{{skill.placeholder}}</div>
+          </div>
+        </skill>
+      </NormalCard>
+    </div>
   </div>
 </template>
 
@@ -31,17 +49,18 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
 import ImageCard from "@/components/cards/ImageCard.vue";
+import NormalCard from "@/components/cards/NormalCard.vue";
 
 export default {
   name: "SlideShow",
   props: {
-    cards: Array,
-    type: String
+    cards: Array
   },
   components: {
     Swiper,
     SwiperSlide,
-    ImageCard
+    ImageCard,
+    NormalCard
   },
   setup() {
     const onSwiper = (swiper) => {
@@ -55,6 +74,20 @@ export default {
       onSlideChange,
       modules: [Navigation, Pagination],
     };
+  },
+  mounted(){
+    const skills =document.getElementsByTagName('skill');
+    Object.keys(skills).forEach(key => {
+      const bar = skills[key].childNodes[1];
+      const barInner = bar.childNodes[0];
+      const width = bar.getAttribute("data-width");
+      barInner.animate({
+        width: width
+      }, 2000)
+      setTimeout(()=> {
+        barInner.style.width = width;
+      }, 2000)
+    });
   },
   methods: {
     isMobile() {
