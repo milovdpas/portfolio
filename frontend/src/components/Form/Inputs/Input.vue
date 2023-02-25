@@ -26,5 +26,5 @@ export default {
 }
 </script>
 
-<style lang="scss" src="./Input.scss"/>
+<style scoped lang="scss" src="./Input.scss"/>
 

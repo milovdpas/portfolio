@@ -1,0 +1,29 @@
+.cta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10em;
+  gap: .5em;
+  padding: 8px 0;
+  border-radius: 5em;
+  border: 5px $blue solid;
+  color: $blue;
+  text-decoration: none;
+  .text {
+    display: inline-block;
+    font-size: 25px;
+  }
+  img {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    filter: brightness(0) saturate(100%) invert(36%) sepia(67%) saturate(1239%) hue-rotate(180deg) brightness(104%) contrast(94%);
+  }
+}
+.cta:hover{
+  background-color: $blue;
+  color: $white;
+  img{
+    filter: brightness(0) saturate(100%) invert(93%) sepia(26%) saturate(27%) hue-rotate(106deg) brightness(105%) contrast(108%);
+  }
+}

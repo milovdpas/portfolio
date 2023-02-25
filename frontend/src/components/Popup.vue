@@ -19,5 +19,5 @@ export default {
 }
 </script>
 
-<style lang="scss" src="./Popup.scss"/>
+<style scoped lang="scss" src="./Popup.scss"/>
 

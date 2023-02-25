@@ -1,6 +1,6 @@
 .slide-show{
   display: flex;
-  justify-content: start;
+  justify-content: center;
   flex-flow: row;
   flex-wrap: wrap;
 }
@@ -53,11 +53,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 0;
     height: 100%;
     line-height: 30px;
     border-radius: 5px 0 0 5px;
     color: black!important;
+  }
+  .bar-inner.slide{
+    animation: 3s slider ease-out;
   }
 }
 .bar-container:nth-child(2) {
@@ -106,6 +108,50 @@
   }
   .bar > .bar-inner{
     background-color: $pink;
+  }
+}
+
+@keyframes slider {
+  0% {
+    width: 20%;
+  }
+}
+
+// svg
+.svg-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  svg {
+    transform: scale(.45);
+    stroke-width: 2px;
+    stroke-dashoffset: -2000;
+    stroke-dasharray: 2000;
+    overflow: visible;
+    animation-name: svg-animation;
+    animation-duration: 3s;
+    animation-iteration-count:infinite;
+    animation-direction: alternate;
+  }
+}
+@keyframes svg-animation {
+  0% {
+    stroke-dashoffset: -2000;
+    stroke: $red;
+  }
+  30% {
+    stroke: $white;
+  }
+  50% {
+    stroke: $blue;
+  }
+  70% {
+    stroke: $white;
+  }
+  100% {
+    stroke-dashoffset:0;
+    stroke: $red;
   }
 }
 @include mobile {

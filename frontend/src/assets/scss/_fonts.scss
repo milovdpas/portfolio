@@ -1,30 +1,22 @@
-// Get your Google Fonts here https://google-webfonts-helper.herokuapp.com/
-// Use woff and woff2 to ensure all browsers have support
+@import url("https://use.typekit.net/uvz3lel.css");
 
-/* Coolvetica-500 - latin */
 @font-face {
-  font-family: 'Coolvetica';
+  font-family: "coolvetica", sans-serif;
+  font-weight: 400;
   font-style: normal;
-  font-weight: 500;
-  src: url('@fonts/Coolvetica/coolvetica_rg.eot'); /* IE9 Compat Modes */
-  src: local(''),
-  url('@fonts/Coolvetica/coolvetica_rg.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('@fonts/Coolvetica/coolvetica_rg.woff2') format('woff2'), /* Super Modern Browsers */
-  url('@fonts/Coolvetica/coolvetica_rg.woff') format('woff'), /* Modern Browsers */
-  url('@fonts/Coolvetica/coolvetica_rg.ttf') format('truetype'), /* Safari, Android, iOS */
-  url('@fonts/Coolvetica/coolvetica_rg.svg#Coolvetica') format('svg'); /* Legacy iOS */
 }
-
-/* Coolvetica-700 - latin */
 @font-face {
-  font-family: 'Coolvetica';
-  font-style: normal;
+  font-family: "coolvetica", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: "coolvetica", sans-serif;
   font-weight: 700;
-  src: url('@fonts/Coolvetica/coolvetica_rg.eot'); /* IE9 Compat Modes */
-  src: local(''),
-  url('@fonts/Coolvetica/coolvetica_rg.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('@fonts/Coolvetica/coolvetica_rg.woff2') format('woff2'), /* Super Modern Browsers */
-  url('@fonts/Coolvetica/coolvetica_rg.woff') format('woff'), /* Modern Browsers */
-  url('@fonts/Coolvetica/coolvetica_rg.ttf') format('truetype'), /* Safari, Android, iOS */
-  url('@fonts/Coolvetica/coolvetica_rg.svg#Coolvetica') format('svg'); /* Legacy iOS */
+  font-style: normal;
+}
+@font-face {
+  font-family: "coolvetica", sans-serif;
+  font-weight: 700;
+  font-style: italic;
 }

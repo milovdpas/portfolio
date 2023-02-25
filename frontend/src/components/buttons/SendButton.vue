@@ -20,8 +20,8 @@ export default {
 
       let getVar = variable => getComputedStyle(button).getPropertyValue(variable);
 
-      button.addEventListener('click', e => {
-
+      button.addEventListener('click', (e) => {
+        e.preventDefault();
         if(!button.classList.contains('active')) {
           button.classList.add('active');
 
@@ -131,5 +131,5 @@ export default {
 }
 </script>
 
-<style lang="scss" src="./SendButton.scss"/>
+<style lang="scss" src="./SendButton.scss" scoped/>
 

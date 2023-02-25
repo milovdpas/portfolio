@@ -4,22 +4,29 @@
       M
     </div>
     <div class="menu">
-      <router-link to="/projects" @click="scrollToTop()" class="menu-con"><p>Projects</p>
+      <router-link to="/projects" @click="scrollToTop()" class="menu-con" aria-describedby="to projects page">
+        <p>Projects</p>
       </router-link>
-      <router-link to="/experience" @click="scrollToTop()" class="menu-con"><p>
-        Experience</p></router-link>
-      <router-link to="/about_me" @click="scrollToTop()" class="menu-con"><p>About
-        me</p></router-link>
-      <router-link to="/contact" @click="scrollToTop()" class="menu-con"><p>Contact</p>
+      <router-link to="/experience" @click="scrollToTop()" class="menu-con" aria-describedby="to experience page">
+        <p>Experience</p>
+      </router-link>
+      <router-link to="/about_me" @click="scrollToTop()" class="menu-con" aria-describedby="to about me page">
+        <p>About me</p>
+      </router-link>
+      <router-link to="/contact" @click="scrollToTop()" class="menu-con" aria-describedby="to contact page">
+        <p>Contact</p>
       </router-link>
       <div class="menu-con">
         <div class="icons">
-          <router-link to="/home"><img :src="icons.home" class="icon" alt="home icon"/></router-link>
-          <a href="mailto:vanderpasmilo@gmail.com"><img :src="icons.mail" class="icon" alt="mail icon"/></a>
-          <a href="#" @click="showInstaQr"><img :src="icons.insta" class="icon" alt="insta icon"/></a>
-          <a href="https://github.com/milovdpas?tab=repositories" target="_blank"><img :src="icons.github" class="icon" alt="github icon"/></a>
-          <a href="https://www.linkedin.com/in/milo-van-der-pas-31b1761ba/" target="_blank"><img :src="icons.linkedin" class="icon" alt="linkedin icon"/></a>
-          <a href="tel:0637695327"><img :src="icons.phone" class="icon" alt="phone icon"/></a>
+          <router-link to="/home" aria-describedby="to home page"><img :src="icons.home" class="icon" alt="home icon"/></router-link>
+          <a href="mailto:vanderpasmilo@gmail.com" aria-describedby="Click to mail for help"><img :src="icons.mail" class="icon" alt="mail icon"/></a>
+          <a href="#" @click="showInstaQr"><img :src="icons.insta" class="icon" alt="insta icon" aria-describedby="On click shows qr code for instagram"/></a>
+          <a href="https://github.com/milovdpas?tab=repositories" target="_blank" aria-describedby="go to my GitHub"><img :src="icons.github" class="icon"
+                                                                                       alt="github icon"/></a>
+          <a href="https://www.linkedin.com/in/milo-van-der-pas-31b1761ba/" target="_blank" aria-describedby="go to my LinkedIn"><img :src="icons.linkedin"
+                                                                                                 class="icon"
+                                                                                                 alt="linkedin icon"/></a>
+          <a href="tel:0637695327" aria-describedby="Click to call for help"><img :src="icons.phone" class="icon" alt="phone icon"/></a>
         </div>
       </div>
     </div>
@@ -36,8 +43,7 @@ import PopupComponent from "../components/Popup.vue";
 
 export default {
   name: "Menu",
-  props: {
-  },
+  props: {},
   components: {
     RouterLink,
     PopupComponent
@@ -109,11 +115,11 @@ export default {
         }
       }
     },
-    showInstaQr(){
+    showInstaQr() {
       document.getElementById('popup').classList.toggle('active');
     }
   },
 }
 </script>
 
-<style lang="scss" src="./Menu.scss"/>
+<style scoped lang="scss" src="./Menu.scss"/>

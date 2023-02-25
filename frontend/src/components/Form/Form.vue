@@ -24,4 +24,4 @@ export default {
 }
 </script>
 
-<style lang="scss" src="./Form.scss"/>
+<style scoped lang="scss" src="./Form.scss"/>

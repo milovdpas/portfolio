@@ -32,6 +32,13 @@
           <MoreButton link="/experience">READ MORE</MoreButton>
         </div>
       </section>
+      <section id="about_me" class="section">
+        <h2>About me</h2>
+        <SlideShow :cards="aboutCards"/>
+        <div class="button-container">
+          <MoreButton link="/about_me">LEARN MORE</MoreButton>
+        </div>
+      </section>
     </main>
     <section>
       <Footer/>
@@ -44,6 +51,7 @@ import Menu from "../components/Menu.vue";
 import MoreButton from "../components/buttons/MoreButton.vue";
 import Footer from "@/components/Footer.vue";
 import SlideShow from "@/components/cards/SlideShow.vue";
+import svg from "@/assets/images/netherlands/netherlands.svg?raw"
 
 export default {
   name: "HomeView",
@@ -59,6 +67,20 @@ export default {
         {
           type: 'image',
           image: new URL(`../assets/images/placeholder.png`, import.meta.url).href,
+          tag: {
+            color: 'red',
+            text: 'Livewall Group'
+          },
+          title: "McDonalds Games",
+          description: "Tijdens mijn stage heb ik meegewerkt aan meerdere McDonalds games."
+        },
+        {
+          type: 'image',
+          image: new URL(`../assets/images/placeholder.png`, import.meta.url).href,
+          tag: {
+            color: 'blue',
+            text: 'Livewall Group'
+          },
           title: "McDonalds Games",
           description: "Tijdens mijn stage heb ik meegewerkt aan meerdere McDonalds games."
         },
@@ -66,12 +88,10 @@ export default {
           type: 'image',
           image: new URL(`../assets/images/placeholder.png`, import.meta.url).href,
           title: "McDonalds Games",
-          description: "Tijdens mijn stage heb ik meegewerkt aan meerdere McDonalds games."
-        },
-        {
-          type: 'image',
-          image: new URL(`../assets/images/placeholder.png`, import.meta.url).href,
-          title: "McDonalds Games",
+          tag: {
+            color: 'orange',
+            text: 'Livewall Group'
+          },
           description: "Tijdens mijn stage heb ik meegewerkt aan meerdere McDonalds games."
         },
       ],
@@ -143,7 +163,21 @@ export default {
             }
           ],
         }
-      ]
+      ],
+      aboutCards: [
+        {
+          type: 'text',
+          title: "General",
+          text: "<p>Young 21 year old, who is passionate about programming and the people around him.</p>" +
+              "<p>I have almost finished my bachelor degree in computer science at Avans university in Den Bosch.</p>",
+        },
+        {
+          type: 'svg',
+          title: "Country of origin",
+          svg: svg,
+          alt: 'netherlands image'
+        },
+      ],
     }
   },
   watch: {

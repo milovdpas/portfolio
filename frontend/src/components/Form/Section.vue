@@ -18,5 +18,5 @@ export default {
 }
 </script>
 
-<style lang="scss" src="./Section.scss"/>
+<style scoped lang="scss" src="./Section.scss"/>
 

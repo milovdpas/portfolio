@@ -10,9 +10,9 @@
             <p class="description">My experience in my work field and life</p>
           </div>
           <div class="ctas row">
-            <CTA class="col" link="#program" color="yellow" :icon="icons.down">Program Skills</CTA>
-            <CTA class="col" link="#social" color="green" :icon="icons.down">Social Skills</CTA>
-            <CTA class="col" link="#jobs" color="orange" :icon="icons.down">Jobs</CTA>
+            <CTA class="col-md-4" link="#program" color="yellow" :icon="icons.down">Program Skills</CTA>
+            <CTA class="col-md-4" link="#social" color="green" :icon="icons.down">Social Skills</CTA>
+            <CTA class="col-md-4" link="#jobs" color="orange" :icon="icons.down">Jobs</CTA>
           </div>
         </div>
         <div class="side-bar"></div>
@@ -216,7 +216,7 @@ export default {
       }
 
       .description {
-        font-size: 25px;
+        font-size: 22.5px;
         font-weight: normal;
       }
     }
@@ -343,10 +343,16 @@ export default {
       h1{
         z-index: 1;
       }
+      .text{
+        height: 60%;
+      }
+      .ctas{
+        height: 40%;
+      }
     }
 
     .underline{
-      background-color: #FF6B6B;
+      background-color: $red;
       height: 5px;
       width: 75%;
       align-self: center;
@@ -358,7 +364,6 @@ export default {
      display: none;
     }
   }
-
 }
 
 </style>

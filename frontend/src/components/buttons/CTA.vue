@@ -25,4 +25,4 @@ export default {
 }
 </script>
 
-<style lang="scss" src="./CTA.scss"/>
+<style lang="scss" src="./CTA.scss" scoped/>

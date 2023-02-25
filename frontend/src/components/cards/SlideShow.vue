@@ -7,7 +7,7 @@
           @slideChange="onSlideChange"
   >
     <swiper-slide v-for="card in cards">
-      <ImageCard v-if="card.type === 'image'" :image="card.image" :title="card.title"
+      <ImageCard v-if="card.type === 'image'" :image="card.image" :tag="card.tag" :title="card.title"
                  :description="card.description"></ImageCard>
       <NormalCard v-else-if="card.type === 'skill'" :title="card.title">
         <skill class="bar-container" v-for="skill in card.skills">
@@ -17,19 +17,34 @@
           </div>
         </skill>
       </NormalCard>
+      <NormalCard v-else-if="card.type === 'text'" :title="card.title">
+        <div class="title">{{ card.title }}</div>
+        <p class="text">{{ card.text }}</p>
+      </NormalCard>
+      <NormalCard v-else-if="card.type === 'svg'" :title="card.title">
+        <div class="svg-container" v-html="card.svg">
+        </div>
+      </NormalCard>
     </swiper-slide>
   </swiper>
   <div v-else class="slide-show">
-    <div v-for="card in cards" class="col-sm-12 col-md-4">
-      <ImageCard v-if="card.type === 'image'" :image="card.image" :title="card.title"
+    <div v-for="card in cards" class="d-flex justify-content-center">
+      <ImageCard v-if="card.type === 'image'" :image="card.image" :tag="card.tag" :title="card.title"
                  :description="card.description"></ImageCard>
       <NormalCard v-else-if="card.type === 'skill'" :title="card.title">
         <skill class="bar-container" v-for="skill in card.skills">
           <div class="title">{{ skill.label }}</div>
-          <div class="bar" :data-width="skill.percentage + '%'">
-            <div class="bar-inner">{{skill.placeholder}}</div>
+          <div class="bar">
+            <div class="bar-inner" :style="'width: ' + skill.percentage + '%;'">{{skill.placeholder}}</div>
           </div>
         </skill>
+      </NormalCard>
+      <NormalCard v-else-if="card.type === 'text'" :title="card.title">
+        <div class="text" v-html="card.text"></div>
+      </NormalCard>
+      <NormalCard v-else-if="card.type === 'svg'" :title="card.title">
+        <div class="svg-container" v-html="card.svg">
+        </div>
       </NormalCard>
     </div>
   </div>
@@ -76,17 +91,20 @@ export default {
     };
   },
   mounted(){
-    const skills =document.getElementsByTagName('skill');
-    Object.keys(skills).forEach(key => {
-      const bar = skills[key].childNodes[1];
-      const barInner = bar.childNodes[0];
-      const width = bar.getAttribute("data-width");
-      barInner.animate({
-        width: width
-      }, 2000)
-      setTimeout(()=> {
-        barInner.style.width = width;
-      }, 2000)
+    const startAnimation = (entries, observer) => {
+      entries.forEach(entry => {
+        const bar = entry.target.childNodes[1];
+        const barInner = bar.childNodes[0];
+        barInner.classList.toggle('slide', entry.isIntersecting);
+      });
+    };
+
+    const options = { root: null, rootMargin: '0px', threshold: 1 };
+    const observer = new IntersectionObserver(startAnimation, options);
+
+    const elements = document.getElementsByTagName('skill');
+    Object.keys(elements).forEach(key => {
+      observer.observe(elements[key]);
     });
   },
   methods: {
