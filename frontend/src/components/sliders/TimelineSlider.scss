@@ -1,0 +1,137 @@
+.timeline {
+  height: 100vh;
+  margin: 0 5em;
+  pointer-events: none;
+  .swiper-wrapper{
+    padding-top: 8em;
+  }
+  .swiper-slide{
+    display: flex;
+    .swiper-slide-content{
+      margin-right: 25%;
+      color: $black;
+
+      .timeline-title {
+        font-size: 32px;
+        font-weight: bold;
+        transition: .2s ease .4s;
+      }
+      .time-period{
+        font-style: italic;
+        font-weight: 300;
+        font-size: 26px;
+        transition: .2s ease .5s;
+      }
+
+      .timeline-text {
+        width: 75%;
+        font-size: 26px;
+        transition: .2s ease .6s;
+        overflow-y: scroll;
+        max-height: 330px;
+        -ms-overflow-style: none;  /* Internet Explorer 10+ */
+        scrollbar-width: none;  /* Firefox */
+        pointer-events: all;
+      }
+      .timeline-text::-webkit-scrollbar {
+        display: none;  /* Safari and Chrome */
+      }
+    }
+  }
+
+  .swiper-pagination-horizontal{
+    flex-flow: row;
+  }
+
+  .swiper-pagination-vertical{
+    flex-flow: column;
+  }
+
+  .swiper-pagination {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    height: 100%;
+    color: $black;
+    pointer-events: all;
+    .swiper__bullet{
+      position: relative;
+      font-size: 26px;
+      text-align: left;
+      cursor: pointer;
+    }
+    .swiper__bullet::before {
+      content: "";
+      position: absolute;
+      top: 17px;
+      left: -34.5px;
+      width: 12px;
+      height: 12px;
+      border-radius: 100%;
+      background-color: #ffd690;
+      transform: scale(0);
+      transition: 0.2s;
+    }
+    .swiper__bullet--active{
+      font-weight: 600;
+      cursor: default;
+    }
+    .swiper__bullet--active::before {
+      transform: scale(1);
+    }
+  }
+  .swiper-pagination::before {
+    content: "";
+    position: absolute;
+    left: -30px;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background-color: #7070707a;
+  }
+}
+
+@include mobile{
+  .timeline {
+    margin: 0 2em;
+    .swiper-wrapper{
+      padding-top: 6em;
+    }
+    .swiper-slide{
+      padding: 2em 2em 0;
+      .swiper-slide-content{
+        margin-right: 0;
+
+        .timeline-title {
+          font-size: 22.5px;
+        }
+        .time-period{
+          font-size: 20px;
+        }
+
+        .timeline-text {
+          width: 95%;
+          font-size: 20px;
+        }
+      }
+    }
+
+    .swiper-pagination {
+      width: 100%;
+      height: auto;
+      margin-bottom: 1em;
+      gap: 0.75em;
+      .swiper__bullet{
+        font-size: 16px;
+        line-height: 19px;
+        text-align: center;
+      }
+      .swiper__bullet::before {
+        content: none;
+      }
+    }
+    .swiper-pagination::before {
+      content: none;
+    }
+  }
+}

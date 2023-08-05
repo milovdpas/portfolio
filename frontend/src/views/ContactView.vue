@@ -17,7 +17,9 @@
         <div class="side-bar"></div>
       </section>
     </main>
-    <Footer/>
+    <section>
+      <Footer/>
+    </section>
   </div>
 </template>
 
@@ -43,20 +45,8 @@ export default {
   watch: {
     "$i18n.locale": async function (newVal, oldVal) {
     },
-  }, mounted() {
-    setTimeout(() => this.scrollFix(this.$route.hash));
-  },
+  }, mounted() {},
   methods: {
-    scrollFix(hash) {
-      if (!hash)
-        return;
-      const id = hash.replace('#', '');
-      const element = document.getElementById(id);
-      if (element) {
-        const top = element.offsetTop;
-        window.scrollTo(0, top);
-      }
-    },
     isMobile() {
       return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     }

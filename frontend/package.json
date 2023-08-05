@@ -24,7 +24,7 @@
     "pathseg": "^1.2.1",
     "pinia": "^2.0.21",
     "poly-decomp": "^0.3.0",
-    "swiper": "^8.4.4",
+    "swiper": "^8.4.7",
     "vite-plugin-html": "^3.2.0",
     "vue": "^3.2.39",
     "vue-i18n": "^9.2.2",

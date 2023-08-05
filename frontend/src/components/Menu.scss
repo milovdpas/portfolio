@@ -126,6 +126,10 @@ nav.open{
   }
 }
 
+.qr-code{
+  width: 100%;
+}
+
 @include mobile {
   .menu-con p {
     font-size: 25px;

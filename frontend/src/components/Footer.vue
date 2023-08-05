@@ -1,32 +1,30 @@
 <template>
-  <footer class="footer">
-    <div class="row">
-      <div class="col-md-6 left">
-        <h2 class="footer-header">Fast to...</h2>
-        <router-link class="footer-link" to="/projects" @click="scrollToTop()">
-          Projects
-          <img :src="icons.rightArrow" class="right-arrow" alt="right arrow" />
-        </router-link>
-        <router-link class="footer-link" to="/experience" @click="scrollToTop()">
-          Experience
-          <img :src="icons.rightArrow" class="right-arrow" alt="right arrow" />
-        </router-link>
-        <router-link class="footer-link" to="/about_me" @click="scrollToTop()">
-          About me
-          <img :src="icons.rightArrow" class="right-arrow" alt="right arrow" />
-        </router-link>
-      </div>
-      <div class="col-md-6 right">
-        <h2 class="footer-header">Contact me</h2>
-        <Form :submit="submit">
-          <Label>Email address</Label>
-          <Input type="text" placeholder="Email address"></Input>
-          <Label>Name</Label>
-          <Input type="text" placeholder="Name"></Input>
-          <Label>Comment</Label>
-          <TextArea placeholder="Comment"></TextArea>
-        </Form>
-      </div>
+  <footer class="row footer">
+    <div class="col-md-6 left">
+      <h2 class="footer-header">Fast to...</h2>
+      <router-link class="footer-link" to="/projects" @click="scrollToTop()">
+        Projects
+        <img :src="icons.rightArrow" class="right-arrow" alt="right arrow"/>
+      </router-link>
+      <router-link class="footer-link" to="/experience" @click="scrollToTop()">
+        Experience
+        <img :src="icons.rightArrow" class="right-arrow" alt="right arrow"/>
+      </router-link>
+      <router-link class="footer-link" to="/about_me" @click="scrollToTop()">
+        About me
+        <img :src="icons.rightArrow" class="right-arrow" alt="right arrow"/>
+      </router-link>
+    </div>
+    <div class="col-md-6 right">
+      <h2 class="footer-header">Contact me</h2>
+      <Form :submit="submit">
+        <Label>Email address</Label>
+        <Input type="text" placeholder="Email address"></Input>
+        <Label>Name</Label>
+        <Input type="text" placeholder="Name"></Input>
+        <Label>Comment</Label>
+        <TextArea placeholder="Comment"></TextArea>
+      </Form>
     </div>
   </footer>
 </template>
@@ -58,7 +56,7 @@ export default {
     scrollToTop() {
       window.scrollTo(0, 0);
     },
-    submit(){
+    submit() {
 
     }
   },

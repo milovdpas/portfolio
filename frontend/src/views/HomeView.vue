@@ -7,16 +7,15 @@
           <h1>MilovdPas</h1>
           <h1>MilovdPas</h1>
         </div>
-        <div id="message">
-          <h2>
-            <span>always</span>
-            <div class="message">
-              <div class="word1">coding</div>
-              <div class="word2">sporting</div>
-              <div class="word3">creating</div>
-            </div>
-          </h2>
-        </div>
+        <h2 id="message" class="message">
+          <span>always</span>
+          <span class="slogan">
+              &#8203;
+              <span id="slogan" class="text">
+              {{ slogans[sloganIndex] }}
+              </span>
+            </span>
+        </h2>
       </section>
       <section id="projects" class="section">
         <h2>Projects</h2>
@@ -63,6 +62,9 @@ export default {
   },
   data() {
     return {
+      slogans: ['coding', 'sporting', 'creating'],
+      sloganIndex: 0,
+      timeOut: 0,
       projectCards: [
         {
           type: 'image',
@@ -162,6 +164,32 @@ export default {
               percentage: 90
             }
           ],
+        },
+        {
+          type: 'timeline',
+          title: "Jobs",
+          items: [
+            {
+              title: 'Junior Full Stack developer at iO',
+              timePeriod: 'jan. 2023 - jun. 2023'
+            },
+            {
+              title: 'Junior Full Stack developer at LiveWall',
+              timePeriod: 'aug. 2021 - jan. 2023'
+            },
+            {
+              title: 'Junior Chef at Friethuys',
+              timePeriod: 'feb. 2019 - oct. 2022'
+            },
+            {
+              title: 'Factory worker at Cups4You',
+              timePeriod: 'apr. 2018 - jul. 2018'
+            },
+            {
+              title: 'Co driver at Vos logistics',
+              timePeriod: 'jun. 2017 - aug. 2017'
+            },
+          ],
         }
       ],
       aboutCards: [
@@ -177,6 +205,40 @@ export default {
           svg: svg,
           alt: 'netherlands image'
         },
+        {
+          type: 'bullet-points',
+          title: "Hobbies",
+          bulletPoints: [
+            {
+              icon: {
+                src: new URL(`../assets/images/icons/football.svg`, import.meta.url).href,
+                alt: 'Football icon'
+              },
+              title: 'Football',
+            },
+            {
+              icon: {
+                src: new URL(`../assets/images/icons/waterpolo.svg`, import.meta.url).href,
+                alt: 'Waterpolo icon'
+              },
+              title: 'Waterpolo',
+            },
+            {
+              icon: {
+                src: new URL(`../assets/images/icons/friends.svg`, import.meta.url).href,
+                alt: 'Friends icon'
+              },
+              title: 'Hangout with friends',
+            },
+            {
+              icon: {
+                src: new URL(`../assets/images/icons/party.svg`, import.meta.url).href,
+                alt: 'Party icon'
+              },
+              title: 'Party',
+            },
+          ],
+        }
       ],
     }
   },
@@ -184,7 +246,8 @@ export default {
     "$i18n.locale": async function (newVal, oldVal) {
     },
   }, mounted() {
-    if(this.isMobile()) {
+    this.addEventListeners();
+    if (this.isMobile()) {
       const projects = document.getElementById('projects');
       const swiper = document.getElementsByClassName('swiper')[0];
       const swiperPagination = document.getElementsByClassName('swiper-pagination')[0];
@@ -194,18 +257,23 @@ export default {
       swiper.removeChild(swiperPagination);
       projects.insertBefore(swiperPagination, projects.children[2]);
     }
-    setTimeout(() => this.scrollFix(this.$route.hash));
   },
   methods: {
-    scrollFix(hash) {
-      if (!hash)
-        return;
-      const id = hash.replace('#', '');
-      const element = document.getElementById(id);
-      if (element) {
-        const top = element.offsetTop;
-        window.scrollTo(0, top);
-      }
+    addEventListeners() {
+      const slogan = document.getElementById('slogan');
+      slogan.addEventListener('animationstart', () => {
+        setInterval(this.nextSlogan, 1450);
+      });
+    },
+    nextSlogan(){
+      this.timeOut += 50;
+      setTimeout(() => {
+        if(this.sloganIndex === this.slogans.length-1){
+          this.sloganIndex = 0;
+          return;
+        }
+        this.sloganIndex++;
+      }, this.timeOut)
     },
     isMobile() {
       return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
@@ -285,113 +353,58 @@ h1:nth-child(2) {
 }
 
 /* Header message */
-#message {
+.message {
   display: flex;
   justify-content: center;
-  height: fit-content;
+  align-items: center;
+  gap: .25em;
   margin-top: 250px;
   margin-right: 220px;
 
-  h2 {
-    color: #333;
-    font-family: tahoma, serif;
-    font-size: 3rem;
-    font-weight: 100;
-    line-height: 1.5;
-    text-transform: uppercase;
-    white-space: nowrap;
-    overflow: hidden;
-    position: relative;
-    width: 800px;
-  }
+  font-family: tahoma, serif;
+  font-size: 3rem;
+  font-weight: 100;
+  line-height: 1.5;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #333;
 
-  h2 span {
+  span {
     font-size: 40px;
   }
-}
 
-.message {
-  background-color: $blue;
-  color: $white;
-  display: block;
-  font-weight: 900;
-  overflow: hidden;
-  position: absolute;
-  padding-left: 0.5rem;
-  top: 0.2rem;
-  margin-left: 485px;
-  margin-right: auto;
-  left: 0;
-  right: 0;
-  animation: openclose 5s ease-in-out infinite;
-}
+  .slogan {
+    position: relative;
 
-.word1, .word2, .word3 {
-  font-family: tahoma, serif;
+    .text {
+      position: absolute;
+      overflow: hidden;
+      text-align: left;
+      margin: 0;
+      background-color: $blue;
+      color: $white;
+      font-weight: 900;
+      padding-left: 0.5rem;
+      animation: openclose 1.5s ease-in-out infinite;
+    }
+  }
 }
 
 @keyframes openclose {
   0% {
-    top: 0.2rem;
-    width: 0;
-  }
-  5% {
     width: 0;
   }
   15% {
+    width: 0;
+  }
+  45% {
     width: 235px;
   }
-  30% {
-    top: 0.2rem;
+  90% {
     width: 235px;
-  }
-  33% {
-    top: 0.2rem;
-    width: 0;
-  }
-  35% {
-    top: 0.2rem;
-    width: 0;
-  }
-  38% {
-    top: -4.5rem;
-
-  }
-  48% {
-    top: -4.5rem;
-    width: 290px;
-  }
-  62% {
-    top: -4.5rem;
-    width: 290px;
-  }
-  66% {
-    top: -4.5rem;
-    width: 0;
-    text-indent: 0;
-  }
-  71% {
-    top: -9rem;
-    width: 0;
-    text-indent: 5px;
-  }
-  86% {
-    top: -9rem;
-    width: 290px;
-  }
-  95% {
-    top: -9rem;
-    width: 290px;
-  }
-  98% {
-    top: -9rem;
-    width: 0;
-    text-indent: 5px;
   }
   100% {
-    top: 0;
     width: 0;
-    text-indent: 0;
   }
 }
 
@@ -422,9 +435,45 @@ h1:nth-child(2) {
   }
 
   .section {
+    h2 {
+      margin-top: 1em;
+    }
+  }
+
+  .message {
+    position: absolute;
+    left: 25%;
+    /* top: 50%; */
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    transform: translateX(-50%);
+    span{
+      font-size: 30px;
+    }
+  }
+
+  @keyframes openclose {
+    0% {
+      width: 0;
+    }
+    15% {
+      width: 0;
+    }
+    45% {
+      width: 180px;
+    }
+    90% {
+      width: 180px;
+    }
+    100% {
+      width: 0;
+    }
+  }
+
+  .section {
     padding: 0 !important;
 
-    .swiper{
+    .swiper {
       width: 100%;
     }
 

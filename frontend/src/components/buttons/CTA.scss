@@ -39,3 +39,11 @@
   background-color: $yellow;
 }
 
+@include mobile{
+  .cta{
+    img{
+      width: 28px;
+      height: 28px;
+    }
+  }
+}

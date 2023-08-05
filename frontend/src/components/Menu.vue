@@ -4,21 +4,21 @@
       M
     </div>
     <div class="menu">
-      <router-link to="/projects" @click="scrollToTop()" class="menu-con" aria-describedby="to projects page">
+      <router-link to="/projects" @click="toggle" class="menu-con" aria-describedby="to projects page">
         <p>Projects</p>
       </router-link>
-      <router-link to="/experience" @click="scrollToTop()" class="menu-con" aria-describedby="to experience page">
+      <router-link to="/experience" @click="toggle" class="menu-con" aria-describedby="to experience page">
         <p>Experience</p>
       </router-link>
-      <router-link to="/about_me" @click="scrollToTop()" class="menu-con" aria-describedby="to about me page">
+      <router-link to="/about_me" @click="toggle" class="menu-con" aria-describedby="to about me page">
         <p>About me</p>
       </router-link>
-      <router-link to="/contact" @click="scrollToTop()" class="menu-con" aria-describedby="to contact page">
+      <router-link to="/contact" @click="toggle" class="menu-con" aria-describedby="to contact page">
         <p>Contact</p>
       </router-link>
       <div class="menu-con">
         <div class="icons">
-          <router-link to="/home" aria-describedby="to home page"><img :src="icons.home" class="icon" alt="home icon"/></router-link>
+          <router-link to="/home" @click="toggle" aria-describedby="to home page"><img :src="icons.home" class="icon" alt="home icon"/></router-link>
           <a href="mailto:vanderpasmilo@gmail.com" aria-describedby="Click to mail for help"><img :src="icons.mail" class="icon" alt="mail icon"/></a>
           <a href="#" @click="showInstaQr"><img :src="icons.insta" class="icon" alt="insta icon" aria-describedby="On click shows qr code for instagram"/></a>
           <a href="https://github.com/milovdpas?tab=repositories" target="_blank" aria-describedby="go to my GitHub"><img :src="icons.github" class="icon"
@@ -32,7 +32,7 @@
     </div>
     <PopupComponent>
       <p>Scan the qr code to go to my instagram page</p>
-      <img :src="instaQr" alt="insta qr code"/>
+      <img class="qr-code" :src="instaQr" alt="insta qr code"/>
     </PopupComponent>
   </nav>
 </template>
@@ -63,9 +63,6 @@ export default {
     }
   },
   methods: {
-    scrollToTop() {
-      window.scrollTo(0, 0);
-    },
     toggle() {
       document.getElementsByTagName('nav')[0].classList.toggle('open');
       const menuIcon = document.getElementById('menu-icon');

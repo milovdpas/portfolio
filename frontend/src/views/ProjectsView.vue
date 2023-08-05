@@ -24,11 +24,13 @@
                 These are my projects that i'm most proud of.
               </p>
             </div>
-            <ImageCard v-for="project in projectsLeftLoaded" :image="project.image" :tag="project.tag" :title="project.title"
+            <ImageCard v-for="project in projectsLeftLoaded" :image="project.image" :tag="project.tag"
+                       :title="project.title"
                        :description="project.description"></ImageCard>
           </div>
           <div class="col-md-6 right">
-            <ImageCard v-for="project in projectsRightLoaded" :image="project.image" :tag="project.tag" :title="project.title"
+            <ImageCard v-for="project in projectsRightLoaded" :image="project.image" :tag="project.tag"
+                       :title="project.title"
                        :description="project.description"></ImageCard>
           </div>
         </div>
@@ -37,7 +39,9 @@
         </div>
       </section>
     </main>
-    <Footer/>
+    <section>
+      <Footer/>
+    </section>
   </div>
 </template>
 
@@ -130,27 +134,15 @@ export default {
   watch: {
     "$i18n.locale": async function (newVal, oldVal) {
     },
-  }, mounted() {
-    setTimeout(() => this.scrollFix(this.$route.hash));
-  },
+  }, mounted() {},
   methods: {
-    scrollFix(hash) {
-      if (!hash)
-        return;
-      const id = hash.replace('#', '');
-      const element = document.getElementById(id);
-      if (element) {
-        const top = element.offsetTop;
-        window.scrollTo(0, top);
-      }
-    },
     isMobile() {
       return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     },
     loadMore() {
       const over = this.projects.length - this.length;
       if (over === 0) return;
-      if(over < 3)
+      if (over < 3)
         this.length += over;
       else
         this.length += 3;
@@ -158,10 +150,10 @@ export default {
   },
   computed: {
     projectsLeftLoaded() {
-      return this.projects.slice(0, this.length).filter((a,i) => i%2===1);
+      return this.projects.slice(0, this.length).filter((a, i) => i % 2 === 1);
     },
     projectsRightLoaded() {
-      return this.projects.slice(0, this.length).filter((a,i) => i%2===0);
+      return this.projects.slice(0, this.length).filter((a, i) => i % 2 === 0);
     },
   },
 }
@@ -198,7 +190,8 @@ export default {
       height: 25%;
       width: 100%;
       margin: 0;
-      img{
+
+      img {
         width: 70px;
         height: 70px;
       }
@@ -213,27 +206,32 @@ export default {
 }
 
 /* Projects */
-.projects{
+.projects {
   position: relative;
   min-height: 100vh;
   padding: 7em;
-  .introduction{
+
+  .introduction {
     width: 300px;
     height: 175px;
     text-align: left;
-    .description{
+
+    .description {
       font-size: 22.5px;
     }
   }
-  .image-card{
-    min-height: auto!important;
+
+  .image-card {
+    min-height: auto !important;
   }
-  .right{
+
+  .right {
     display: flex !important;
     flex-flow: column;
     align-items: start;
   }
-  .left{
+
+  .left {
     display: flex !important;
     flex-flow: column;
     align-items: end;
@@ -244,12 +242,13 @@ export default {
   .header {
     .content {
       width: 100%;
-      h1{
+
+      h1 {
         z-index: 1;
       }
     }
 
-    .underline{
+    .underline {
       background-color: $yellow;
       height: 5px;
       width: 75%;
@@ -262,12 +261,14 @@ export default {
       display: none;
     }
   }
-  .projects{
+  .projects {
     padding: 5em 1em;
-    .left{
+
+    .left {
       align-items: center;
     }
-    .right{
+
+    .right {
       align-items: center;
     }
   }

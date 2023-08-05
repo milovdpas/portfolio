@@ -1,46 +1,41 @@
 import {createRouter, createWebHistory} from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import ProjectsView from '../views/ProjectsView.vue'
-import ExperienceView from '../views/ExperienceView.vue'
-import AboutMeView from '../views/AboutMeView.vue'
-import ContactView from '../views/ContactView.vue'
-import NotFoundView from '../views/404View.vue'
+import anime from "animejs";
 
 const routes = [
     {
         path: '/',
         name: 'default',
-        component: HomeView
+        component: () => import('../views/HomeView.vue')
     },
     {
         path: '/home',
         name: 'home',
-        component: HomeView
+        component: () => import('../views/HomeView.vue')
     },
     {
         path: '/projects',
         name: 'projects',
-        component: ProjectsView
+        component: () => import('../views/ProjectsView.vue')
     },
     {
         path: '/experience',
         name: 'experience',
-        component: ExperienceView
+        component: () => import('../views/ExperienceView.vue')
     },
     {
         path: '/about_me',
         name: 'about_me',
-        component: AboutMeView
+        component: () => import('../views/AboutMeView.vue')
     },
     {
         path: '/contact',
         name: 'contact',
-        component: ContactView,
+        component: () => import('../views/ContactView.vue'),
     },
     {
         path: '/:pathMatch(.*)*',
         name: 'not_found',
-        component: NotFoundView
+        component: () => import('../views/404View.vue')
     },
 ]
 
@@ -48,8 +43,24 @@ const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: routes,
     scrollBehavior(to, from, savedPosition) {
-        // always scroll to top
-        return {top: 0}
+        const target = document.getElementById('app');
+        if (to.hash) {
+            const id = to.hash.replace('#', '');
+            const hashContent = document.getElementById(id);
+            anime({
+                targets: target,
+                scrollTop: hashContent.offsetTop,
+                duration: 1000,
+                easing: 'easeInOutQuad'
+            });
+        } else {
+            anime({
+                targets: target,
+                scrollTop: 0,
+                duration: 0,
+                easing: 'easeInOutQuad'
+            })
+        }
     },
 })
 

@@ -3,7 +3,6 @@
 </template>
 
 <script>
-import {RouterView} from 'vue-router'
 import * as bootstrap from 'bootstrap'
 
 export default {
@@ -33,17 +32,17 @@ export default {
   overflow-y: scroll;
   height: 100vh;
   scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
+  scroll-behavior:smooth;
+}
+
+section {
+  scroll-snap-align: start;
 }
 
 body {
   width: 100%;
   font-family: Source Sans Pro, serif;
   overflow:hidden;
-}
-
-section {
-  scroll-snap-align: start;
 }
 
 // Scroll bar

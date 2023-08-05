@@ -1,4 +1,6 @@
 .footer{
+  display: flex;
+  justify-content: space-around;
   background: $dark-blue;
   height: 100vh;
   color: $white;
@@ -28,7 +30,7 @@
 }
 
 @include mobile {
-  .right{
-    margin-top: 6em;
+  .footer{
+    padding: 4em 3em;
   }
 }
