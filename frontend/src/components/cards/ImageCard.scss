@@ -1,14 +1,29 @@
 .image-card {
   min-height: 100%;
   padding: 5px;
-  width: 300px;
+  width: 350px;
   .card {
     height: 100%;
     box-shadow: 0 2px 5px rgb(0 0 0 / 20%);
+    transition: box-shadow .3s;
+    overflow: hidden;
+    .card-img-top{
+      width: auto;
+      height: 40%;
+      object-fit: cover;
+      cursor: pointer;
+      transition: all .3s;
+    }
     .card-body {
       text-align: left;
+      background: $white;
+      z-index: 1;
       .red{
         background-color: $red;
+        color: $white;
+      }
+      .black{
+        background-color: $black;
         color: $white;
       }
       .yellow{
@@ -34,17 +49,38 @@
         line-height: 1em;
         color: $black;
         padding-bottom: 6px;
+        cursor: pointer;
+      }
+      .card-text{
+        cursor: pointer;
       }
     }
   }
 }
 
+.image-card{
+  .card:hover{
+    box-shadow: 0 0 11px rgba(33,33,33,.2);
+  }
+}
+.card-img-top:hover{
+  transform: scale(1.3);
+}
+
 @include tablet {
   .image-card {
     .card {
+      cursor: pointer;
+      .card-img-top{
+        cursor: default;
+      }
       .card-body {
         .card-title {
+          cursor: default;
           font-size: 25px;
+        }
+        .card-text {
+          cursor: default;
         }
       }
     }

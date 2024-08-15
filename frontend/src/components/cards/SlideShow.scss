@@ -39,6 +39,7 @@
 }
 
 .card-body {
+
   /* Text */
   .text {
     margin-top: 1em;
@@ -82,7 +83,7 @@
     }
   }
 
-  .bar-container:nth-child(2) {
+  .bar-container:nth-child(1) {
     .title {
       color: darken($red, 30%);
     }
@@ -92,7 +93,7 @@
     }
   }
 
-  .bar-container:nth-child(3) {
+  .bar-container:nth-child(2) {
     .title {
       color: darken($green, 30%);
     }
@@ -102,7 +103,7 @@
     }
   }
 
-  .bar-container:nth-child(4) {
+  .bar-container:nth-child(3) {
     .title {
       color: darken($blue, 10%);
     }
@@ -112,7 +113,7 @@
     }
   }
 
-  .bar-container:nth-child(5) {
+  .bar-container:nth-child(4) {
     .title {
       color: darken($orange, 30%);
     }
@@ -122,7 +123,7 @@
     }
   }
 
-  .bar-container:nth-child(6) {
+  .bar-container:nth-child(5) {
     .title {
       color: darken($yellow, 30%);
     }
@@ -132,7 +133,7 @@
     }
   }
 
-  .bar-container:nth-child(7) {
+  .bar-container:nth-child(6) {
     .title {
       color: darken($pink, 30%);
     }
@@ -153,10 +154,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50vh;
+    height: 40vh;
 
     svg {
-      transform: scale(.45);
+      transform: scale(.40);
       stroke-width: 2px;
       stroke-dashoffset: -2000;
       stroke-dasharray: 2000;
@@ -189,7 +190,7 @@
   }
 
   // Timeline
-  .timeline {
+  .timeline-container {
     padding: 15px 5px;
 
     .timeline-card {
@@ -233,6 +234,11 @@
     .timeline-card:first-child::before {
       border-top: 0;
       border-radius: 0 0 0 25px;
+    }
+
+    .timeline-card:last-child::before {
+      border-bottom: 0;
+      border-radius: 0 25px 0 0;
     }
 
     .timeline-card:last-child:nth-child(odd)::before {
@@ -294,9 +300,12 @@
 
   /* Bullet points */
   .bullet-points {
+    display: flex;
+    flex-flow: column;
     list-style-type: none;
     padding: 0;
     margin-top: 1em;
+    gap: 0.25em;
 
     li {
       display: flex;
@@ -304,6 +313,7 @@
       align-items: center;
 
       img {
+        width: auto;
         height: 30px;
       }
 
@@ -311,6 +321,18 @@
         font-size: 20px;
         font-weight: normal;
         margin-bottom: 0;
+      }
+    }
+  }
+}
+
+@include mobile(){
+  .card-body{
+    margin-bottom: 2em;
+    .svg-container{
+      height: 38vh;
+      svg {
+        transform: scale(.325);
       }
     }
   }

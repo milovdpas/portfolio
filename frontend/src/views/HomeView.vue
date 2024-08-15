@@ -68,33 +68,36 @@ export default {
       projectCards: [
         {
           type: 'image',
-          image: new URL(`../assets/images/placeholder.png`, import.meta.url).href,
-          tag: {
-            color: 'red',
-            text: 'Livewall Group'
-          },
-          title: "McDonalds Games",
-          description: "Tijdens mijn stage heb ik meegewerkt aan meerdere McDonalds games."
-        },
-        {
-          type: 'image',
-          image: new URL(`../assets/images/placeholder.png`, import.meta.url).href,
+          image: new URL(`../assets/images/projects/soundzam-app.png`, import.meta.url).href,
           tag: {
             color: 'blue',
-            text: 'Livewall Group'
+            text: 'Hobby Project'
           },
-          title: "McDonalds Games",
-          description: "Tijdens mijn stage heb ik meegewerkt aan meerdere McDonalds games."
+          title: "SoundZam app",
+          description: "After graduating I made an app for recognizing SoundCloud songs.",
+          slug: 'soundzam'
         },
         {
           type: 'image',
-          image: new URL(`../assets/images/placeholder.png`, import.meta.url).href,
-          title: "McDonalds Games",
+          image: new URL(`../assets/images/projects/motm.jpg`, import.meta.url).href,
           tag: {
-            color: 'orange',
+            color: 'black',
             text: 'Livewall Group'
           },
-          description: "Tijdens mijn stage heb ik meegewerkt aan meerdere McDonalds games."
+          title: "Line-up, Substitution and MOTM tool",
+          description: "During my part-time job I made a line-up, substitution and player of the match tool for DPG Media for the 2022 World Cup.",
+          slug: 'dpg-motm'
+        },
+        {
+          type: 'image',
+          image: new URL(`../assets/images/projects/trainingsplatform.png`, import.meta.url).href,
+          title: "Trainingsplatform",
+          tag: {
+            color: 'black',
+            text: 'Livewall Group'
+          },
+          description: "During my part-time job, I created a training platform that enables local police officers, BOAs and bailiffs to recognize the signals of unusual possession better, faster and more effectively.",
+          slug: 'nh-samen-veilig'
         },
       ],
       experienceCards: [
@@ -170,7 +173,11 @@ export default {
           title: "Jobs",
           items: [
             {
-              title: 'Junior Full Stack developer at iO',
+              title: 'Backend developer at LiveWall',
+              timePeriod: 'sept. 2023 - today'
+            },
+            {
+              title: 'Internship at iO',
               timePeriod: 'jan. 2023 - jun. 2023'
             },
             {
@@ -178,7 +185,7 @@ export default {
               timePeriod: 'aug. 2021 - jan. 2023'
             },
             {
-              title: 'Junior Chef at Friethuys',
+              title: 'Junior Chef at Jordaans',
               timePeriod: 'feb. 2019 - oct. 2022'
             },
             {
@@ -196,8 +203,8 @@ export default {
         {
           type: 'text',
           title: "General",
-          text: "<p>Young 21 year old, who is passionate about programming and the people around him.</p>" +
-              "<p>I have almost finished my bachelor degree in computer science at Avans university in Den Bosch.</p>",
+          text: `<p>I am a ${this.getAge('2001-04-20')}-year-old developer who is passionate about programming and the people around him.</p>` +
+              "<p>I have almost finished my bachelor's degree in computer science at Avans University in Den Bosch.</p>",
         },
         {
           type: 'svg',
@@ -262,18 +269,28 @@ export default {
     addEventListeners() {
       const slogan = document.getElementById('slogan');
       slogan.addEventListener('animationstart', () => {
-        setInterval(this.nextSlogan, 1450);
+        setInterval(this.nextSlogan, 1300);
       });
     },
-    nextSlogan(){
-      this.timeOut += 50;
+    nextSlogan() {
+      this.timeOut += 200;
       setTimeout(() => {
-        if(this.sloganIndex === this.slogans.length-1){
+        if (this.sloganIndex === this.slogans.length - 1) {
           this.sloganIndex = 0;
           return;
         }
         this.sloganIndex++;
       }, this.timeOut)
+    },
+    getAge(dateString) {
+      const today = new Date();
+      const birthDate = new Date(dateString);
+      let age = today.getFullYear() - birthDate.getFullYear();
+      const m = today.getMonth() - birthDate.getMonth();
+      if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+      }
+      return age;
     },
     isMobile() {
       return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
@@ -443,11 +460,11 @@ h1:nth-child(2) {
   .message {
     position: absolute;
     left: 25%;
-    /* top: 50%; */
     -webkit-transform: translateX(-50%);
     -moz-transform: translateX(-50%);
     transform: translateX(-50%);
-    span{
+
+    span {
       font-size: 30px;
     }
   }

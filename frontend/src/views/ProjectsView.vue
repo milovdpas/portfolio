@@ -9,13 +9,14 @@
             <div class="underline"/>
             <p class="description">Projects made with passion</p>
             <a href="#projects" class="cta mt-4">
-              <img :src="icons.down" alt="down arrow"/>
+              <img v-once :src="icons.down" width="70" height="70" alt="down arrow"/>
             </a>
           </div>
         </div>
         <div class="side-bar"></div>
       </section>
-      <section id="projects" class="projects">
+      <UnderConstruction v-if="underConstruction" id="projects"/>
+      <section v-else id="projects" class="projects">
         <div class="row">
           <div class="col-md-6 left">
             <div class="introduction">
@@ -26,16 +27,25 @@
             </div>
             <ImageCard v-for="project in projectsLeftLoaded" :image="project.image" :tag="project.tag"
                        :title="project.title"
-                       :description="project.description"></ImageCard>
+                       :description="project.description"
+                       :slug="project.slug" style="padding: 7.5px"></ImageCard>
           </div>
           <div class="col-md-6 right">
             <ImageCard v-for="project in projectsRightLoaded" :image="project.image" :tag="project.tag"
                        :title="project.title"
-                       :description="project.description"></ImageCard>
+                       :description="project.description"
+                       :slug="project.slug" style="padding: 7.5px"></ImageCard>
           </div>
         </div>
         <div class="load-more-container">
-
+          <span>You have seen {{ length - projects.length }} of the {{ length }} projects</span>
+          <div class="progress__bar">
+            <div class="current__progress" :style="`width: ${(length - projects.length)/length * 100}%`"></div>
+          </div>
+          <div class="load-more" v-if="projects.length !== 0" @click="loadMore">
+            <span>{{ (projects.length > steps ? 'Load more projects' : 'Load last projects') }}</span>
+            <img v-once :src="icons.down" width="25" height="25" alt="down arrow"/>
+          </div>
         </div>
       </section>
     </main>
@@ -50,83 +60,73 @@ import Menu from "../components/Menu.vue";
 import Button from "../components/buttons/MoreButton.vue";
 import Footer from "@/components/Footer.vue";
 import ImageCard from "@/components/cards/ImageCard.vue";
+import UnderConstruction from "@/components/UnderConstruction.vue";
 
 export default {
   name: "ProjectsView",
   components: {
+    UnderConstruction,
     Menu,
     Button,
     Footer,
     ImageCard,
   },
   data() {
+    const projects = [
+      {
+        type: 'image',
+        image: new URL(`../assets/images/projects/player0.0.png`, import.meta.url).href,
+        tag: {
+          color: 'black',
+          text: 'Livewall Group'
+        },
+        title: "Player 0.0",
+        description: "Player 0.0 is a cool gaming experience that we developed for Heineken 0.0 and has been released in 16 countries",
+        slug: 'player0.0'
+      },
+      {
+        type: 'image',
+        image: new URL(`../assets/images/projects/soundzam-app.png`, import.meta.url).href,
+        tag: {
+          color: 'blue',
+          text: 'Hobby Project'
+        },
+        slug: "soundzam",
+        title: "SoundZam app",
+        description: "After graduating I made an app for recognizing SoundCloud songs."
+      },
+      {
+        type: 'image',
+        image: new URL(`../assets/images/projects/motm.jpg`, import.meta.url).href,
+        tag: {
+          color: 'black',
+          text: 'Livewall Group'
+        },
+        title: "Line-up, Substitution and MOTM tool",
+        description: "During my part-time job I made a line-up, substitution and player of the match tool for DPG Media for the 2022 World Cup.",
+        slug: 'dpg-motm'
+      },
+      {
+        type: 'image',
+        image: new URL(`../assets/images/projects/trainingsplatform.png`, import.meta.url).href,
+        title: "Trainingsplatform",
+        tag: {
+          color: 'black',
+          text: 'Livewall Group'
+        },
+        description: "During my part-time job, I created a training platform that enables local police officers, BOAs and bailiffs to recognize the signals of unusual possession better, faster and more effectively.",
+        slug: 'nh-samen-veilig'
+      },
+    ];
     return {
+      underConstruction: false,
       icons: {
         down: new URL(`../assets/images/icons/down-arrow.svg`, import.meta.url).href
       },
-      projects: [
-        {
-          type: 'image',
-          image: new URL(`../assets/images/placeholder.png`, import.meta.url).href,
-          tag: {
-            color: 'red',
-            text: 'Livewall Group'
-          },
-          title: "McDonalds Games",
-          description: "Tijdens mijn stage heb ik meegewerkt aan meerdere McDonalds games."
-        },
-        {
-          type: 'image',
-          image: new URL(`../assets/images/placeholder.png`, import.meta.url).href,
-          tag: {
-            color: 'blue',
-            text: 'Livewall Group'
-          },
-          title: "McDonalds Games",
-          description: "Tijdens mijn stage heb ik meegewerkt aan meerdere McDonalds games."
-        },
-        {
-          type: 'image',
-          image: new URL(`../assets/images/placeholder.png`, import.meta.url).href,
-          title: "McDonalds Games",
-          tag: {
-            color: 'orange',
-            text: 'Livewall Group'
-          },
-          description: "Tijdens mijn stage heb ik meegewerkt aan meerdere McDonalds games."
-        },
-        {
-          type: 'image',
-          image: new URL(`../assets/images/placeholder.png`, import.meta.url).href,
-          title: "McDonalds Games",
-          tag: {
-            color: 'orange',
-            text: 'Livewall Group'
-          },
-          description: "Tijdens mijn stage heb ik meegewerkt aan meerdere McDonalds games."
-        },
-        {
-          type: 'image',
-          image: new URL(`../assets/images/placeholder.png`, import.meta.url).href,
-          title: "McDonalds Games",
-          tag: {
-            color: 'orange',
-            text: 'Livewall Group'
-          },
-          description: "Tijdens mijn stage heb ik meegewerkt aan meerdere McDonalds games."
-        },
-        {
-          type: 'image',
-          image: new URL(`../assets/images/placeholder.png`, import.meta.url).href,
-          title: "McDonalds Games",
-          tag: {
-            color: 'orange',
-            text: 'Livewall Group'
-          },
-          description: "Tijdens mijn stage heb ik meegewerkt aan meerdere McDonalds games."
-        },
-      ],
-      length: 6,
+      limit: 3,
+      steps: 2,
+      length: projects.length,
+      projects: projects,
       projectsLeftLoaded: [],
       projectsRightLoaded: []
     }
@@ -134,26 +134,33 @@ export default {
   watch: {
     "$i18n.locale": async function (newVal, oldVal) {
     },
-  }, mounted() {},
+  }, mounted() {
+    this.loadProjects();
+  },
   methods: {
     isMobile() {
       return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     },
+    loadProjects() {
+      const length = this.projects.length;
+      for (let index = 0; index < length && index < this.limit; index++) {
+        const project = this.projects.shift();
+        if (index % 2 === 0)
+          this.projectsRightLoaded.push(project);
+        else
+          this.projectsLeftLoaded.push(project);
+      }
+    },
     loadMore() {
-      const over = this.projects.length - this.length;
-      if (over === 0) return;
-      if (over < 3)
-        this.length += over;
-      else
-        this.length += 3;
-    },
-  },
-  computed: {
-    projectsLeftLoaded() {
-      return this.projects.slice(0, this.length).filter((a, i) => i % 2 === 1);
-    },
-    projectsRightLoaded() {
-      return this.projects.slice(0, this.length).filter((a, i) => i % 2 === 0);
+      const length = this.projects.length;
+      if (length === 0) return;
+      for (let index = 0; index < length && index < this.steps; index++) {
+        const project = this.projects.shift();
+        if (this.projectsRightLoaded.length > this.projectsLeftLoaded.length)
+          this.projectsLeftLoaded.push(project);
+        else
+          this.projectsRightLoaded.push(project);
+      }
     },
   },
 }
@@ -236,6 +243,47 @@ export default {
     flex-flow: column;
     align-items: end;
   }
+
+  .load-more-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    gap: 5px;
+    margin-top: 3em;
+
+    span {
+      font-size: 20px;
+    }
+
+    .progress__bar {
+      display: flex;
+      justify-content: start;
+      width: 50%;
+      height: 1rem;
+      background: #EAEAEA;
+
+      .current__progress {
+        height: 100%;
+        background: $primary;
+      }
+    }
+
+    .load-more {
+      cursor: pointer;
+
+      span {
+        font-size: 25px;
+        font-weight: bold;
+        margin-right: 0.25em;
+      }
+
+      img {
+        width: auto;
+        height: 25px;
+      }
+    }
+  }
 }
 
 @include mobile {
@@ -262,7 +310,11 @@ export default {
     }
   }
   .projects {
-    padding: 5em 1em;
+    padding: 5em 1em 10em 1em;
+
+    .introduction {
+      height: auto;
+    }
 
     .left {
       align-items: center;
@@ -270,6 +322,12 @@ export default {
 
     .right {
       align-items: center;
+    }
+
+    .load-more-container {
+      .progress__bar {
+        width: 90%;
+      }
     }
   }
 }

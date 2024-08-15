@@ -40,6 +40,7 @@
         </div>
         <canvas id="program-canvas"></canvas>
       </section>
+      <UnderConstruction id="social"/>
       <section id="jobs" class="jobs">
         <div class="title">
           <h2>Jobs</h2>
@@ -61,16 +62,18 @@ import CTA from "@/components/buttons/CTA.vue";
 import TimelineSlider from "@/components/sliders/TimelineSlider.vue";
 import PhysicsWorker from '@/utils/PhysicsWorker?worker';
 import PhysicsRenderer from "@/utils/PhysicsRenderer";
+import PhysicsHelper from "@/utils/PhysicsHelper";
+import UnderConstruction from "@/components/UnderConstruction.vue";
 import nodejs from "@/assets/images/languages/nodejs.svg?raw";
 import csharp from "@/assets/images/languages/csharp.svg?raw";
 import mysql from "@/assets/images/languages/mysql.svg?raw";
 import vue from "@/assets/images/languages/vue.svg?raw";
 import fsharp from "@/assets/images/languages/fsharp.svg?raw";
-import PhysicsHelper from "@/utils/PhysicsHelper";
 
 export default {
   name: "ExperienceView",
   components: {
+    UnderConstruction,
     Menu,
     Button,
     Footer,
@@ -86,83 +89,75 @@ export default {
       skills: [
         {
           href: new URL(`../assets/images/languages/nodejs.svg`, import.meta.url).href,
-          offset: {
-            x: 60,
-            y: 60
-          },
           info: "I Learned Node.js during my first internship, I would consider myself as an expert."
         },
         {
           href: new URL(`../assets/images/languages/csharp.svg`, import.meta.url).href,
-          offset: {
-            x: 40,
-            y: 52
-          },
           info: "I Learned C# during my bachelor degree and got good at it in my final internship at IO Digital."
         },
         {
           href: new URL(`../assets/images/languages/mysql.svg`, import.meta.url).href,
-          offset: {
-            x: 60,
-            y: 60
-          },
           info: "I have many years experience with MySql, i would consider myself an expert."
         },
         {
           href: new URL(`../assets/images/languages/vue.svg`, import.meta.url).href,
-          offset: {
-            x: 60,
-            y: 30
-          },
           info: "I learned Vue.js at my first intership, I prefer this frontend framework above the others."
         },
         {
           href: new URL(`../assets/images/languages/fsharp.svg`, import.meta.url).href,
-          offset: {
-            x: 60,
-            y: 60
-          },
           info: "I learned F# during my bachelor degree, i would consider myself as a beginner."
+        },
+        {
+          href: new URL(`../assets/images/languages/php.svg`, import.meta.url).href,
+          info: "I learned PHP during my bachelor degree, i would consider myself an expert."
         },
       ],
       timePeriods: [
         {
+          title: 'Backend developer at LiveWall Group',
+          period: {
+            short: 'sept. 2023',
+            long: 'sept. 2023 - today'
+          },
+          description: 'I currently work full time at LiveWall Group as a backend developer. I will be a backend developer for the Platforms team and I will be researching new technologies in the ICT industry ranging from AI to new frameworks.'
+        },
+        {
           title: 'Internship at iO',
           period: {
-            short: '2022 jan.',
-            long: '2022 jan. - today'
+            short: 'jan. 2023',
+            long: 'jan. 2023 - jun. 2023'
           },
           description: 'This was my graduation internship at iO, me and Wessel van Tilburg created a reservation app with a microservices backend architecture. During this internship I learned a lot about app development, DevOps, different architectures and bettered my presentation skills.'
         },
         {
           title: 'Junior Full Stack developer at LiveWall Group',
           period: {
-            short: '2021 aug.',
-            long: '2021 aug. - jan. 2023'
+            short: 'aug. 2021',
+            long: 'aug. 2021 - jan. 2023'
           },
           description: 'I started as an intern at LiveWall Group, during this period I worked on 17 different PHP and Node.js projects for customers, made a Node.js API boilerplate with the Express.js framework and created a application that scanned a Word document and would automatically generate a documentation website out of the document. The boilerplate consisted of default middlewares for Basic, Firebase, secret and OAuth authentication, a rate limiter and an ip checker. It also had modules for Caching, Dates, exporting of CSV and excel files, filesystem implementations for local, public and Google Cloud Storage, Image manipulation and sending mails (including attachments). The boilerplate also had utils for Api responses, Axios requests, Encryption, Hashing and ErrorReporting/Logging to the cloud. To minimize the develop time for developers, commands were created do automatically create controllers, models and migrations, an ORM was implemented so that developers did not have to write there own Queries for retrieving data from a database, standard validation was implemented so that this could be written fast and config files were configured so that a new project could be setup really fast with specific needs.'
         },
         {
-          title: 'Cook at Friethuys',
+          title: 'Junior chef at Jordaans',
           period: {
-            short: '2019 feb.',
-            long: '2019 feb. - 2022 okt.'
+            short: 'feb. 2019',
+            long: 'feb. 2019 - oct. 2022'
           },
           description: 'During this job I developed my communication skills and learned to work together with other people.'
         },
         {
           title: 'Factory worker at Cups4You',
           period: {
-            short: '2018 apr.',
-            long: '2018 apr. - 2018 juli.'
+            short: 'apr. 2018',
+            long: 'apr. 2018 - jul. 2018'
           },
           description: 'After I graduated from high school I worked here for a couple months and this gave me the perspective that I absolutely did not want to be a factory worker :).'
         },
         {
           title: 'Co-driver at Vos Logistics',
           period: {
-            short: '2017 jun.',
-            long: '2017 jun. - 2017 aug.'
+            short: 'jun. 2017',
+            long: 'jun. 2017 - aug. 2017'
           },
           description: 'This was my first summer job and I learned a lot about communicating with people. This was important, because of the heavy lifting that we did. Like washing machines, refrigerators, couches etc.'
         },
@@ -173,7 +168,7 @@ export default {
     "$i18n.locale": async function (newVal, oldVal) {
     },
   },
-  mounted() {
+  async mounted() {
     setTimeout(this.startPhysics, 100);
     this.addEventListeners();
   },
@@ -227,14 +222,14 @@ export default {
       const height = window.innerHeight;
       this.worker.addEventListener('message', (e) => {
         const data = e.data;
-        if(data.status === 'init_finished'){
+        if (data.status === 'init_finished') {
           PhysicsRenderer.SetRender('program-canvas', width, height, this.isMobile());
-        }else if(data.status === 'add_body'){
+        } else if (data.status === 'add_body') {
           const index = data.index;
           const skill = this.skills[index];
           this.skills.splice(index, 1);
           PhysicsRenderer.AddSvg(data.body, skill);
-        }else if(data.status === 'update_body'){
+        } else if (data.status === 'update_body') {
           PhysicsRenderer.UpdateSvg(data.body);
         }
       }, false);
@@ -339,45 +334,6 @@ export default {
     z-index: 3;
   }
 
-  .down-button {
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    right: 25px;
-    bottom: 25px;
-    border-radius: 25px;
-    border: none;
-    background: black;
-    color: white;
-    z-index: 3;
-
-    img {
-      width: 20px;
-      height: 20px;
-      filter: brightness(0) invert(1);
-    }
-  }
-
-  .up-button {
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    right: 25px;
-    bottom: 87.5px;
-    border-radius: 25px;
-    border: none;
-    background: black;
-    color: white;
-    z-index: 3;
-
-    img {
-      width: 20px;
-      height: 20px;
-      filter: brightness(0) invert(1);
-      transform: rotate(180deg);
-    }
-  }
-
   @-webkit-keyframes shaker {
     0% {
       -webkit-transform: translate(2px, 0);
@@ -418,6 +374,7 @@ export default {
     position: absolute;
     top: -135px;
     left: -230px;
+
     .popup-outline-left {
       stroke-dasharray: 426px 426px;
       stroke-dashoffset: 1px;
@@ -452,16 +409,18 @@ export default {
   cursor: help;
 }
 
-.custom-tooltip.mirror{
-  .popup-bg{
+.custom-tooltip.mirror {
+  .popup-bg {
     left: -50px;
     transform: rotateZ(180deg) rotateX(180deg);
   }
-  .popup-outline{
+
+  .popup-outline {
     left: -50px;
     transform: rotateZ(180deg) rotateX(180deg);
   }
-  .popup-text{
+
+  .popup-text {
     left: -42px;
     top: -120px;
   }

@@ -45,6 +45,9 @@
 
   .swiper-pagination-vertical{
     flex-flow: column;
+    left: auto;
+    right: 10px!important;
+    top: 45.5%!important;
   }
 
   .swiper-pagination {

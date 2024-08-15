@@ -3,8 +3,6 @@
 </template>
 
 <script>
-import * as bootstrap from 'bootstrap'
-
 export default {
   components: {},
   data() {
@@ -20,6 +18,11 @@ export default {
 @import "~bootstrap/scss/bootstrap";
 @import "assets/scss/_fonts.scss";
 @import "assets/scss/_defaults.scss";
+
+::selection {
+  background: $blue;
+  color: $white;
+}
 
 #app {
   font-family: $fontstack;
@@ -41,7 +44,6 @@ section {
 
 body {
   width: 100%;
-  font-family: Source Sans Pro, serif;
   overflow:hidden;
 }
 

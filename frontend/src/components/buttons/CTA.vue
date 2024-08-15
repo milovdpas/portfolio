@@ -1,11 +1,11 @@
 <template>
   <div v-if="method" @click="method" :class="'cta ' + (color ? color : 'orange')">
     <slot/>
-    <img :src="icon" alt="down arrow"/>
+    <img v-once :src="icon" width="48" height="48" alt="down arrow"/>
   </div>
   <a v-else :href="link" :class="'cta ' + (color ? color : 'orange')">
     <slot/>
-    <img :src="icon" alt="down arrow"/>
+    <img v-once :src="icon" width="48" height="48" alt="down arrow"/>
   </a>
 </template>
 

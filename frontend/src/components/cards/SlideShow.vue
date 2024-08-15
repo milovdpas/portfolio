@@ -8,7 +8,7 @@
   >
     <swiper-slide v-for="card in cards">
       <ImageCard v-if="card.type === 'image'" :image="card.image" :tag="card.tag" :title="card.title"
-                 :description="card.description"/>
+                 :description="card.description" :slug="card.slug"/>
       <NormalCard v-else-if="card.type === 'skill'" :title="card.title">
         <skill class="bar-container" v-for="skill in card.skills">
           <div class="title">{{ skill.label }}</div>
@@ -25,7 +25,7 @@
         </div>
       </NormalCard>
       <NormalCard v-else-if="card.type === 'timeline'" :title="card.title">
-        <div class="timeline">
+        <div class="timeline-container">
           <div class="outer">
             <div class="timeline-card" v-for="item in card.items">
               <div class="info">
@@ -39,7 +39,7 @@
       <NormalCard v-else-if="card.type === 'bullet-points'" :title="card.title">
         <ul class="bullet-points">
           <li v-for="bulletPoint in card.bulletPoints">
-            <img :src="bulletPoint.icon.src" :alt="bulletPoint.icon.alt"/>
+            <img :src="bulletPoint.icon.src" width="50" height="50" :alt="bulletPoint.icon.alt"/>
             <h3 class="title">{{bulletPoint.title}}</h3>
           </li>
         </ul>
@@ -49,7 +49,7 @@
   <div v-else class="slide-show">
     <div v-for="card in cards" class="d-flex justify-content-center">
       <ImageCard v-if="card.type === 'image'" :image="card.image" :tag="card.tag" :title="card.title"
-                 :description="card.description"/>
+                 :description="card.description" :slug="card.slug"/>
       <NormalCard v-else-if="card.type === 'skill'" :title="card.title">
         <skill class="bar-container" v-for="skill in card.skills">
           <div class="title">{{ skill.label }}</div>
@@ -66,7 +66,7 @@
         </div>
       </NormalCard>
       <NormalCard v-else-if="card.type === 'timeline'" :title="card.title">
-        <div class="timeline">
+        <div class="timeline-container">
           <div class="outer">
             <div class="timeline-card" v-for="item in card.items">
               <div class="info">
@@ -80,7 +80,7 @@
       <NormalCard v-else-if="card.type === 'bullet-points'" :title="card.title">
         <ul class="bullet-points">
           <li v-for="bulletPoint in card.bulletPoints">
-            <img :src="bulletPoint.icon.src" :alt="bulletPoint.icon.alt"/>
+            <img :src="bulletPoint.icon.src" width="30" height="30" :alt="bulletPoint.icon.alt"/>
             <h3 class="title">{{bulletPoint.title}}</h3>
           </li>
         </ul>

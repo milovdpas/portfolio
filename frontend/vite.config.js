@@ -3,9 +3,14 @@ import {fileURLToPath, URL} from 'node:url'
 import {defineConfig, loadEnv} from 'vite'
 import vue from '@vitejs/plugin-vue'
 import svgLoader from 'vite-svg-loader'
+import Sitemap from 'vite-plugin-sitemap'
 import {createHtmlPlugin} from 'vite-plugin-html'
 
 const env = loadEnv('', process.cwd());
+
+const projects = ['soundzam', 'dpg-motm', 'nh-samen-veilig'];
+const projectRoutes = projects.map(project => `/project/${project}`);
+const dynamicRoutes = ['/', '/home', '/projects', '/experience', '/about_me' ,'/contact'];
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -32,6 +37,10 @@ export default defineConfig({
                     name: env.VITE_APP_NAME,
                 }
             }
+        }),
+        Sitemap({
+            hostname: 'https://milovanderpas.nl',
+            dynamicRoutes: [...dynamicRoutes, ...projectRoutes]
         }),
     ],
     resolve: {

@@ -18,21 +18,32 @@
       </router-link>
       <div class="menu-con">
         <div class="icons">
-          <router-link to="/home" @click="toggle" aria-describedby="to home page"><img :src="icons.home" class="icon" alt="home icon"/></router-link>
-          <a href="mailto:vanderpasmilo@gmail.com" aria-describedby="Click to mail for help"><img :src="icons.mail" class="icon" alt="mail icon"/></a>
-          <a href="#" @click="showInstaQr"><img :src="icons.insta" class="icon" alt="insta icon" aria-describedby="On click shows qr code for instagram"/></a>
-          <a href="https://github.com/milovdpas?tab=repositories" target="_blank" aria-describedby="go to my GitHub"><img :src="icons.github" class="icon"
-                                                                                       alt="github icon"/></a>
-          <a href="https://www.linkedin.com/in/milo-van-der-pas-31b1761ba/" target="_blank" aria-describedby="go to my LinkedIn"><img :src="icons.linkedin"
-                                                                                                 class="icon"
-                                                                                                 alt="linkedin icon"/></a>
-          <a href="tel:0637695327" aria-describedby="Click to call for help"><img :src="icons.phone" class="icon" alt="phone icon"/></a>
+          <router-link to="/home" @click="toggle" aria-describedby="to home page"><img v-once :src="icons.home" class="icon"
+                                                                                       width="80" height="80"
+                                                                                       alt="home icon"/></router-link>
+          <a href="mailto:vanderpasmilo@gmail.com" aria-describedby="Click to mail for help"><img v-once :src="icons.mail"
+                                                                                                  class="icon"
+                                                                                                  width="80" height="80"
+                                                                                                  alt="mail icon"/></a>
+          <a href="#" @click="showInstaQr"><img v-once :src="icons.insta" class="icon" width="80" height="80" alt="insta icon"
+                                                aria-describedby="On click shows qr code for instagram"/></a>
+          <a href="https://github.com/milovdpas?tab=repositories" target="_blank"
+             aria-describedby="go to my GitHub"><img v-once :src="icons.github" class="icon" width="80" height="80"
+                                                     alt="github icon"/></a>
+          <a href="https://www.linkedin.com/in/milo-van-der-pas-31b1761ba/" target="_blank"
+             aria-describedby="go to my LinkedIn"><img v-once :src="icons.linkedin"
+                                                       class="icon"
+                                                       width="80" height="80"
+                                                       alt="linkedin icon"/></a>
+          <a href="tel:0637695327" aria-describedby="Click to call for help"><img v-once :src="icons.phone" class="icon"
+                                                                                  width="80" height="80"
+                                                                                  alt="phone icon"/></a>
         </div>
       </div>
     </div>
     <PopupComponent>
       <p>Scan the qr code to go to my instagram page</p>
-      <img class="qr-code" :src="instaQr" alt="insta qr code"/>
+      <img class="qr-code" :src="instaQr" width="100" height="100" alt="insta qr code"/>
     </PopupComponent>
   </nav>
 </template>

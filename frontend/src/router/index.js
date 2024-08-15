@@ -18,6 +18,11 @@ const routes = [
         component: () => import('../views/ProjectsView.vue')
     },
     {
+        path: '/project/:slug',
+        name: 'project',
+        component: () => import('../views/ProjectView.vue')
+    },
+    {
         path: '/experience',
         name: 'experience',
         component: () => import('../views/ExperienceView.vue')
@@ -63,6 +68,7 @@ const router = createRouter({
         }
     },
 })
+
 
 router.beforeEach((to, from, next) => {
     // Check if route exists

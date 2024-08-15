@@ -6,11 +6,9 @@
     height: 100%;
     box-shadow: 0 2px 5px rgb(0 0 0 / 20%);
     max-height: 417.5px;
-    overflow-y: scroll;
-    -ms-overflow-style: none;  /* Internet Explorer 10+ */
-    scrollbar-width: none;  /* Firefox */
     .card-body {
       text-align: left;
+      height: 100%;
       .card-title {
         text-align: center;
         font-weight: bold;
@@ -20,10 +18,16 @@
         padding-bottom: 6px;
         border-bottom: $black 5px solid;
       }
+      .content{
+        overflow-y: scroll;
+        -ms-overflow-style: none;  /* Internet Explorer 10+ */
+        scrollbar-width: none;  /* Firefox */
+        height: calc(100% - 3em);
+      }
+      .content::-webkit-scrollbar {
+        display: none;  /* Safari and Chrome */
+      }
     }
-  }
-  .card::-webkit-scrollbar {
-    display: none;
   }
 }
 
@@ -43,12 +47,6 @@
   .normal-card {
     .card{
       max-height: 375.5px;
-      overflow-y: scroll;
-      -ms-overflow-style: none;  /* Internet Explorer 10+ */
-      scrollbar-width: none;  /* Firefox */
-    }
-    .card::-webkit-scrollbar {
-      display: none;  /* Safari and Chrome */
     }
   }
 }

@@ -1,7 +1,11 @@
 <template>
-  <a :href="link" :class="'cta'">
-    <span class="text"><slot/></span>
-    <img :src="icon" alt="down arrow"/>
+  <div v-if="method" @click="method" :class="'cta'">
+    <slot/>
+    <img v-once :src="icon" width="48" height="48" alt="down arrow"/>
+  </div>
+  <a v-else :href="link" :class="'cta'">
+    <slot/>
+    <img v-once :src="icon" width="48" height="48" alt="down arrow"/>
   </a>
 </template>
 
@@ -10,6 +14,7 @@ export default {
   name: "CTA2",
   props: {
     link: String,
+    method: Function,
     icon: String
   },
 }
