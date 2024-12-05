@@ -22,16 +22,24 @@
         background-color: $red;
         color: $white;
       }
+      .avans{
+        background-color: #c6002a;
+        color: $white;
+      }
       .black{
         background-color: $black;
         color: $white;
       }
       .yellow{
-        background-color: $yellow;
+        background-color: darken($yellow, 20%);
+        color: $white;
+      }
+      .purple{
+        background-color: $purple;
         color: $white;
       }
       .green{
-        background-color: $green;
+        background-color: darken($green, 20%);
         color: $white;
       }
       .blue{

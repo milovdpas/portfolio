@@ -17,7 +17,7 @@
       </section>
       <UnderConstruction v-if="underConstruction" id="projects"/>
       <section v-else id="projects" class="projects">
-        <div class="row">
+        <div class="row" v-if="!isMobile">
           <div class="col-md-6 left">
             <div class="introduction">
               <h2>My Projects</h2>
@@ -32,6 +32,20 @@
           </div>
           <div class="col-md-6 right">
             <ImageCard v-for="project in projectsRightLoaded" :image="project.image" :tag="project.tag"
+                       :title="project.title"
+                       :description="project.description"
+                       :slug="project.slug" style="padding: 7.5px"></ImageCard>
+          </div>
+        </div>
+        <div class="row" v-if="isMobile">
+          <div class="col-md-6">
+            <div class="introduction">
+              <h2>My Projects</h2>
+              <p class="description">
+                These are my projects that i'm most proud of.
+              </p>
+            </div>
+            <ImageCard v-for="project in projectsLoaded" :image="project.image" :tag="project.tag"
                        :title="project.title"
                        :description="project.description"
                        :slug="project.slug" style="padding: 7.5px"></ImageCard>
@@ -97,6 +111,17 @@ export default {
       },
       {
         type: 'image',
+        image: new URL(`../assets/images/projects/internship/banner.png`, import.meta.url).href,
+        title: "Real-Time flex place reservation app",
+        tag: {
+          color: 'purple',
+          text: 'Internship at IO'
+        },
+        description: `For my final internship of school, me and Wessel made a real-time app for reserving a flex workplace for the office of IO.`,
+        slug: 'internship-io'
+      },
+      {
+        type: 'image',
         image: new URL(`../assets/images/projects/motm.jpg`, import.meta.url).href,
         tag: {
           color: 'black',
@@ -105,6 +130,17 @@ export default {
         title: "Line-up, Substitution and MOTM tool",
         description: "During my part-time job I made a line-up, substitution and player of the match tool for DPG Media for the 2022 World Cup.",
         slug: 'dpg-motm'
+      },
+      {
+        type: 'image',
+        image: new URL(`../assets/images/projects/accessibility/banner.png`, import.meta.url).href,
+        title: "Accessibility questionnaire app",
+        tag: {
+          color: 'avans',
+          text: 'Avans university'
+        },
+        description: "We build a questionnaire app for the dutch accessibility organization",
+        slug: 'accessibility'
       },
       {
         type: 'image',
@@ -117,6 +153,17 @@ export default {
         description: "During my part-time job, I created a training platform that enables local police officers, BOAs and bailiffs to recognize the signals of unusual possession better, faster and more effectively.",
         slug: 'nh-samen-veilig'
       },
+      {
+        type: 'image',
+        image: new URL(`../assets/images/projects/internship-livewall/banner.jpg`, import.meta.url).href,
+        title: "My first internship",
+        tag: {
+          color: 'black',
+          text: 'Internship at Livewall Group'
+        },
+        description: "My first internship at LiveWall: backend development, exciting projects, and real-world growth!",
+        slug: 'internship-livewall'
+      },
     ];
     return {
       underConstruction: false,
@@ -124,9 +171,11 @@ export default {
         down: new URL(`../assets/images/icons/down-arrow.svg`, import.meta.url).href
       },
       limit: 3,
-      steps: 2,
+      steps: 3,
       length: projects.length,
+      isMobile: this.isMobile(),
       projects: projects,
+      projectsLoaded: [],
       projectsLeftLoaded: [],
       projectsRightLoaded: []
     }
@@ -149,6 +198,7 @@ export default {
           this.projectsRightLoaded.push(project);
         else
           this.projectsLeftLoaded.push(project);
+        this.projectsLoaded.push(project);
       }
     },
     loadMore() {
@@ -160,6 +210,7 @@ export default {
           this.projectsLeftLoaded.push(project);
         else
           this.projectsRightLoaded.push(project);
+        this.projectsLoaded.push(project);
       }
     },
   },
@@ -216,7 +267,7 @@ export default {
 .projects {
   position: relative;
   min-height: 100vh;
-  padding: 7em;
+  padding: 7em 7em 15em 7em;
 
   .introduction {
     width: 300px;

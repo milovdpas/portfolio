@@ -5,7 +5,9 @@
       <div class="blog">
         <div v-for="projectItem in projects[slug]">
           <h1 v-if="projectItem.type==='title'" v-html="projectItem.content"></h1>
-          <div v-if="projectItem.type==='image'" class="image"><img :src="projectItem.src" :alt="projectItem.alt"/></div>
+          <div v-if="projectItem.type==='image'" class="image" :style="`background: ${projectItem.background};`">
+            <img :width="projectItem.width" :src="projectItem.src" :alt="projectItem.alt"/>
+          </div>
           <div v-if="projectItem.type==='video'" class="video" :style="`background: ${projectItem.background};`">
             <video controls :width="projectItem.width">
               <source :src="projectItem.src" type="video/mp4" />
@@ -110,6 +112,86 @@ export default {
             content: 'I may revisited this project, when SoundCloud reopens access to their API. The project is open source so can be found on this <a href="https://github.com/milovdpas/SoundZam" target="_blank">repository</a>.'
           }
         ],
+        ['internship-io']: [
+          {
+            type: 'title',
+            content: 'Our Internship at iO: Driving Innovation in Workplace Efficiency'
+          },
+          {
+            type: 'image',
+            src: new URL(`../assets/images/projects/internship/banner.png`, import.meta.url).href,
+            alt: 'Image of the internship project'
+          },
+          {
+            type: 'paragraph',
+            content: 'From January to June 2023, Wessel van Tilburg and I, embarked on an exciting internship at iO, an end-to-end agency known for its expertise in marketing, technology, and strategy. Together, we tackled a real-world challenge and gained invaluable professional experience along the way.'
+          },
+          {
+            type: 'paragraph',
+            content: 'Our project aimed to solve inefficiencies in finding available workspaces in busy office environments. Employees often spent up to 20 minutes searching for desks, wasting over 87 hours annually.'
+          },
+          {
+            type: 'image',
+            src: new URL(`../assets/images/projects/internship/image23.png`, import.meta.url).href,
+            alt: 'Image of the internship project',
+            width: 500,
+          },
+          {
+            type: 'image',
+            src: new URL(`../assets/images/projects/internship/image24.png`, import.meta.url).href,
+            alt: 'Image of the internship project',
+            width: 200,
+          },
+          {
+            type: 'paragraph',
+            content: 'To address this, we developed a user-friendly real-time app, a comprehensive web portal, and a scalable backend system.'
+          },
+          {
+            type: 'image',
+            src: new URL(`../assets/images/projects/internship/architecture-2.png`, import.meta.url).href,
+            alt: 'Image of the internship project'
+          },
+          {
+            type: 'paragraph',
+            content: 'By the end of our internship, we achieved a remarkable 90% improvement in booking efficiency, allowing employees to reserve workspaces in just 30-45 seconds.'
+          },
+          {
+            type: 'paragraph',
+            content: 'Key technologies and methods included React Native for cross-platform app development, a microservices backend architecture using RabbitMQ, multiple databases (sql and nosql) and CI/CD pipelines with GitHub Actions, Docker and Kubernetes.'
+          },
+          {
+            type: 'image',
+            src: new URL(`../assets/images/projects/internship/technologies.png`, import.meta.url).href,
+            alt: 'Image of the technologies that were used'
+          },
+          {
+            type: 'paragraph',
+            content: 'This experience was transformative for both of us. I honed my skills in backend development and DevOps, while Wessel focused on app development and UX design, both of us growing significantly as developers and professionals.'
+          },
+          {
+            type: 'paragraph',
+            content: `Here are some demo's of the applications:`
+          },
+          {
+            type: 'image',
+            src: new URL(`../assets/videos/projects/io-portal-demo-1.gif`, import.meta.url).href,
+            alt: 'Demo of the web portal',
+            background: '#E5D2E0',
+          },
+          {
+            type: 'image',
+            src: new URL(`../assets/videos/projects/io-portal-demo-2.gif`, import.meta.url).href,
+            alt: 'Demo of the web portal',
+            background: '#E5D2E0',
+          },
+          {
+            type: 'image',
+            src: new URL(`../assets/videos/projects/io-app-demo.gif`, import.meta.url).href,
+            alt: 'Demo of the app',
+            background: '#E5D2E0',
+            width: 200,
+          },
+        ],
         'nh-samen-veilig': [
           {
             type: 'title',
@@ -181,6 +263,140 @@ export default {
             type: 'paragraph',
             content: 'This project was really fun, because I had to study a <a href="http://persgroep.api.infostradasports.com" target="_blank">sport API</a> and with cron jobs I would get data out of the API and store it into an own designed database. I also learned to minimize my SQL query length and to use indexes in my database, because on one occasion all the databases crashed. Oopsie🤦🏻‍♂️'
           },
+        ],
+        ['internship-livewall']: [
+          {
+            type: 'title',
+            content: 'My First Internship: A Journey of Code, Challenges, and Growth'
+          },
+          {
+            type: 'image',
+            src: new URL(`../assets/images/projects/internship-livewall/banner.jpg`, import.meta.url).href,
+            alt: 'Banner image of the internship'
+          },
+          {
+            type: 'paragraph',
+            content: 'Over a few months at LiveWall Group BV, I dove headfirst into the world of backend development, tackling challenges, learning new tech, and working on some pretty cool projects.'
+          },
+          {
+            type: 'image',
+            src: new URL(`../assets/images/projects/internship-livewall/node.png`, import.meta.url).href,
+            alt: 'Image of Node.js'
+          },
+          {
+            type: 'paragraph',
+            content: 'LiveWall had recently adopted the Laravel framework for many of its projects. However, performance bottlenecks became apparent when handling high user traffic, particularly for applications like “Man Of The Match,” where the system needed to process over 10,000 requests in a span of minutes. My primary objective was clear: find a more efficient framework that could support large-scale performance requirements and deliver a boilerplate and documentation to streamline future projects.'
+          },
+          {
+            type: 'image',
+            src: new URL(`../assets/images/projects/internship-livewall/edit-performance.png`, import.meta.url).href,
+            alt: 'Image of performance results'
+          },
+          {
+            type: 'paragraph',
+            content: 'Spoiler alert: We ended up going with Express.js, a Node.js framework that’s as fast as it is flexible. It was a perfect fit for what LiveWall needed. And I created a boilerplate for this framework which is still being used to this day for all the projects of team Engagement.'
+          },
+          {
+            type: 'paragraph',
+            content: 'While the framework research was my main gig, I also got to work on a ton of side projects, 17 to be exact. Some of the most fun ones included:<br/>- <b>DPG Speler van de Wedstrijd</b>: Developing APIs and managing match data.<br/>- <b>StukTV Website</b>: Adding features for video content and viewer submissions.<br/>- <b>Legacy of Music</b>: Building a dynamic comment section with moderator tools.<br/>- <b>McDonald\'s Games</b>: Creating leaderboards for Belgian and Spanish campaigns.<br/>- <b>Donald Duck Personalized Comic</b>: Letting users create their own comic strip—over 13,000 registrations in the first week!'
+          },
+          {
+            type: 'image',
+            src: new URL(`../assets/images/projects/internship-livewall/donald-duck.jpg`, import.meta.url).href,
+            alt: 'Image of Donald Duck personalized comic project'
+          },
+          {
+            type: 'image',
+            src: new URL(`../assets/images/projects/internship-livewall/motm.jpg`, import.meta.url).href,
+            alt: 'Image of DPG Motm project'
+          },
+          {
+            type: 'paragraph',
+            content: 'These projects weren’t just fun—they were incredibly educational. From setting up APIs to dealing with legacy code, each task helped me level up my skills.'
+          },
+          {
+            type: 'paragraph',
+            content: 'One of the biggest lessons I learned was the value of flexibility and clear communication. Using Scrum helped me adapt to evolving project needs, and open communication with the team ensured we avoided misalignment in project requirements.'
+          },
+          {
+            type: 'paragraph',
+            content: 'The LiveWall team was amazing—always willing to teach, help, or just share a laugh after hours. Shoutout to my mentors, the backend Platforms team, and the other interns for making every day enjoyable.'
+          },
+          {
+            type: 'paragraph',
+            content: 'If I had to sum it up, my first internship was a mix of fun, late nights, and big wins. It wasn’t always smooth sailing, but every challenge taught me something new and pushed me to grow. Plus, seeing my code live in action was an awesome feeling.'
+          },
+          {
+            type: 'image',
+            src: new URL(`../assets/images/projects/internship-livewall/stuktv.jpg`, import.meta.url).href,
+            alt: 'Image of the StukTV project'
+          },
+          {
+            type: 'paragraph',
+            content: 'For anyone starting their first internship, here’s my advice: ask questions, try new things, and don’t stress too much if something breaks. Every mistake is just another step toward becoming better.'
+          }
+        ],
+        ['accessibility']: [
+          {
+            type: 'title',
+            content: 'Accessibility Questionnaire App'
+          },
+          {
+            type: 'image',
+            src: new URL(`../assets/images/projects/accessibility/banner.png`, import.meta.url).href,
+            alt: 'Banner image of the internship'
+          },
+          {
+            type: 'paragraph',
+            content: 'During my third year of college, my classmates and I worked on a school project for a real organization. Our task was to create an app for people with visual impairments to fill out questionnaires about buildings they visited. This project was done for Accessibility, an organization based in the Netherlands. Additionally, we were required to develop a web portal to manage all the questionnaires. The exciting part of this project was that it was open-source, and the codebase is still available <a href="https://github.com/Project-Accessibility" target="_blank">here</a>.'
+          },
+          {
+            type: 'paragraph',
+            content: 'Our app had several key features that made it easy to use for people with visual impairments:'
+          },
+          {
+            type: 'paragraph',
+            content: '<strong>1. Geofencing for Building Zones</strong><br>We implemented geofencing, which could be configured for different sections of a questionnaire through the web portal. When a user entered a specific zone, the relevant sections of the questionnaire would automatically appear on their screen.'
+          },
+          {
+            type: 'image',
+            src: new URL(`../assets/images/projects/accessibility/geofencing.jpg`, import.meta.url).href,
+            alt: 'Illustration of geofencing in a building'
+          },
+          {
+            type: 'paragraph',
+            content: '<strong>2. Support for Various Question Types</strong><br>The app supported a range of question formats, which could all be defined via the web portal. These included open-ended questions, image-based questions, video and audio responses, multiple-choice questions, and range sliders. This made the app highly versatile and adaptive to different needs.'
+          },
+          {
+            type: 'image',
+            src: new URL(`../assets/images/projects/accessibility/question-options.png`, import.meta.url).href,
+            alt: 'Question options in web portal'
+          },
+          {
+            type: 'paragraph',
+            content: '<strong>3. WCAG Compliance</strong><br>Both the app and the web portal were WCAG (Web Content Accessibility Guidelines) approved. This ensured that users with visual impairments or color blindness could easily navigate the app and portal using a screen reader.'
+          },
+          {
+            type: 'image',
+            src: new URL(`../assets/images/projects/accessibility/wcag.png`, import.meta.url).href,
+            alt: 'WCAG illustration'
+          },
+          {
+            type: 'paragraph',
+            content: 'This project taught me a lot about accessibility and app development, as it was my first time working with React Native. Additionally, I gained valuable experience in client communication and learned how to maintain structure and organization in a project-oriented approach.'
+          },
+          {
+            type: 'paragraph',
+            content: 'Overall, I am really proud of how the web portal and app turned out. It was a rewarding experience to work on something that could have a meaningful impact instead of just projects for school that will never be used again.'
+          },
+          {
+            type: 'paragraph',
+            content: 'Demo:'
+          },
+          {
+            type: 'video',
+            src: new URL(`../assets/videos/projects/accessibility.mp4`, import.meta.url).href,
+          },
         ]
       }
     }
@@ -203,6 +419,9 @@ export default {
       margin-bottom: 24px;
 
       .image {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         max-width: 100%;
 
         img {

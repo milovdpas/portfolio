@@ -204,7 +204,7 @@ export default {
           type: 'text',
           title: "General",
           text: `<p>I am a ${this.getAge('2001-04-20')}-year-old developer who is passionate about programming and the people around him.</p>` +
-              "<p>I have almost finished my bachelor's degree in computer science at Avans University in Den Bosch.</p>",
+              "<p>I have recently completed my bachelor's degree in computer science at Avans University in Den Bosch.</p>",
         },
         {
           type: 'svg',
