@@ -17,7 +17,7 @@
       </section>
       <UnderConstruction v-if="underConstruction" id="projects"/>
       <section v-else id="projects" class="projects">
-        <div class="row" v-if="!isMobile">
+        <div class="row" v-if="!isMobile()">
           <div class="col-md-6 left">
             <div class="introduction">
               <h2>My Projects</h2>
@@ -37,7 +37,7 @@
                        :slug="project.slug" style="padding: 7.5px"></ImageCard>
           </div>
         </div>
-        <div class="row" v-if="isMobile">
+        <div class="row" v-if="isMobile()">
           <div class="col-md-6">
             <div class="introduction">
               <h2>My Projects</h2>
@@ -173,7 +173,6 @@ export default {
       limit: 3,
       steps: 3,
       length: projects.length,
-      isMobile: this.isMobile(),
       projects: projects,
       projectsLoaded: [],
       projectsLeftLoaded: [],
