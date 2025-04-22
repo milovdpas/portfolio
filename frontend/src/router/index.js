@@ -38,9 +38,14 @@ const routes = [
         component: () => import('../views/ContactView.vue'),
     },
     {
+        path: '/privacy_policy_drinking_games',
+        name: 'privacy_policy_drinking_games',
+        component: () => import('../views/PrivacyPolicyDrinkingGames.vue'),
+    },
+    {
         path: '/:pathMatch(.*)*',
         name: 'not_found',
-        component: () => import('../views/404View.vue')
+        component: () => import('../views/404View.vue'),
     },
 ]
 

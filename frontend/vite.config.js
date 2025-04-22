@@ -8,7 +8,7 @@ import {createHtmlPlugin} from 'vite-plugin-html'
 
 const env = loadEnv('', process.cwd());
 
-const projects = ['soundzam', 'dpg-motm', 'nh-samen-veilig', 'internship-io', 'accessibility', 'internship-livewall'];
+const projects = ['soundzam', 'dpg-motm', 'nh-samen-veilig', 'internship-io', 'accessibility', 'internship-livewall', 'tegelogy', 'shooting-stars', 'city-life-game'];
 const projectRoutes = projects.map(project => `/project/${project}`);
 const dynamicRoutes = ['/', '/home', '/projects', '/experience', '/about_me' ,'/contact'];
 

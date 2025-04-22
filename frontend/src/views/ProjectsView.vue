@@ -89,6 +89,17 @@ export default {
     const projects = [
       {
         type: 'image',
+        image: new URL(`../assets/images/projects/shooting-stars-banner.png`, import.meta.url).href,
+        tag: {
+          color: 'blue',
+          text: 'Hobby Project'
+        },
+        slug: "shooting-stars",
+        title: "Shooting stars meme generator",
+        description: "Learn how a backflip fail inspired the creation of a Shooting Stars meme generator!"
+      },
+      {
+        type: 'image',
         image: new URL(`../assets/images/projects/player0.0.png`, import.meta.url).href,
         tag: {
           color: 'black',
@@ -164,14 +175,36 @@ export default {
         description: "My first internship at LiveWall: backend development, exciting projects, and real-world growth!",
         slug: 'internship-livewall'
       },
+      {
+        type: 'image',
+        image: new URL(`../assets/images/projects/tegelogy/banner.png`, import.meta.url).href,
+        tag: {
+          color: 'blue',
+          text: 'Hobby Project'
+        },
+        slug: "tegelogy",
+        title: "Tegelogy",
+        description: "How a fake university course helped my friend crash student parties and score cheap beer—meet Tegelogy!"
+      },
+      {
+        type: 'image',
+        image: new URL(`../assets/images/projects/city-life/banner.png`, import.meta.url).href,
+        tag: {
+          color: 'blue',
+          text: 'Hobby Project'
+        },
+        slug: "city-life-game",
+        title: "Monopoly Simulation Game",
+        description: "Building a Java game inspired by CityInc: huge numbers, save systems, and a summer of coding!"
+      },
     ];
     return {
       underConstruction: false,
       icons: {
         down: new URL(`../assets/images/icons/down-arrow.svg`, import.meta.url).href
       },
-      limit: 3,
-      steps: 3,
+      limit: 4,
+      steps: 4,
       length: projects.length,
       projects: projects,
       projectsLoaded: [],

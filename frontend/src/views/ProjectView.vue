@@ -397,7 +397,106 @@ export default {
             type: 'video',
             src: new URL(`../assets/videos/projects/accessibility.mp4`, import.meta.url).href,
           },
-        ]
+        ],
+        ['tegelogy']: [
+          {
+            type: 'title',
+            content: 'Fake University Course Website for a Friend'
+          },
+          {
+            type: 'video',
+            src: new URL(`../assets/videos/projects/tegelogy-demo.mp4`, import.meta.url).href,
+            alt: 'Demo video of the fake Tegelogy website'
+          },
+          {
+            type: 'paragraph',
+            content: 'When I was in college, I had a few friends who were already working full-time in their respective fields. Every year, our college would host an introduction week for new students, filled with parties at various student houses. However, the catch was that you could only attend these parties if you were an active student.'
+          },
+          {
+            type: 'paragraph',
+            content: 'One of my friends was a professional tile setter (*tegelleger*), and he felt left out during these intro weeks. So, as a joke, I created a fake university course called "Tegelogy" just for him. The website looked professional enough to convince real students that he was also studying at the university.'
+          },
+          {
+            type: 'image',
+            src: new URL(`../assets/images/projects/tegelogy/quote.png`, import.meta.url).href,
+            alt: 'Quote of friend'
+          },
+          {
+            type: 'paragraph',
+            content: 'It became a running joke within our friend group, and to our surprise, the website worked like a charm. Students totally fell for it, and my friend managed to join the parties, enjoying cheap beer and great company—all thanks to his (fake) course!'
+          },
+          {
+            type: 'paragraph',
+            content: 'This small project was just meant as a bit of fun, but it turned into a hilarious and memorable story. Thank you, students, for unknowingly contributing to the legend of Tegelogy!'
+          }
+        ],
+        ['shooting-stars']: [
+          {
+            type: 'title',
+            content: 'Shooting Stars Meme Generator'
+          },
+          {
+            type: 'image',
+            src: new URL(`../assets/images/projects/shooting-stars-banner.png`, import.meta.url).href,
+            alt: 'Shooting stars meme generator'
+          },
+          {
+            type: 'paragraph',
+            content: 'During my vacation on Palma de Mallorca, I broke my skull while attempting a backflip. My friend jokingly called it an "op je bek flip." This incident was filmed, so I thought it would be fun to create a Shooting Stars meme using this video.'
+          },
+          {
+            type: 'paragraph',
+            content: 'However, when I searched online for a generator to make a Shooting Stars meme, I couldn’t find a good one. So, I decided to create my own generator by developing a Python Flask API. This API processes an uploaded video and turns it into a Shooting Stars meme.'
+          },
+          {
+            type: 'paragraph',
+            content: 'Creating this generator was a lot of fun because I had never manipulated video using programming before. Additionally, it was my first time setting up an automatic deployment for a Python API on my own VPS. It turned out to be a really rewarding learning experience.'
+          },
+          {
+            type: 'paragraph',
+            content: 'You can find the meme generator <a href="https://meme-creator.milovanderpas.nl">here</a>.'
+          },
+          {
+            type: 'paragraph',
+            content: 'If you want to see my personal meme, you’ll need to meet me in real life ;)'
+          }
+        ],
+        ['city-life-game']: [
+          {
+            type: 'title',
+            content: 'Monopoly Simulation Game: My Summer Project'
+          },
+          {
+            type: 'video',
+            src: new URL(`../assets/videos/projects/city-life-demo.mp4`, import.meta.url).href,
+            alt: 'Demo video of the Monopoly Simulation Game'
+          },
+          {
+            type: 'paragraph',
+            content: 'After finishing my first year of college, I was super motivated to keep making cool stuff. During my summer vacation, I worked on two projects: a Unity app and a Java game.'
+          },
+          {
+            type: 'paragraph',
+            content: 'The Java game was inspired by a game I used to play all the time on spele.nl called CityInc. I loved the original game, so I decided to make my own version. It was fun figuring out how to recreate it while adding some of my own ideas along the way.'
+          },
+          {
+            type: 'image',
+            src: new URL(`../assets/images/projects/city-life/cityinc.jpg`, import.meta.url).href,
+            alt: 'City inc screenshot'
+          },
+          {
+            type: 'paragraph',
+            content: 'One of the wildest parts of the project was working with absolutely massive numbers—like, nonillions (yeah, that’s a 1 followed by 30 zeros!). Handling those kinds of numbers was a challenge, but it pushed me to learn how to manage big calculations without crashing the game.'
+          },
+          {
+            type: 'paragraph',
+            content: 'Another cool thing I added was a file system for saving progress. Players could save and load their game, which made it feel more complete and polished. It was my first time implementing something like that, and it taught me a lot about how games store data.'
+          },
+          {
+            type: 'paragraph',
+            content: 'Even though it’s a simple game, making it was a great way to experiment and improve my skills. Diving into a project like this was a fun way to spend the summer and learn by doing.'
+          }
+        ],
       }
     }
   }

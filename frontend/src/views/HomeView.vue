@@ -68,6 +68,17 @@ export default {
       projectCards: [
         {
           type: 'image',
+          image: new URL(`../assets/images/projects/player0.0.png`, import.meta.url).href,
+          tag: {
+            color: 'black',
+            text: 'Livewall Group'
+          },
+          title: "Player 0.0",
+          description: "Player 0.0 is a cool gaming experience that we developed for Heineken 0.0 and has been released in 16 countries",
+          slug: 'player0.0'
+        },
+        {
+          type: 'image',
           image: new URL(`../assets/images/projects/soundzam-app.png`, import.meta.url).href,
           tag: {
             color: 'blue',
@@ -79,25 +90,14 @@ export default {
         },
         {
           type: 'image',
-          image: new URL(`../assets/images/projects/motm.jpg`, import.meta.url).href,
+          image: new URL(`../assets/images/projects/internship/banner.png`, import.meta.url).href,
+          title: "Real-Time flex place reservation app",
           tag: {
-            color: 'black',
-            text: 'Livewall Group'
+            color: 'purple',
+            text: 'Internship at IO'
           },
-          title: "Line-up, Substitution and MOTM tool",
-          description: "During my part-time job I made a line-up, substitution and player of the match tool for DPG Media for the 2022 World Cup.",
-          slug: 'dpg-motm'
-        },
-        {
-          type: 'image',
-          image: new URL(`../assets/images/projects/trainingsplatform.png`, import.meta.url).href,
-          title: "Trainingsplatform",
-          tag: {
-            color: 'black',
-            text: 'Livewall Group'
-          },
-          description: "During my part-time job, I created a training platform that enables local police officers, BOAs and bailiffs to recognize the signals of unusual possession better, faster and more effectively.",
-          slug: 'nh-samen-veilig'
+          description: `For my final internship of school, me and Wessel made a real-time app for reserving a flex workplace for the office of IO.`,
+          slug: 'internship-io'
         },
       ],
       experienceCards: [
