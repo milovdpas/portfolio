@@ -1,0 +1,15 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls",
+      "delegate_permission/common.get_login_creds"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.milovdpas.drinkinggames",
+      "sha256_cert_fingerprints": [
+        "65:03:60:BC:76:E3:1A:2F:37:5C:E9:BD:24:5D:7C:46:57:87:F5:E9:FB:86:0E:97:1B:E9:D6:6A:2D:09:6B:C4"
+      ]
+    }
+  }
+]
