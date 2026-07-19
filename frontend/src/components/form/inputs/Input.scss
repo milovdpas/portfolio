@@ -1,0 +1,12 @@
+input {
+  background: none !important;
+  border-color: $white !important;
+  border-radius: 0!important;
+  color: $white!important;
+  margin-bottom: 10px!important;
+}
+
+::placeholder {
+  color: $grey!important;
+  opacity: 1!important; /* Firefox */
+}

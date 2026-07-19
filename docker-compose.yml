@@ -1,0 +1,14 @@
+version: "3.4"
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        API_URL: '${API_URL:-api.test.com}'
+    ports:
+      - '8081:80'
+    volumes:
+      - '.:/app'
+      - '/app/node_modules'

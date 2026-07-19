@@ -1,0 +1,20 @@
+{
+  "navbar": {
+    "work": {
+      "primary": "Ik zoek",
+      "secondary": "werk"
+    },
+    "staff": {
+      "primary": "Ik zoek",
+      "secondary": "personeel"
+    },
+    "about_us": {
+      "primary": "Over",
+      "secondary": "ons"
+    },
+    "contact": {
+      "primary": "Contact",
+      "secondary": ""
+    }
+  }
+}

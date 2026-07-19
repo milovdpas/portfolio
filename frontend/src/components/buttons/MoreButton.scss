@@ -1,0 +1,22 @@
+.button{
+  height: 40px;
+  border: none;
+  padding: 0.4rem 2rem;
+  font-weight: 700;
+  text-align: center;
+  transform: skewX(-15deg);
+  text-decoration: none;
+  -webkit-transition:all .2s ease;
+  transition:all .2s ease;
+  pointer-events: all;
+}
+
+.button--primary{
+  background-color: $blue;
+  color: $white!important;
+  box-shadow: 6px 6px 0 $black;
+}
+
+.button--primary:hover{
+  background-color: $dark-blue;
+}

@@ -1,0 +1,52 @@
+.normal-card {
+  min-height: 100%;
+  padding: 5px;
+  width: 300px;
+  .card {
+    height: 100%;
+    box-shadow: 0 2px 5px rgb(0 0 0 / 20%);
+    max-height: 417.5px;
+    .card-body {
+      text-align: left;
+      height: 100%;
+      .card-title {
+        text-align: center;
+        font-weight: bold;
+        font-size: 32px!important;
+        line-height: 1em;
+        color: $black;
+        padding-bottom: 6px;
+        border-bottom: $black 5px solid;
+      }
+      .content{
+        overflow-y: scroll;
+        -ms-overflow-style: none;  /* Internet Explorer 10+ */
+        scrollbar-width: none;  /* Firefox */
+        height: calc(100% - 3em);
+      }
+      .content::-webkit-scrollbar {
+        display: none;  /* Safari and Chrome */
+      }
+    }
+  }
+}
+
+@include tablet {
+  .normal-card {
+    .card {
+      .card-body {
+        .card-title {
+          font-size: 25px;
+        }
+      }
+    }
+  }
+}
+
+@include mobile {
+  .normal-card {
+    .card{
+      max-height: 375.5px;
+    }
+  }
+}

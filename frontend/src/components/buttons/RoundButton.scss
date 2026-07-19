@@ -1,0 +1,15 @@
+.round-button {
+  padding: 10px;
+  min-width: 50px;
+  min-height: 50px;
+  border-radius: 150px;
+  background-color: $black;
+  color: $white;
+  z-index: 2;
+  cursor: pointer;
+  img{
+    filter: brightness(0) invert(1);
+    width: 80%;
+    height: -webkit-fill-available;
+  }
+}
