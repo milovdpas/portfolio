@@ -2,3 +2,5 @@
 **/dist
 **/.git
 **/.gitignore
+**/.env
+dist.zip

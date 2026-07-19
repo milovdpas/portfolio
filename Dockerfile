@@ -1,23 +1,24 @@
 # build stage
-FROM node:lts-alpine as build-stage
+FROM node:22-alpine AS build-stage
 WORKDIR /app
-COPY /frontend /app
-RUN npm install
+COPY frontend/package*.json ./
+RUN npm ci
+COPY frontend/ .
 
+# Baseline env from the template; the API_URL build arg below takes priority over .env
 RUN cp -f .env.dist .env
+
 ARG API_URL
-RUN sed -i "s|VITE_API_URL=|VITE_API_URL=${API_URL}|g" .env
+ENV VITE_API_URL=$API_URL
 
 RUN npm run build
 
 # production stage
-FROM nginx:stable-alpine as production-stage
-COPY /frontend/nginx/nginx.conf /etc/nginx/nginx.conf
-
-## Remove default nginx index page
+FROM nginx:stable-alpine AS production-stage
+COPY frontend/nginx/nginx.conf /etc/nginx/nginx.conf
 RUN rm -rf /usr/share/nginx/html/*
-
-# Copy from the build stage
 COPY --from=build-stage /app/dist /usr/share/nginx/html
 EXPOSE 80
+HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
+  CMD wget --no-verbose --tries=1 --spider http://localhost/health || exit 1
 CMD ["nginx", "-g", "daemon off;"]
