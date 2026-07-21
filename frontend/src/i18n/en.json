@@ -65,8 +65,7 @@
     "programSkills": "Program Skills",
     "socialSkills": "Social Skills",
     "jobs": "Jobs",
-    "spawnButton": "Skills. Click me",
-    "spawnButtonSocial": "Social skills. Click me",
+    "spawnButton": "Click me",
     "jobsList": [
       {
         "title": "Backend developer at LiveWall Group",
@@ -153,6 +152,10 @@
     "message": "Page not found",
     "goBack": "Go Back",
     "goHome": "Go to Home Page"
+  },
+  "underConstruction": {
+    "title": "Under construction",
+    "description": "This section will be available soon"
   },
   "games": {
     "play": "Play",

@@ -65,8 +65,7 @@
     "programSkills": "Programmeerskills",
     "socialSkills": "Sociale skills",
     "jobs": "Werk",
-    "spawnButton": "Skills. Klik mij",
-    "spawnButtonSocial": "Sociale skills. Klik mij",
+    "spawnButton": "Klik mij",
     "jobsList": [
       {
         "title": "Backend developer bij LiveWall Group",
@@ -153,6 +152,10 @@
     "message": "Pagina niet gevonden",
     "goBack": "Ga terug",
     "goHome": "Naar de homepagina"
+  },
+  "underConstruction": {
+    "title": "In aanbouw",
+    "description": "Dit onderdeel is binnenkort beschikbaar"
   },
   "games": {
     "play": "Spelen",

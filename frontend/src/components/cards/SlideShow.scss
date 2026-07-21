@@ -47,8 +47,11 @@
 
   /* Progress bars */
   .bar-container {
-    width: 80%;
-    margin: 10px auto 25px;
+    // The wrapper used to be an unknown <skill> element (display: inline),
+    // which ignored width/vertical margins — keep that rendered look now
+    // that the wrapper is a real block <div>.
+    width: 100%;
+    margin: 0;
 
     .title {
       font-weight: bold;

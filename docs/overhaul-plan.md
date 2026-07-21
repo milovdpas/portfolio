@@ -49,19 +49,29 @@ Deferred (future round): bootstrap SCSS trim · gsap→CSS in SendButton · Menu
 - [x] Menu mobile: hide insta + phone, remaining 4 icons on one clean row
 - [x] Projects mobile: flexbox centering (`.row > div` flex column center), `.image-card` fluid width (100%, max 500px), inline paddings → scoped CSS
 
-## Phase D — Physics skills refactor + social skills section
+## Phase D — Physics skills refactor + social skills section ✅
 
 Architecture: drop the Web Worker (freeze was main-thread SVG decomposition, not simulation); matter-js on main thread; primitive collision shapes (chamfered rects/circles/triangles); SVGs only drawn, never decomposed; lazy init via IntersectionObserver; pause when off-screen.
 
-- [ ] `src/config/skills.js` — single source of truth (`programSkills` incl. the missing php; `socialSkills` as colored primitives)
-- [ ] `src/utils/physics/SkillsPhysics.js` — engine, walls, spawn queue, drag constraint, resize, destroy
-- [ ] `src/utils/physics/SkillsCanvasRenderer.js` — canvas 2D renderer (icons + labeled primitives)
-- [ ] `src/components/skills/SkillTooltip.vue` — extracted speech-bubble tooltip
-- [ ] `src/components/skills/PhysicsSkillsSection.vue` — reusable section: lazy init, pause/resume, drag & throw (mouse + touch), hover/tap tooltips, page scroll preserved over empty canvas
-- [ ] ExperienceView: swap `#program` to the new component
-- [ ] ExperienceView: swap `#social` UnderConstruction → social skills section
-- [ ] Delete `PhysicsWorker.js`, `PhysicsRenderer.js`, `PhysicsHelper.js`, `UnderConstruction.vue`; drop `pathseg` + `poly-decomp` deps
-- [ ] Router hash-scroll works for `#program`/`#social` (done in Phase A guard)
+- [x] `src/config/skills.js` — single source of truth (`programSkills` incl. the missing php; `socialSkills` as colored primitives, draft descriptions to refine)
+- [x] `src/utils/physics/SkillsPhysics.js` — engine, walls, spawn queue, drag constraint, resize, destroy
+- [x] `src/utils/physics/SkillsCanvasRenderer.js` — canvas 2D renderer (icons + labeled primitives)
+- [x] `src/components/skills/SkillTooltip.vue` — extracted speech-bubble tooltip
+- [x] `src/components/skills/PhysicsSkillsSection.vue` — reusable section: lazy init, pause/resume, drag & throw (mouse + touch), hover/tap tooltips, page scroll preserved over empty canvas
+- [x] ExperienceView: swap `#program` to the new component (+ i18n strings, full-height mixin, CTA safe-area)
+- [x] ExperienceView: swap `#social` UnderConstruction → social skills section
+- [x] Delete `PhysicsWorker.js`, `PhysicsRenderer.js`, `PhysicsHelper.js`; drop `pathseg` + `poly-decomp` deps
+- [x] `UnderConstruction.vue` KEPT by request (modernized: i18n, shared isMobile, full-height mixin) — reusable placeholder for any section being worked on: `<UnderConstruction id="section-anchor"/>`
+- [x] Router hash-scroll works for `#program`/`#social` (done in Phase A guard)
+- [x] Verified headless-browser smoke test: all 6 program icons spawn, hover tooltip shows, drag/throw flings bodies, social shapes render with labels, zero console errors
+- [x] Title-letters feature (Milo's idea): section titles ("Program Skills" / "Social Skills") spelled as static physics letters below the spawn button; shapes that hit a letter knock it loose (chain reactions free neighbours); loose letters are grabbable/throwable; buttons simplified to "Click me"/"Klik mij"; title re-layouts on locale switch/resize while still intact
+- [x] Triangle labels centered (removed off-center nudge, constrained label width to triangle cross-section)
+- [x] Loyalty social skill added (pink circle, Friethuys/LiveWall story)
+- [x] Bigger title letters (115px desktop / 52px mobile, auto-shrinks for narrow screens); title anchored below the button's real bottom edge (no overlap on wide screens)
+- [x] Shape-accurate hitboxes: F# = diamond, Vue = down-triangle, Node.js = pointy-top hexagon (generic drawOffset keeps icons aligned with asymmetric bodies); `hitboxScale` config option for padded icons
+- [x] Triangle labels constrained to the incircle (stays clear of all three edges at any rotation)
+- [x] Icon-less shapes shrink less on mobile (0.65 vs 0.5) so labels stay readable
+- [x] Grab/grabbing cursor feedback on hover/drag
 
 ## Phase E — Projects: single data source + 8 draft projects
 
