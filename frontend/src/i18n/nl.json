@@ -1,20 +1,182 @@
 {
-  "navbar": {
-    "work": {
-      "primary": "Ik zoek",
-      "secondary": "werk"
-    },
-    "staff": {
-      "primary": "Ik zoek",
-      "secondary": "personeel"
-    },
-    "about_us": {
-      "primary": "Over",
-      "secondary": "ons"
-    },
-    "contact": {
-      "primary": "Contact",
-      "secondary": ""
+  "menu": {
+    "toggle": "Menu",
+    "projects": "Projecten",
+    "experience": "Ervaring",
+    "aboutMe": "Over mij",
+    "contact": "Contact",
+    "home": "Home",
+    "mail": "Stuur mij een e-mail",
+    "instagram": "Toon Instagram QR-code",
+    "phone": "Bel mij",
+    "language": "Taal wijzigen",
+    "instaQrText": "Scan de qr-code om naar mijn instagrampagina te gaan"
+  },
+  "home": {
+    "always": "altijd",
+    "slogans": ["coderen", "sporten", "creëren"],
+    "projects": "Projecten",
+    "experience": "Ervaring",
+    "aboutMe": "Over mij",
+    "showMore": "BEKIJK MEER",
+    "readMore": "LEES MEER",
+    "learnMore": "LEER MEER",
+    "programSkills": "Programmeerskills",
+    "socialSkills": "Sociale skills",
+    "jobs": "Werk",
+    "general": "Algemeen",
+    "generalText": "<p>Ik ben een {age}-jarige developer met een passie voor programmeren en de mensen om hem heen.</p><p>Ik heb onlangs mijn bachelor informatica afgerond aan Avans Hogeschool in Den Bosch.</p>",
+    "countryOfOrigin": "Land van herkomst",
+    "hobbies": "Hobby's",
+    "programSkillsList": [
+      { "label": "Frontend (html/css3/bootstrap/vue)", "level": "Gemiddeld" },
+      { "label": "Javascript (NodeJs, Express.js, typescript)", "level": "Expert" },
+      { "label": "C (C++, C#, .net core)", "level": "Gemiddeld" },
+      { "label": "PHP (Laravel, Laravel orchid)", "level": "Expert" },
+      { "label": "Mobile (React native, swift, java)", "level": "Beginner" },
+      { "label": "Database (MySQL, MongoDB)", "level": "Expert" }
+    ],
+    "socialSkillsList": [
+      "Probleemoplossend vermogen",
+      "Flexibiliteit & aanpassingsvermogen",
+      "Teamspeler",
+      "Eerlijkheid",
+      "Loyaliteit"
+    ],
+    "jobsList": [
+      { "title": "Backend developer bij LiveWall", "timePeriod": "sept. 2023 - heden" },
+      { "title": "Stage bij iO", "timePeriod": "jan. 2023 - jun. 2023" },
+      { "title": "Junior fullstack developer bij LiveWall", "timePeriod": "aug. 2021 - jan. 2023" },
+      { "title": "Junior kok bij Jordaans", "timePeriod": "feb. 2019 - okt. 2022" },
+      { "title": "Fabrieksmedewerker bij Cups4You", "timePeriod": "apr. 2018 - jul. 2018" },
+      { "title": "Bijrijder bij Vos Logistics", "timePeriod": "jun. 2017 - aug. 2017" }
+    ],
+    "hobbiesList": [
+      "Voetbal",
+      "Waterpolo",
+      "Hardlopen",
+      "Chillen met vrienden",
+      "Feesten"
+    ]
+  },
+  "experience": {
+    "title": "Ervaring",
+    "description": "Mijn ervaring in mijn vakgebied en leven",
+    "programSkills": "Programmeerskills",
+    "socialSkills": "Sociale skills",
+    "jobs": "Werk",
+    "spawnButton": "Skills. Klik mij",
+    "spawnButtonSocial": "Sociale skills. Klik mij",
+    "jobsList": [
+      {
+        "title": "Backend developer bij LiveWall Group",
+        "periodShort": "sept. 2023",
+        "periodLong": "sept. 2023 - heden",
+        "description": "Ik werk momenteel fulltime bij LiveWall Group als backend developer. Ik ben backend developer voor het Platforms-team en onderzoek nieuwe technologieën in de ICT-branche, variërend van AI tot nieuwe frameworks."
+      },
+      {
+        "title": "Stage bij iO",
+        "periodShort": "jan. 2023",
+        "periodLong": "jan. 2023 - jun. 2023",
+        "description": "Dit was mijn afstudeerstage bij iO. Samen met Wessel van Tilburg heb ik een reserveringsapp gebouwd met een microservices-backendarchitectuur. Tijdens deze stage heb ik veel geleerd over appontwikkeling, DevOps en verschillende architecturen, en heb ik mijn presentatievaardigheden verbeterd."
+      },
+      {
+        "title": "Junior fullstack developer bij LiveWall Group",
+        "periodShort": "aug. 2021",
+        "periodLong": "aug. 2021 - jan. 2023",
+        "description": "Ik begon als stagiair bij LiveWall Group. In deze periode werkte ik aan 17 verschillende PHP- en Node.js-projecten voor klanten, maakte ik een Node.js API-boilerplate met het Express.js-framework en bouwde ik een applicatie die een Word-document scande en daar automatisch een documentatiewebsite van genereerde. De boilerplate bevatte standaard middlewares voor Basic-, Firebase-, secret- en OAuth-authenticatie, een rate limiter en een ip-checker. Daarnaast had het modules voor caching, datums, het exporteren van CSV- en Excel-bestanden, filesystem-implementaties voor lokaal, publiek en Google Cloud Storage, beeldbewerking en het versturen van mails (inclusief bijlagen). Ook bevatte de boilerplate utils voor API-responses, Axios-requests, encryptie, hashing en errorreporting/logging naar de cloud. Om de ontwikkeltijd voor developers te minimaliseren zijn er commands gemaakt om automatisch controllers, models en migrations te genereren, is er een ORM geïmplementeerd zodat developers geen eigen queries hoefden te schrijven om data uit een database op te halen, is standaardvalidatie toegevoegd zodat dit snel geschreven kon worden en zijn configbestanden zo ingericht dat een nieuw project heel snel opgezet kon worden met specifieke wensen."
+      },
+      {
+        "title": "Junior kok bij Jordaans",
+        "periodShort": "feb. 2019",
+        "periodLong": "feb. 2019 - okt. 2022",
+        "description": "Tijdens deze baan heb ik mijn communicatieve vaardigheden ontwikkeld en geleerd samen te werken met andere mensen."
+      },
+      {
+        "title": "Fabrieksmedewerker bij Cups4You",
+        "periodShort": "apr. 2018",
+        "periodLong": "apr. 2018 - jul. 2018",
+        "description": "Na mijn middelbare school heb ik hier een paar maanden gewerkt en dit gaf mij het inzicht dat ik absoluut geen fabrieksmedewerker wilde worden :)."
+      },
+      {
+        "title": "Bijrijder bij Vos Logistics",
+        "periodShort": "jun. 2017",
+        "periodLong": "jun. 2017 - aug. 2017",
+        "description": "Dit was mijn eerste zomerbaan en ik heb veel geleerd over communiceren met mensen. Dat was belangrijk vanwege het zware tilwerk dat we deden, zoals wasmachines, koelkasten, banken enz."
+      }
+    ]
+  },
+  "about": {
+    "title": "Over mij",
+    "description": "Een kleine gids over wie ik ben en wat ik graag doe buiten werk",
+    "ctaGeneral": "Algemeen",
+    "ctaCountry": "Land van herkomst",
+    "ctaHobbies": "Hobby's",
+    "generalTitle": "Hoi, ik ben Milo",
+    "generalP1": "Fullstack developer en UX-designer, gefascineerd door de mogelijkheden die code biedt.",
+    "generalP2": "Ik heb onlangs mijn bachelor informatica afgerond aan Avans Hogeschool in Den Bosch en werk nu fulltime bij LiveWall Group in Tilburg.",
+    "countryTitle": "Land van herkomst",
+    "countryP1": "Ik ben geboren in Oss, Noord-Brabant in Nederland. Ik woon hier nog steeds.",
+    "hobbiesTitle": "Hobby's",
+    "hobbies": {
+      "football": "Voetbal",
+      "waterpolo": "Waterpolo",
+      "running": "Hardlopen"
     }
+  },
+  "projects": {
+    "title": "Projecten",
+    "description": "Projecten gemaakt met passie",
+    "myProjects": "Mijn projecten",
+    "introduction": "Dit zijn de projecten waar ik het meest trots op ben.",
+    "seenCount": "Je hebt {seen} van de {total} projecten gezien",
+    "loadMore": "Laad meer projecten",
+    "loadLast": "Laad laatste projecten"
+  },
+  "contact": {
+    "title": "Contact",
+    "description": "Neem contact met mij op voor vragen of zakelijke voorstellen",
+    "mail": "Mail",
+    "phone": "Bellen"
+  },
+  "footer": {
+    "fastTo": "Snel naar...",
+    "projects": "Projecten",
+    "experience": "Ervaring",
+    "aboutMe": "Over mij",
+    "contactMe": "Neem contact op",
+    "emailAddress": "E-mailadres",
+    "name": "Naam",
+    "comment": "Opmerking"
+  },
+  "notFound": {
+    "message": "Pagina niet gevonden",
+    "goBack": "Ga terug",
+    "goHome": "Naar de homepagina"
+  },
+  "games": {
+    "play": "Spelen",
+    "close": "Sluiten",
+    "retry": "Opnieuw",
+    "start": "Start",
+    "score": "Score",
+    "best": "Record",
+    "distance": "Afstand",
+    "gameOver": "Game over",
+    "youWin": "Gewonnen!",
+    "youLose": "Verloren",
+    "goal": "Goal!",
+    "saved": "Gered!",
+    "missed": "Gemist!",
+    "choosePlayers": "Met hoeveel spelers?",
+    "onePlayer": "1 speler",
+    "twoPlayers": "2 spelers",
+    "player1Wins": "Speler 1 wint!",
+    "player2Wins": "Speler 2 wint!",
+    "rematch": "Nog een keer",
+    "runnerHint": "Tik, klik of druk op spatie om te springen",
+    "penaltyHint": "Druk op de bal, sleep naar achteren om te richten en laat los om te schieten",
+    "airHockeyHint": "Sleep je speler om de bal te raken",
+    "shot": "Schot {current} van {total}"
   }
 }

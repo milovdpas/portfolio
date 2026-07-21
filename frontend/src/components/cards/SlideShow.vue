@@ -10,12 +10,12 @@
       <ImageCard v-if="card.type === 'image'" :image="card.image" :tag="card.tag" :title="card.title"
                  :description="card.description" :slug="card.slug"/>
       <NormalCard v-else-if="card.type === 'skill'" :title="card.title">
-        <skill class="bar-container" v-for="skill in card.skills">
+        <div class="skill bar-container" v-for="skill in card.skills">
           <div class="title">{{ skill.label }}</div>
           <div class="bar">
             <div class="bar-inner" :style="'width: ' + skill.percentage + '%;'">{{skill.placeholder}}</div>
           </div>
-        </skill>
+        </div>
       </NormalCard>
       <NormalCard v-else-if="card.type === 'text'" :title="card.title">
         <div class="text" v-html="card.text"/>
@@ -51,12 +51,12 @@
       <ImageCard v-if="card.type === 'image'" :image="card.image" :tag="card.tag" :title="card.title"
                  :description="card.description" :slug="card.slug"/>
       <NormalCard v-else-if="card.type === 'skill'" :title="card.title">
-        <skill class="bar-container" v-for="skill in card.skills">
+        <div class="skill bar-container" v-for="skill in card.skills">
           <div class="title">{{ skill.label }}</div>
           <div class="bar">
             <div class="bar-inner" :style="'width: ' + skill.percentage + '%;'">{{skill.placeholder}}</div>
           </div>
-        </skill>
+        </div>
       </NormalCard>
       <NormalCard v-else-if="card.type === 'text'" :title="card.title">
         <div class="text" v-html="card.text"/>
@@ -104,6 +104,7 @@ import 'swiper/css/scrollbar';
 
 import ImageCard from "@/components/cards/ImageCard.vue";
 import NormalCard from "@/components/cards/NormalCard.vue";
+import {isMobile} from "@/utils/device";
 
 export default {
   name: "SlideShow",
@@ -117,11 +118,9 @@ export default {
     NormalCard
   },
   setup() {
-    const onSwiper = (swiper) => {
-      console.log(swiper);
+    const onSwiper = () => {
     };
     const onSlideChange = () => {
-      console.log('slide change');
     };
     return {
       onSwiper,
@@ -130,26 +129,24 @@ export default {
     };
   },
   mounted(){
-    const startAnimation = (entries, observer) => {
+    const startAnimation = (entries) => {
       entries.forEach(entry => {
-        const bar = entry.target.childNodes[1];
-        const barInner = bar.childNodes[0];
-        barInner.classList.toggle('slide', entry.isIntersecting);
+        const barInner = entry.target.querySelector('.bar-inner');
+        if (barInner) {
+          barInner.classList.toggle('slide', entry.isIntersecting);
+        }
       });
     };
 
     const options = { root: null, rootMargin: '0px', threshold: 1 };
     const observer = new IntersectionObserver(startAnimation, options);
 
-    const elements = document.getElementsByTagName('skill');
-    Object.keys(elements).forEach(key => {
-      observer.observe(elements[key]);
+    this.$el.querySelectorAll('.skill').forEach(element => {
+      observer.observe(element);
     });
   },
   methods: {
-    isMobile() {
-      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    }
+    isMobile
   }
 }
 </script>

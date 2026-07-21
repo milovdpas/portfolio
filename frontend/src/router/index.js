@@ -56,13 +56,21 @@ const router = createRouter({
         const target = document.getElementById('app');
         if (to.hash) {
             const id = to.hash.replace('#', '');
-            const hashContent = document.getElementById(id);
-            anime({
-                targets: target,
-                scrollTop: hashContent.offsetTop,
-                duration: 1000,
-                easing: 'easeInOutQuad'
-            });
+            // Lazy-loaded views mount async, so the hash target may not exist yet.
+            const scrollToHash = (attempt = 0) => {
+                const hashContent = document.getElementById(id);
+                if (hashContent) {
+                    anime({
+                        targets: target,
+                        scrollTop: hashContent.offsetTop,
+                        duration: 1000,
+                        easing: 'easeInOutQuad'
+                    });
+                } else if (attempt < 10) {
+                    requestAnimationFrame(() => scrollToHash(attempt + 1));
+                }
+            };
+            scrollToHash();
         } else {
             anime({
                 targets: target,
@@ -73,19 +81,5 @@ const router = createRouter({
         }
     },
 })
-
-
-router.beforeEach((to, from, next) => {
-    // Check if route exists
-    if (!routes.find(user => user.name === to.name || to.name === undefined)) {
-        next({
-            name: 'not_found',
-            params: {pathMatch: to.path.split('/').slice(1)},
-            query: to.query,
-            hash: to.hash,
-        });
-    }
-    next();
-});
 
 export default router

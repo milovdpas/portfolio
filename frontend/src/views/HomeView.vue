@@ -8,7 +8,7 @@
           <h1>MilovdPas</h1>
         </div>
         <h2 id="message" class="message">
-          <span>always</span>
+          <span>{{ $t('home.always') }}</span>
           <span class="slogan">
               &#8203;
               <span id="slogan" class="text">
@@ -18,24 +18,24 @@
         </h2>
       </section>
       <section id="projects" class="section">
-        <h2>Projects</h2>
+        <h2>{{ $t('home.projects') }}</h2>
         <SlideShow :cards="projectCards"/>
         <div class="button-container">
-          <MoreButton link="/projects">SHOW MORE</MoreButton>
+          <MoreButton link="/projects">{{ $t('home.showMore') }}</MoreButton>
         </div>
       </section>
       <section id="experience" class="section">
-        <h2>Experience</h2>
+        <h2>{{ $t('home.experience') }}</h2>
         <SlideShow :cards="experienceCards"/>
         <div class="button-container">
-          <MoreButton link="/experience">READ MORE</MoreButton>
+          <MoreButton link="/experience">{{ $t('home.readMore') }}</MoreButton>
         </div>
       </section>
       <section id="about_me" class="section">
-        <h2>About me</h2>
+        <h2>{{ $t('home.aboutMe') }}</h2>
         <SlideShow :cards="aboutCards"/>
         <div class="button-container">
-          <MoreButton link="/about_me">LEARN MORE</MoreButton>
+          <MoreButton link="/about_me">{{ $t('home.learnMore') }}</MoreButton>
         </div>
       </section>
     </main>
@@ -51,6 +51,7 @@ import MoreButton from "../components/buttons/MoreButton.vue";
 import Footer from "@/components/Footer.vue";
 import SlideShow from "@/components/cards/SlideShow.vue";
 import svg from "@/assets/images/netherlands/netherlands.svg?raw"
+import {isMobile} from "@/utils/device";
 
 export default {
   name: "HomeView",
@@ -62,7 +63,6 @@ export default {
   },
   data() {
     return {
-      slogans: ['coding', 'sporting', 'creating'],
       sloganIndex: 0,
       timeOut: 0,
       projectCards: [
@@ -100,159 +100,76 @@ export default {
           slug: 'internship-io'
         },
       ],
-      experienceCards: [
+    }
+  },
+  computed: {
+    slogans() {
+      return this.$tm('home.slogans');
+    },
+    experienceCards() {
+      const programPercentages = [80, 90, 85, 90, 60, 90];
+      const socialPercentages = [80, 90, 80, 85, 90];
+      return [
         {
           type: 'skill',
-          title: "Program Skills",
-          skills: [
-            {
-              label: 'Frontend (html/css3/bootstrap/vue)',
-              placeholder: 'Intermediate',
-              percentage: 80
-            },
-            {
-              label: 'Javascript (NodeJs, Express.js, typescript)',
-              placeholder: 'Expert',
-              percentage: 90
-            },
-            {
-              label: 'C (C++, C#, .net core)',
-              placeholder: 'Intermediate',
-              percentage: 85
-            },
-            {
-              label: 'PHP (Laravel, Laravel orchid)',
-              placeholder: 'Expert',
-              percentage: 90
-            },
-            {
-              label: 'Mobile (React native, swift,  java)',
-              placeholder: 'Beginner',
-              percentage: 60
-            },
-            {
-              label: 'Database (MySQL, MongoDB)',
-              placeholder: 'Expert',
-              percentage: 90
-            }
-          ],
+          title: this.$t('home.programSkills'),
+          skills: this.$tm('home.programSkillsList').map((skill, index) => ({
+            label: skill.label,
+            placeholder: skill.level,
+            percentage: programPercentages[index]
+          })),
         },
         {
           type: 'skill',
-          title: "Social Skills",
-          skills: [
-            {
-              label: 'Problem solving ability',
-              placeholder: '',
-              percentage: 80
-            },
-            {
-              label: 'Flexibility & adaptability',
-              placeholder: '',
-              percentage: 90
-            },
-            {
-              label: 'Team player',
-              placeholder: '',
-              percentage: 80
-            },
-            {
-              label: 'Honesty',
-              placeholder: '',
-              percentage: 85
-            },
-            {
-              label: 'Loyalty',
-              placeholder: '',
-              percentage: 90
-            }
-          ],
+          title: this.$t('home.socialSkills'),
+          skills: this.$tm('home.socialSkillsList').map((label, index) => ({
+            label: label,
+            placeholder: '',
+            percentage: socialPercentages[index]
+          })),
         },
         {
           type: 'timeline',
-          title: "Jobs",
-          items: [
-            {
-              title: 'Backend developer at LiveWall',
-              timePeriod: 'sept. 2023 - today'
-            },
-            {
-              title: 'Internship at iO',
-              timePeriod: 'jan. 2023 - jun. 2023'
-            },
-            {
-              title: 'Junior Full Stack developer at LiveWall',
-              timePeriod: 'aug. 2021 - jan. 2023'
-            },
-            {
-              title: 'Junior Chef at Jordaans',
-              timePeriod: 'feb. 2019 - oct. 2022'
-            },
-            {
-              title: 'Factory worker at Cups4You',
-              timePeriod: 'apr. 2018 - jul. 2018'
-            },
-            {
-              title: 'Co driver at Vos logistics',
-              timePeriod: 'jun. 2017 - aug. 2017'
-            },
-          ],
+          title: this.$t('home.jobs'),
+          items: this.$tm('home.jobsList').map(job => ({
+            title: job.title,
+            timePeriod: job.timePeriod
+          })),
         }
-      ],
-      aboutCards: [
+      ];
+    },
+    aboutCards() {
+      const hobbyIcons = [
+        {src: new URL(`../assets/images/icons/football.svg`, import.meta.url).href, alt: 'Football icon'},
+        {src: new URL(`../assets/images/icons/waterpolo.svg`, import.meta.url).href, alt: 'Waterpolo icon'},
+        {src: new URL(`../assets/images/icons/running.svg`, import.meta.url).href, alt: 'Running icon'},
+        {src: new URL(`../assets/images/icons/friends.svg`, import.meta.url).href, alt: 'Friends icon'},
+        {src: new URL(`../assets/images/icons/party.svg`, import.meta.url).href, alt: 'Party icon'},
+      ];
+      return [
         {
           type: 'text',
-          title: "General",
-          text: `<p>I am a ${this.getAge('2001-04-20')}-year-old developer who is passionate about programming and the people around him.</p>` +
-              "<p>I have recently completed my bachelor's degree in computer science at Avans University in Den Bosch.</p>",
+          title: this.$t('home.general'),
+          text: this.$t('home.generalText', {age: this.getAge('2001-04-20')}),
         },
         {
           type: 'svg',
-          title: "Country of origin",
+          title: this.$t('home.countryOfOrigin'),
           svg: svg,
           alt: 'netherlands image'
         },
         {
           type: 'bullet-points',
-          title: "Hobbies",
-          bulletPoints: [
-            {
-              icon: {
-                src: new URL(`../assets/images/icons/football.svg`, import.meta.url).href,
-                alt: 'Football icon'
-              },
-              title: 'Football',
-            },
-            {
-              icon: {
-                src: new URL(`../assets/images/icons/waterpolo.svg`, import.meta.url).href,
-                alt: 'Waterpolo icon'
-              },
-              title: 'Waterpolo',
-            },
-            {
-              icon: {
-                src: new URL(`../assets/images/icons/friends.svg`, import.meta.url).href,
-                alt: 'Friends icon'
-              },
-              title: 'Hangout with friends',
-            },
-            {
-              icon: {
-                src: new URL(`../assets/images/icons/party.svg`, import.meta.url).href,
-                alt: 'Party icon'
-              },
-              title: 'Party',
-            },
-          ],
+          title: this.$t('home.hobbies'),
+          bulletPoints: this.$tm('home.hobbiesList').map((title, index) => ({
+            icon: hobbyIcons[index],
+            title: title,
+          })),
         }
-      ],
+      ];
     }
   },
-  watch: {
-    "$i18n.locale": async function (newVal, oldVal) {
-    },
-  }, mounted() {
+  mounted() {
     this.addEventListeners();
     if (this.isMobile()) {
       const projects = document.getElementById('projects');
@@ -292,9 +209,7 @@ export default {
       }
       return age;
     },
-    isMobile() {
-      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    }
+    isMobile
   }
 }
 </script>
@@ -310,7 +225,7 @@ export default {
 }
 
 .header {
-  height: 100vh;
+  @include full-height;
   padding-top: 5em;
 }
 
@@ -430,7 +345,7 @@ h1:nth-child(2) {
   display: flex;
   flex-flow: column;
   justify-content: center;
-  height: 100vh;
+  @include full-height;
   padding: 0 5em !important;
 
   h2 {

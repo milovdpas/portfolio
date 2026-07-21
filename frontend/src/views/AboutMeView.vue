@@ -5,14 +5,14 @@
       <section class="header">
         <div class="content">
           <div class="text">
-            <h1>About me</h1>
+            <h1>{{ $t('about.title') }}</h1>
             <div class="underline"/>
-            <p class="description">A little guide about who I am and what I love to do outside work</p>
+            <p class="description">{{ $t('about.description') }}</p>
           </div>
           <div class="ctas row">
-            <CTA class="col-md-4" link="#general" color="yellow" :icon="icons.down">General</CTA>
-            <CTA class="col-md-4 font-small" link="#country" color="green" :icon="icons.down">Country of origin</CTA>
-            <CTA class="col-md-4" link="#hobbies" color="red" :icon="icons.down">Hobbies</CTA>
+            <CTA class="col-md-4" link="#general" color="yellow" :icon="icons.down">{{ $t('about.ctaGeneral') }}</CTA>
+            <CTA class="col-md-4 font-small" link="#country" color="green" :icon="icons.down">{{ $t('about.ctaCountry') }}</CTA>
+            <CTA class="col-md-4" link="#hobbies" color="red" :icon="icons.down">{{ $t('about.ctaHobbies') }}</CTA>
           </div>
         </div>
         <div class="side-bar"></div>
@@ -20,12 +20,12 @@
       <section id="general" class="general">
         <div class="row h-100">
           <div class="col-md-7 introduction">
-            <h2>Hi, I'm Milo</h2>
+            <h2>{{ $t('about.generalTitle') }}</h2>
             <p>
-              Full Stack developer and ux designer fascinated by the possibilities code gives.
+              {{ $t('about.generalP1') }}
             </p>
             <p>
-              I have recently completed my bachelor's degree in computer science at Avans University in Den Bosch and am now working full time at LiveWall Group in Tilburg.
+              {{ $t('about.generalP2') }}
             </p>
           </div>
           <div class="col-md-5 image">
@@ -36,9 +36,9 @@
       <section id="country" class="country">
         <div class="row h-100">
           <div class="col-md-7 introduction">
-            <h2>Country of origin</h2>
+            <h2>{{ $t('about.countryTitle') }}</h2>
             <p>
-              I was born in Oss, Noord-Brabant in the Netherlands. I Still live here too.
+              {{ $t('about.countryP1') }}
             </p>
           </div>
           <div class="col-md-5 image">
@@ -50,7 +50,7 @@
       <section id="hobbies" class="hobbies">
         <div class="header">
           <div class="left">
-            <h2>Hobbies</h2>
+            <h2>{{ $t('about.hobbiesTitle') }}</h2>
             <h3>{{ hobbies[hobbiesIndex] }}</h3>
           </div>
           <div class="right">
@@ -91,19 +91,16 @@
 
 <script>
 import Menu from "../components/Menu.vue";
-import Button from "../components/buttons/MoreButton.vue";
 import Footer from '../components/Footer.vue'
 import CTA from "@/components/buttons/CTA.vue";
-import CTA2 from "@/components/buttons/CTA2.vue";
 import RoundButton from "@/components/buttons/RoundButton.vue";
+import {isMobile} from "@/utils/device";
 
 export default {
   name: "AboutMeView",
   components: {
     RoundButton,
-    CTA2,
     Menu,
-    Button,
     Footer,
     CTA
   },
@@ -117,16 +114,16 @@ export default {
       netherlands: new URL(`../assets/images/netherlands/netherlands2.svg`, import.meta.url).href,
       bike: new URL(`../assets/images/netherlands/bike.svg`, import.meta.url).href,
       hobbiesIndex: 0,
-      hobbies: [
-          'Football',
-          'Waterpolo'
-      ]
     }
   },
-  watch: {
-    "$i18n.locale": async function (newVal, oldVal) {
-    },
-  }, mounted() {},
+  computed: {
+    hobbies() {
+      return [
+        this.$t('about.hobbies.football'),
+        this.$t('about.hobbies.waterpolo'),
+      ];
+    }
+  },
   methods: {
     previousHobby(){
       this.hobbiesIndex--;
@@ -134,9 +131,7 @@ export default {
     nextHobby(){
       this.hobbiesIndex++;
     },
-    isMobile() {
-      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    }
+    isMobile
   }
 }
 </script>
@@ -145,10 +140,10 @@ export default {
 /* Header */
 .header {
   display: flex;
-  height: 100vh;
+  @include full-height;
 
   .content {
-    height: 100vh;
+    @include full-height;
     width: 67.5%;
 
     .text {
@@ -178,7 +173,7 @@ export default {
   }
 
   .side-bar {
-    height: 100vh;
+    @include full-height;
     width: 32.5%;
     background-color: $orange;
   }
@@ -191,7 +186,7 @@ export default {
 /* General */
 .general {
   position: relative;
-  height: 100vh;
+  @include full-height;
   padding: 3em 5em;
   background-color: $yellow;
 
@@ -225,7 +220,7 @@ export default {
 /* Country */
 .country {
   position: relative;
-  height: 100vh;
+  @include full-height;
   padding: 3em 5em;
   background-color: $green;
 
@@ -264,7 +259,7 @@ export default {
 /* Hobbies */
 .hobbies {
   position: relative;
-  height: 100vh;
+  @include full-height;
   background-color: $orange;
 
   .header{
@@ -623,6 +618,8 @@ export default {
 
       .ctas {
         height: 40%;
+        // Keep the last stacked CTA above the OS gesture bar / home indicator.
+        padding-bottom: env(safe-area-inset-bottom, 0px);
       }
     }
 

@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import {isMobile} from "@/utils/device";
 
 export default {
   name: "ImageCard",
@@ -35,9 +36,7 @@ export default {
   components: {
   },
   methods: {
-    isMobile(){
-      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    },
+    isMobile,
     toProject(){
       this.$router.push({
         name: 'project',

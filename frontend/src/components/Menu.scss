@@ -17,6 +17,8 @@ nav.open{
   background: $blue;
   color: $white;
   font-size: 50px;
+  font-family: inherit;
+  border: none;
   border-radius: 100%;
   position: fixed;
   top: 0;
@@ -45,7 +47,7 @@ nav.open{
 
 .menu {
   width: 100%;
-  height: 100vh;
+  @include full-height;
   display: -webkit-flex;
   display: flex;
   -webkit-flex-wrap: wrap;
@@ -142,9 +144,21 @@ nav.open{
     bottom: 0;
     margin: auto 0;
     padding: 0 10px;
-    flex-flow: row wrap;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+
+    // The QR popup and tel: link add no value on the device itself and
+    // make the icon row wrap into an ugly second line on small screens.
+    .insta-link,
+    .phone-link {
+      display: none;
+    }
+
     a{
-      width: 90px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 70px;
       height: auto;
       img{
         width: 70%;

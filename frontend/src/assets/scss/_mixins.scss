@@ -1,3 +1,12 @@
+//----------- Full viewport height: dvh with vh fallback.
+// The scroll container (#app) and every snap section must use this same mixin,
+// otherwise snap sections are taller than the scrollport on mobile and
+// bottom-pinned content is clipped by browser chrome / the OS nav bar.
+@mixin full-height($property: height) {
+  #{$property}: 100vh;   // fallback for browsers without dvh
+  #{$property}: 100dvh;  // tracks the actually-visible viewport on mobile
+}
+
 //----------- Breakpoints based on https://getbootstrap.com/docs/4.0/layout/overview/
 @mixin mobile {
   @media (max-width: 767px)  { @content; }

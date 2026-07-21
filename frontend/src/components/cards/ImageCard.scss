@@ -95,3 +95,12 @@
   }
 }
 
+@include mobile {
+  .image-card {
+    // Fill the (flex-centered) column instead of a fixed 350px block,
+    // so side margins stay equal on every viewport width.
+    width: 100%;
+    max-width: 500px;
+  }
+}
+

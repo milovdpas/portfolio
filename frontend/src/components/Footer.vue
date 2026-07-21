@@ -1,29 +1,30 @@
 <template>
   <footer class="row footer">
     <div class="col-md-6 left">
-      <h2 class="footer-header">Fast to...</h2>
+      <h2 class="footer-header">{{ $t('footer.fastTo') }}</h2>
       <router-link class="footer-link" to="/projects" @click="scrollToTop()">
-        Projects
+        {{ $t('footer.projects') }}
         <img v-once :src="icons.rightArrow" class="right-arrow" width="40" height="40" alt="right arrow"/>
       </router-link>
       <router-link class="footer-link" to="/experience" @click="scrollToTop()">
-        Experience
+        {{ $t('footer.experience') }}
         <img v-once :src="icons.rightArrow" class="right-arrow" width="40" height="40" alt="right arrow"/>
       </router-link>
       <router-link class="footer-link" to="/about_me" @click="scrollToTop()">
-        About me
+        {{ $t('footer.aboutMe') }}
         <img v-once :src="icons.rightArrow" class="right-arrow" width="40" height="40" alt="right arrow"/>
       </router-link>
+      <LocaleSelect class="footer-locale-select"/>
     </div>
     <div class="col-md-6 right">
-      <h2 class="footer-header">Contact me</h2>
+      <h2 class="footer-header">{{ $t('footer.contactMe') }}</h2>
       <Form :submit="submit">
-        <Label>Email address</Label>
-        <Input v-model="form.email" name="email" type="text" placeholder="Email address"></Input>
-        <Label>Name</Label>
-        <Input v-model="form.name" name="name" type="text" placeholder="Name"></Input>
-        <Label>Comment</Label>
-        <TextArea v-model="form.message" name="message" placeholder="Comment"></TextArea>
+        <Label>{{ $t('footer.emailAddress') }}</Label>
+        <Input v-model="form.email" name="email" type="text" :placeholder="$t('footer.emailAddress')"></Input>
+        <Label>{{ $t('footer.name') }}</Label>
+        <Input v-model="form.name" name="name" type="text" :placeholder="$t('footer.name')"></Input>
+        <Label>{{ $t('footer.comment') }}</Label>
+        <TextArea v-model="form.message" name="message" :placeholder="$t('footer.comment')"></TextArea>
       </Form>
     </div>
   </footer>
@@ -35,6 +36,7 @@ import Form from "@/components/form/Form.vue"
 import Label from "@/components/form/inputs/Label.vue";
 import Input from "@/components/form/inputs/Input.vue";
 import TextArea from "@/components/form/inputs/TextArea.vue";
+import LocaleSelect from "@/components/LocaleSelect.vue";
 import Axios from "@/utils/Axios";
 
 export default {
@@ -44,7 +46,8 @@ export default {
     Form,
     Label,
     Input,
-    TextArea
+    TextArea,
+    LocaleSelect
   },
   data() {
     return {

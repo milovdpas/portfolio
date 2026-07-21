@@ -7,6 +7,7 @@
 
 <script>
 import SendButton from "../buttons/SendButton.vue";
+import {isMobile} from "@/utils/device";
 
 export default {
   name: "Form",
@@ -17,9 +18,7 @@ export default {
     submit: Function,
   },
   methods: {
-    isMobile() {
-      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    }
+    isMobile
   }
 }
 </script>

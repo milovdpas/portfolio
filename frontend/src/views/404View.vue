@@ -12,11 +12,11 @@
     </svg>
     <div class="message-box">
       <h1>404</h1>
-      <p>Page not found</p>
+      <p>{{ $t('notFound.message') }}</p>
       <div class="buttons-con">
         <div class="action-link-wrap">
-          <a onclick="history.back(-1)" class="link-button link-back-button">Go Back</a>
-          <router-link to="/home" class="link-button">Go to Home Page</router-link>
+          <a @click="goBack" class="link-button link-back-button">{{ $t('notFound.goBack') }}</a>
+          <router-link to="/home" class="link-button">{{ $t('notFound.goHome') }}</router-link>
         </div>
       </div>
     </div>
@@ -29,8 +29,10 @@ export default {
   components:{
     RouterLink
   },
-  mounted() {
-
+  methods: {
+    goBack() {
+      history.back();
+    }
   }
 }
 </script>
@@ -40,7 +42,7 @@ export default {
   background-image: url("../assets/images/backgrounds/background.svg");
   background-repeat: no-repeat;
   background-attachment: fixed;
-  height: 100vh;
+  @include full-height;
 }
 
 svg {

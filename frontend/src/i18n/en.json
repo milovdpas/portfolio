@@ -1,20 +1,182 @@
 {
-  "navbar": {
-    "work": {
-      "primary": "Ik zoek",
-      "secondary": "werk"
-    },
-    "staff": {
-      "primary": "Ik zoek",
-      "secondary": "personeel"
-    },
-    "about_us": {
-      "primary": "Over",
-      "secondary": "ons"
-    },
-    "contact": {
-      "primary": "Contact",
-      "secondary": ""
+  "menu": {
+    "toggle": "Menu",
+    "projects": "Projects",
+    "experience": "Experience",
+    "aboutMe": "About me",
+    "contact": "Contact",
+    "home": "Home",
+    "mail": "Send me an email",
+    "instagram": "Show Instagram QR code",
+    "phone": "Call me",
+    "language": "Switch language",
+    "instaQrText": "Scan the qr code to go to my instagram page"
+  },
+  "home": {
+    "always": "always",
+    "slogans": ["coding", "sporting", "creating"],
+    "projects": "Projects",
+    "experience": "Experience",
+    "aboutMe": "About me",
+    "showMore": "SHOW MORE",
+    "readMore": "READ MORE",
+    "learnMore": "LEARN MORE",
+    "programSkills": "Program Skills",
+    "socialSkills": "Social Skills",
+    "jobs": "Jobs",
+    "general": "General",
+    "generalText": "<p>I am a {age}-year-old developer who is passionate about programming and the people around him.</p><p>I have recently completed my bachelor's degree in computer science at Avans University in Den Bosch.</p>",
+    "countryOfOrigin": "Country of origin",
+    "hobbies": "Hobbies",
+    "programSkillsList": [
+      { "label": "Frontend (html/css3/bootstrap/vue)", "level": "Intermediate" },
+      { "label": "Javascript (NodeJs, Express.js, typescript)", "level": "Expert" },
+      { "label": "C (C++, C#, .net core)", "level": "Intermediate" },
+      { "label": "PHP (Laravel, Laravel orchid)", "level": "Expert" },
+      { "label": "Mobile (React native, swift, java)", "level": "Beginner" },
+      { "label": "Database (MySQL, MongoDB)", "level": "Expert" }
+    ],
+    "socialSkillsList": [
+      "Problem solving ability",
+      "Flexibility & adaptability",
+      "Team player",
+      "Honesty",
+      "Loyalty"
+    ],
+    "jobsList": [
+      { "title": "Backend developer at LiveWall", "timePeriod": "sept. 2023 - today" },
+      { "title": "Internship at iO", "timePeriod": "jan. 2023 - jun. 2023" },
+      { "title": "Junior Full Stack developer at LiveWall", "timePeriod": "aug. 2021 - jan. 2023" },
+      { "title": "Junior Chef at Jordaans", "timePeriod": "feb. 2019 - oct. 2022" },
+      { "title": "Factory worker at Cups4You", "timePeriod": "apr. 2018 - jul. 2018" },
+      { "title": "Co driver at Vos logistics", "timePeriod": "jun. 2017 - aug. 2017" }
+    ],
+    "hobbiesList": [
+      "Football",
+      "Waterpolo",
+      "Running",
+      "Hangout with friends",
+      "Party"
+    ]
+  },
+  "experience": {
+    "title": "Experience",
+    "description": "My experience in my work field and life",
+    "programSkills": "Program Skills",
+    "socialSkills": "Social Skills",
+    "jobs": "Jobs",
+    "spawnButton": "Skills. Click me",
+    "spawnButtonSocial": "Social skills. Click me",
+    "jobsList": [
+      {
+        "title": "Backend developer at LiveWall Group",
+        "periodShort": "sept. 2023",
+        "periodLong": "sept. 2023 - today",
+        "description": "I currently work full time at LiveWall Group as a backend developer. I will be a backend developer for the Platforms team and I will be researching new technologies in the ICT industry ranging from AI to new frameworks."
+      },
+      {
+        "title": "Internship at iO",
+        "periodShort": "jan. 2023",
+        "periodLong": "jan. 2023 - jun. 2023",
+        "description": "This was my graduation internship at iO, me and Wessel van Tilburg created a reservation app with a microservices backend architecture. During this internship I learned a lot about app development, DevOps, different architectures and bettered my presentation skills."
+      },
+      {
+        "title": "Junior Full Stack developer at LiveWall Group",
+        "periodShort": "aug. 2021",
+        "periodLong": "aug. 2021 - jan. 2023",
+        "description": "I started as an intern at LiveWall Group, during this period I worked on 17 different PHP and Node.js projects for customers, made a Node.js API boilerplate with the Express.js framework and created a application that scanned a Word document and would automatically generate a documentation website out of the document. The boilerplate consisted of default middlewares for Basic, Firebase, secret and OAuth authentication, a rate limiter and an ip checker. It also had modules for Caching, Dates, exporting of CSV and excel files, filesystem implementations for local, public and Google Cloud Storage, Image manipulation and sending mails (including attachments). The boilerplate also had utils for Api responses, Axios requests, Encryption, Hashing and ErrorReporting/Logging to the cloud. To minimize the develop time for developers, commands were created do automatically create controllers, models and migrations, an ORM was implemented so that developers did not have to write there own Queries for retrieving data from a database, standard validation was implemented so that this could be written fast and config files were configured so that a new project could be setup really fast with specific needs."
+      },
+      {
+        "title": "Junior chef at Jordaans",
+        "periodShort": "feb. 2019",
+        "periodLong": "feb. 2019 - oct. 2022",
+        "description": "During this job I developed my communication skills and learned to work together with other people."
+      },
+      {
+        "title": "Factory worker at Cups4You",
+        "periodShort": "apr. 2018",
+        "periodLong": "apr. 2018 - jul. 2018",
+        "description": "After I graduated from high school I worked here for a couple months and this gave me the perspective that I absolutely did not want to be a factory worker :)."
+      },
+      {
+        "title": "Co-driver at Vos Logistics",
+        "periodShort": "jun. 2017",
+        "periodLong": "jun. 2017 - aug. 2017",
+        "description": "This was my first summer job and I learned a lot about communicating with people. This was important, because of the heavy lifting that we did. Like washing machines, refrigerators, couches etc."
+      }
+    ]
+  },
+  "about": {
+    "title": "About me",
+    "description": "A little guide about who I am and what I love to do outside work",
+    "ctaGeneral": "General",
+    "ctaCountry": "Country of origin",
+    "ctaHobbies": "Hobbies",
+    "generalTitle": "Hi, I'm Milo",
+    "generalP1": "Full Stack developer and ux designer fascinated by the possibilities code gives.",
+    "generalP2": "I have recently completed my bachelor's degree in computer science at Avans University in Den Bosch and am now working full time at LiveWall Group in Tilburg.",
+    "countryTitle": "Country of origin",
+    "countryP1": "I was born in Oss, Noord-Brabant in the Netherlands. I Still live here too.",
+    "hobbiesTitle": "Hobbies",
+    "hobbies": {
+      "football": "Football",
+      "waterpolo": "Waterpolo",
+      "running": "Running"
     }
+  },
+  "projects": {
+    "title": "Projects",
+    "description": "Projects made with passion",
+    "myProjects": "My Projects",
+    "introduction": "These are my projects that i'm most proud of.",
+    "seenCount": "You have seen {seen} of the {total} projects",
+    "loadMore": "Load more projects",
+    "loadLast": "Load last projects"
+  },
+  "contact": {
+    "title": "Contact",
+    "description": "Please contact me for questions or business proposals",
+    "mail": "Mail",
+    "phone": "Phone"
+  },
+  "footer": {
+    "fastTo": "Fast to...",
+    "projects": "Projects",
+    "experience": "Experience",
+    "aboutMe": "About me",
+    "contactMe": "Contact me",
+    "emailAddress": "Email address",
+    "name": "Name",
+    "comment": "Comment"
+  },
+  "notFound": {
+    "message": "Page not found",
+    "goBack": "Go Back",
+    "goHome": "Go to Home Page"
+  },
+  "games": {
+    "play": "Play",
+    "close": "Close",
+    "retry": "Retry",
+    "start": "Start",
+    "score": "Score",
+    "best": "Best",
+    "distance": "Distance",
+    "gameOver": "Game over",
+    "youWin": "You win!",
+    "youLose": "You lose",
+    "goal": "Goal!",
+    "saved": "Saved!",
+    "missed": "Missed!",
+    "choosePlayers": "How many players?",
+    "onePlayer": "1 player",
+    "twoPlayers": "2 players",
+    "player1Wins": "Player 1 wins!",
+    "player2Wins": "Player 2 wins!",
+    "rematch": "Rematch",
+    "runnerHint": "Tap, click or press space to jump",
+    "penaltyHint": "Press the ball, drag back to aim and release to shoot",
+    "airHockeyHint": "Drag your striker to hit the ball",
+    "shot": "Shot {current} of {total}"
   }
 }

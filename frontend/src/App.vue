@@ -33,7 +33,7 @@ export default {
   position: relative;
   overflow-x: hidden;
   overflow-y: scroll;
-  height: 100vh;
+  @include full-height;
   scroll-snap-type: y mandatory;
   scroll-behavior:smooth;
 }

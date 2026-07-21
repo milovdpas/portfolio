@@ -2,12 +2,16 @@
   display: flex;
   justify-content: space-around;
   background: $dark-blue;
-  height: 100vh;
+  @include full-height;
   color: $white;
   padding: 8em 5em;
 
   .left{
     text-align: left;
+  }
+
+  .footer-locale-select{
+    margin-top: 2em;
   }
 
   .footer-header{

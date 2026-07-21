@@ -1,5 +1,5 @@
 .timeline {
-  height: 100vh;
+  @include full-height;
   margin: 0 5em;
   pointer-events: none;
   .swiper-wrapper{
@@ -122,7 +122,8 @@
     .swiper-pagination {
       width: 100%;
       height: auto;
-      margin-bottom: 1em;
+      // Keep the date row above the OS gesture bar / home indicator.
+      margin-bottom: calc(1em + env(safe-area-inset-bottom, 0px));
       gap: 0.75em;
       .swiper__bullet{
         font-size: 16px;

@@ -5,12 +5,12 @@
       <section class="header">
         <div class="content">
           <div class="text">
-            <h1>Contact</h1>
+            <h1>{{ $t('contact.title') }}</h1>
             <div class="underline"/>
-            <p class="description">Please contact me for questions or business proposals</p>
+            <p class="description">{{ $t('contact.description') }}</p>
             <div class="button-container">
-              <CTA2 link="mailto:milovanderpas@mvdpsolutions.com" :icon="icons.mail">Mail</CTA2>
-              <CTA2 link="tel:+31637695327" :icon="icons.phone">Phone</CTA2>
+              <CTA2 link="mailto:milovanderpas@mvdpsolutions.com" :icon="icons.mail">{{ $t('contact.mail') }}</CTA2>
+              <CTA2 link="tel:+31637695327" :icon="icons.phone">{{ $t('contact.phone') }}</CTA2>
             </div>
           </div>
         </div>
@@ -27,6 +27,7 @@
 import Menu from "../components/Menu.vue";
 import CTA2 from "../components/buttons/CTA2.vue";
 import Footer from "@/components/Footer.vue";
+import {isMobile} from "@/utils/device";
 
 export default {
   components: {
@@ -42,14 +43,8 @@ export default {
       }
     }
   },
-  watch: {
-    "$i18n.locale": async function (newVal, oldVal) {
-    },
-  }, mounted() {},
   methods: {
-    isMobile() {
-      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    }
+    isMobile
   }
 }
 </script>
@@ -58,10 +53,10 @@ export default {
 /* Header */
 .header {
   display: flex;
-  height: 100vh;
+  @include full-height;
 
   .content {
-    height: 100vh;
+    @include full-height;
     width: 67.5%;
 
     .text {
@@ -91,7 +86,7 @@ export default {
   }
 
   .side-bar {
-    height: 100vh;
+    @include full-height;
     width: 32.5%;
     background-color: $green;
   }

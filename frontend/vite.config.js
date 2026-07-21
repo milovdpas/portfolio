@@ -52,6 +52,7 @@ export default defineConfig({
     },
     define: {
         __VUE_I18N_FULL_INSTALL__: true,
-        __VUE_I18N_LEGACY_API__: false,
+        // Legacy API is required for the Options-API $t()/$i18n usage across the app.
+        __VUE_I18N_LEGACY_API__: true,
     },
 })

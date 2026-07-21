@@ -80,8 +80,6 @@ export default class Axios {
             }
         });
 
-        Logger.info(`Axios call endpoint ${endpoint}`);
-
         return axios(endpoint, config);
     }
 

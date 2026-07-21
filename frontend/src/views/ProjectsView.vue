@@ -5,9 +5,9 @@
       <section class="header">
         <div class="content">
           <div class="text">
-            <h1>Projects</h1>
+            <h1>{{ $t('projects.title') }}</h1>
             <div class="underline"/>
-            <p class="description">Projects made with passion</p>
+            <p class="description">{{ $t('projects.description') }}</p>
             <a href="#projects" class="cta mt-4">
               <img v-once :src="icons.down" width="70" height="70" alt="down arrow"/>
             </a>
@@ -15,49 +15,48 @@
         </div>
         <div class="side-bar"></div>
       </section>
-      <UnderConstruction v-if="underConstruction" id="projects"/>
-      <section v-else id="projects" class="projects">
+      <section id="projects" class="projects">
         <div class="row" v-if="!isMobile()">
           <div class="col-md-6 left">
             <div class="introduction">
-              <h2>My Projects</h2>
+              <h2>{{ $t('projects.myProjects') }}</h2>
               <p class="description">
-                These are my projects that i'm most proud of.
+                {{ $t('projects.introduction') }}
               </p>
             </div>
             <ImageCard v-for="project in projectsLeftLoaded" :image="project.image" :tag="project.tag"
                        :title="project.title"
                        :description="project.description"
-                       :slug="project.slug" style="padding: 7.5px"></ImageCard>
+                       :slug="project.slug"></ImageCard>
           </div>
           <div class="col-md-6 right">
             <ImageCard v-for="project in projectsRightLoaded" :image="project.image" :tag="project.tag"
                        :title="project.title"
                        :description="project.description"
-                       :slug="project.slug" style="padding: 7.5px"></ImageCard>
+                       :slug="project.slug"></ImageCard>
           </div>
         </div>
         <div class="row" v-if="isMobile()">
           <div class="col-md-6">
             <div class="introduction">
-              <h2>My Projects</h2>
+              <h2>{{ $t('projects.myProjects') }}</h2>
               <p class="description">
-                These are my projects that i'm most proud of.
+                {{ $t('projects.introduction') }}
               </p>
             </div>
             <ImageCard v-for="project in projectsLoaded" :image="project.image" :tag="project.tag"
                        :title="project.title"
                        :description="project.description"
-                       :slug="project.slug" style="padding: 7.5px"></ImageCard>
+                       :slug="project.slug"></ImageCard>
           </div>
         </div>
         <div class="load-more-container">
-          <span>You have seen {{ length - projects.length }} of the {{ length }} projects</span>
+          <span>{{ $t('projects.seenCount', {seen: length - projects.length, total: length}) }}</span>
           <div class="progress__bar">
             <div class="current__progress" :style="`width: ${(length - projects.length)/length * 100}%`"></div>
           </div>
           <div class="load-more" v-if="projects.length !== 0" @click="loadMore">
-            <span>{{ (projects.length > steps ? 'Load more projects' : 'Load last projects') }}</span>
+            <span>{{ (projects.length > steps ? $t('projects.loadMore') : $t('projects.loadLast')) }}</span>
             <img v-once :src="icons.down" width="25" height="25" alt="down arrow"/>
           </div>
         </div>
@@ -71,17 +70,14 @@
 
 <script>
 import Menu from "../components/Menu.vue";
-import Button from "../components/buttons/MoreButton.vue";
 import Footer from "@/components/Footer.vue";
 import ImageCard from "@/components/cards/ImageCard.vue";
-import UnderConstruction from "@/components/UnderConstruction.vue";
+import {isMobile} from "@/utils/device";
 
 export default {
   name: "ProjectsView",
   components: {
-    UnderConstruction,
     Menu,
-    Button,
     Footer,
     ImageCard,
   },
@@ -199,7 +195,6 @@ export default {
       },
     ];
     return {
-      underConstruction: false,
       icons: {
         down: new URL(`../assets/images/icons/down-arrow.svg`, import.meta.url).href
       },
@@ -212,16 +207,11 @@ export default {
       projectsRightLoaded: []
     }
   },
-  watch: {
-    "$i18n.locale": async function (newVal, oldVal) {
-    },
-  }, mounted() {
+  mounted() {
     this.loadProjects();
   },
   methods: {
-    isMobile() {
-      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    },
+    isMobile,
     loadProjects() {
       const length = this.projects.length;
       for (let index = 0; index < length && index < this.limit; index++) {
@@ -253,10 +243,10 @@ export default {
 /* Header */
 .header {
   display: flex;
-  height: 100vh;
+  @include full-height;
 
   .content {
-    height: 100vh;
+    @include full-height;
     width: 67.5%;
 
     .text {
@@ -289,7 +279,7 @@ export default {
   }
 
   .side-bar {
-    height: 100vh;
+    @include full-height;
     width: 32.5%;
     background-color: $yellow;
   }
@@ -298,7 +288,7 @@ export default {
 /* Projects */
 .projects {
   position: relative;
-  min-height: 100vh;
+  @include full-height(min-height);
   padding: 7em 7em 15em 7em;
 
   .introduction {
@@ -313,6 +303,7 @@ export default {
 
   .image-card {
     min-height: auto !important;
+    padding: 7.5px;
   }
 
   .right {
@@ -397,13 +388,15 @@ export default {
 
     .introduction {
       height: auto;
+      width: 100%;
+      max-width: 500px;
     }
 
-    .left {
-      align-items: center;
-    }
-
-    .right {
+    // Covers .left, .right AND the unclassed mobile column, so cards center
+    // through flexbox with equal side margins from the .projects padding.
+    .row > div {
+      display: flex;
+      flex-flow: column;
       align-items: center;
     }
 

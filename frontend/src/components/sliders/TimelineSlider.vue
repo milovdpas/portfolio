@@ -26,6 +26,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import {isMobile} from "@/utils/device";
 
 export default {
   name: "TimelineSlider",
@@ -60,9 +61,7 @@ export default {
     },
     onSlideChange() {
     },
-    isMobile() {
-      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    }
+    isMobile
   }
 }
 </script>
