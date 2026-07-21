@@ -47,6 +47,12 @@ body {
   overflow:hidden;
 }
 
+/* While a hobby mini-game is open (GameOverlay mounted), hide the menu:
+   its fixed button sits exactly where the game's close button lives. */
+body.game-active nav {
+  display: none;
+}
+
 // Scroll bar
 /* width */
 ::-webkit-scrollbar {

@@ -84,10 +84,14 @@ Architecture: drop the Web Worker (freeze was main-thread SVG decomposition, not
 
 ## Phase F — Hobbies: Running + three mini-games
 
-- [ ] F1: extract `FootballField.vue`/`WaterpoloField.vue`; hobbies config array; new `RunningTrack.vue` CSS visual
-- [ ] F2: scaffolding — `GameOverlay.vue`, `GameLoop.js` (fixed timestep), `Input.js` (pointer events, multi-pointer), `HighScores.js` (localStorage); lazy-loaded games; Play button per field
-- [ ] F3: `RunnerGame.vue` — endless hurdles runner (tap/click/Space jump, speed ramp, distance high-score)
-- [ ] F4: `PenaltyGame.vue` — waterpolo 5m shootout (drag-back aim + power, keeper zone AI, 5 shots)
+- [x] F1: extract `FootballField.vue`/`WaterpoloField.vue`; hobbies config array; running visual = `RunningRoute.vue` (switchback road through nature — Milo runs long distance, not track; changed from stadium track per Milo)
+- [x] F2: scaffolding — `GameOverlay.vue` (close ✕ + ESC, hides menu while playing), `GameLoop.js` (fixed timestep), `Input.js` (pointer events, multi-pointer, captures Space/arrows/WASD so the page doesn't scroll), `HighScores.js` (localStorage); lazy-loaded games; Play button per field
+- [x] F3: `RunnerGame.vue` — pixel-art marathon runner (design evolved with Milo): 42.195 km finish with time as high score, energy bar + water stations (grab only while grounded), The Wall at 30 km (world dims, double drain), stumble instead of instant death, environments by distance: city → farmer fields (maize!) → forest → mountains, beer friends at the roadside (golden mug pixel sprite; sprint boost ×1.6 speed / ×2.5 drain for 4s, yellow energy bar + speed streaks), finish confetti, controls: tap/click/Space/W/↑. Debug hook: `window.__RUNNER_START_KM`. Verified end-to-end in browser incl. finish panel + boost.
+- [x] Route visual U-turn alignment fixed (ring height off by half a road width); mountains moved clear of the right turn
+- [x] Route seams perfected: turn edge lines drawn inside the ring via pseudo-elements to match the straights' borders + 3px overlap against hairlines (verified with close-up screenshots)
+- [x] Themed pixel obstacles per environment (Milo's picks): dixi toilet box (city), sheep (fields), chopped tree stump + felled piece (forest), 'ye' album-cover homage with green scrawl (mountains)
+- [x] Play button pulse + radar-ping animation
+- [ ] F4: `PenaltyGame.vue` — waterpolo penalty (redesigned with Milo): HALF pool, pixel-art players, fixed defenders blocking shot lanes, keeper sliding left↔right, shoot from the 5m line (aim through gaps + time the keeper), 5 shots
 - [ ] F5: `AirHockeyGame.vue` — air-hockey-style football: 1P vs AI or 2P local (multi-touch / mouse+WASD), hand-rolled 120Hz physics with substeps, first to 5
 
 ## Verification checkpoints

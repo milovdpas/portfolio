@@ -51,36 +51,22 @@
         <div class="header">
           <div class="left">
             <h2>{{ $t('about.hobbiesTitle') }}</h2>
-            <h3>{{ hobbies[hobbiesIndex] }}</h3>
+            <h3>{{ hobbies[hobbiesIndex].name }}</h3>
           </div>
           <div class="right">
             <RoundButton v-if="hobbiesIndex > 0" :icon="icons.right" :method="previousHobby" style="transform: rotate(180deg); width: 60px; height: 60px;"/>
             <RoundButton  v-if="hobbiesIndex !== hobbies.length-1" :icon="icons.right" :method="nextHobby" style="width: 60px; height: 60px;"/>
           </div>
         </div>
-        <div class="football-field" :style="(hobbiesIndex === 0 ? '' : 'display: none;')">
-          <div class="line"></div>
-          <div class="half"></div>
-          <div class="panelty left"></div>
-          <div class="panelty right"></div>
-          <div class="p-spot left">&nbsp;</div>
-          <div class="p-spot right">&nbsp;</div>
-          <div class="center"></div>
-          <div class="p-place left"></div>
-          <div class="p-place right"></div>
-        </div>
-        <div class="waterpolo-field" :style="(hobbiesIndex === 1 ? '' : 'display: none;')">
-          <div class="line"></div>
-          <div class="panelty left"></div>
-          <div class="goal-line left"></div>
-          <div class="twometer-line left"></div>
-          <div class="fivemeter-line left"></div>
-          <div class="half"></div>
-          <div class="goal-line right"></div>
-          <div class="twometer-line right"></div>
-          <div class="fivemeter-line right"></div>
-          <div class="panelty right"></div>
-        </div>
+        <component v-for="(hobby, index) in hobbies" :key="hobby.component" :is="hobby.component"
+                   v-show="hobbiesIndex === index"/>
+        <button v-if="!activeGame && hobbies[hobbiesIndex].game" class="play-button"
+                @click="activeGame = hobbies[hobbiesIndex].game">
+          ▶ {{ $t('games.play') }}
+        </button>
+        <GameOverlay v-if="activeGame" @close="activeGame = null">
+          <component :is="activeGame"/>
+        </GameOverlay>
       </section>
     </main>
     <section>
@@ -90,10 +76,15 @@
 </template>
 
 <script>
+import {defineAsyncComponent} from "vue";
 import Menu from "../components/Menu.vue";
 import Footer from '../components/Footer.vue'
 import CTA from "@/components/buttons/CTA.vue";
 import RoundButton from "@/components/buttons/RoundButton.vue";
+import FootballField from "@/components/hobbies/FootballField.vue";
+import WaterpoloField from "@/components/hobbies/WaterpoloField.vue";
+import RunningRoute from "@/components/hobbies/RunningRoute.vue";
+import GameOverlay from "@/components/games/GameOverlay.vue";
 import {isMobile} from "@/utils/device";
 
 export default {
@@ -102,7 +93,13 @@ export default {
     RoundButton,
     Menu,
     Footer,
-    CTA
+    CTA,
+    FootballField,
+    WaterpoloField,
+    RunningRoute,
+    GameOverlay,
+    // Games are lazy chunks: nothing loads until Play is pressed.
+    RunnerGame: defineAsyncComponent(() => import('@/components/games/RunnerGame.vue')),
   },
   data() {
     return {
@@ -114,14 +111,24 @@ export default {
       netherlands: new URL(`../assets/images/netherlands/netherlands2.svg`, import.meta.url).href,
       bike: new URL(`../assets/images/netherlands/bike.svg`, import.meta.url).href,
       hobbiesIndex: 0,
+      activeGame: null,
     }
   },
   computed: {
+    // One entry per hobby: display name, the field component drawn behind it
+    // and the mini-game that can be played on it.
     hobbies() {
       return [
-        this.$t('about.hobbies.football'),
-        this.$t('about.hobbies.waterpolo'),
+        {name: this.$t('about.hobbies.football'), component: 'FootballField', game: null},
+        {name: this.$t('about.hobbies.waterpolo'), component: 'WaterpoloField', game: null},
+        {name: this.$t('about.hobbies.running'), component: 'RunningRoute', game: 'RunnerGame'},
       ];
+    }
+  },
+  watch: {
+    hobbiesIndex() {
+      // Switching hobby closes a running game.
+      this.activeGame = null;
     }
   },
   methods: {
@@ -294,312 +301,59 @@ export default {
     }
   }
 
-  .football-field {
-    width: 100%;
-    height: 100%;
-    background-color: $green;
+  .play-button {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 150px;
+    height: 150px;
+    border: none;
+    border-radius: 50%;
+    background-color: $black;
+    color: $white;
+    font-family: inherit;
+    font-size: 26px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 3;
+    transition: transform 0.2s;
+    animation: play-pulse 2s ease-in-out infinite;
 
-    .line {
-      width: 100%;
-      height: 100%;
-      border: 5px solid #ffffff;
+    &::after {
+      // Radar-ping ring inviting a click.
+      content: "";
       position: absolute;
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
-
-      &::before {
-        border: 5px solid #539A46;
-        bottom: -9px;
-        content: "";
-        left: -9px;
-        position: absolute;
-        right: -9px;
-        top: -9px;
-      }
-    }
-
-    .half {
-      width: 50%;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      border-right-color: $white;
-      border-right-style: solid;
-      border-right-width: 4px;
-      left: 0;
-      z-index: 1;
-    }
-
-    .panelty {
-      width: 110px;
-      height: 220px;
-      border: 3px solid #ffffff;
-      position: absolute;
-      z-index: 2;
-      background-color: #539A46;
-
-      &.left {
-        left: 3px;
-        top: calc(50% - 110px);
-        border-left-color: transparent;
-        border-left-width: 0;
-
-        &::after {
-          border: 3px solid #ffffff;
-          border-left: 0 transparent;
-          bottom: 45px;
-          content: "";
-          left: 0;
-          position: absolute;
-          right: 55px;
-          top: 45px;
-        }
-      }
-
-      &.right {
-        right: 0;
-        top: calc(50% - 110px);
-        border-right-color: transparent;
-        border-right-width: 0;
-
-        &::after {
-          border: 3px solid #ffffff;
-          border-right: 0 transparent;
-          bottom: 45px;
-          content: "";
-          left: 55px;
-          position: absolute;
-          right: 0;
-          top: 45px;
-        }
-      }
-    }
-
-    .p-spot {
-      &.left {
-        &:after {
-          content: "\2022";
-          position: absolute;
-          color: $white;
-          font-size: 35px;
-          top: calc(50% - 22.5px);
-          left: 80px;
-          z-index: 3;
-        }
-      }
-
-      &.right {
-        &:after {
-          content: "\2022";
-          position: absolute;
-          color: $white;
-          font-size: 35px;
-          top: calc(50% - 22.5px);
-          right: 80px;
-          z-index: 3;
-        }
-      }
-    }
-
-    .center {
-      position: absolute;
-      width: 130px;
-      height: 130px;
-      border: 3px solid $white;
-      left: calc(50% - 67.5px);
-      top: calc(50% - 67.5px);
-      -webkit-border-radius: 50%;
-      -moz-border-radius: 50%;
+      inset: 0;
       border-radius: 50%;
-
-      &::after {
-        background-color: $white;
-        border: 5px solid $white;
-        bottom: 55px;
-        content: "";
-        left: 55px;
-        position: absolute;
-        right: 55px;
-        top: 55px;
-        -webkit-border-radius: 50%;
-        -moz-border-radius: 50%;
-        border-radius: 50%;
-      }
+      animation: play-ping 2s ease-out infinite;
     }
 
-    .p-place {
-      -webkit-border-radius: 50%;
-      -moz-border-radius: 50%;
-      border-radius: 50%;
-      height: 130px;
-      position: absolute;
-      width: 150px;
-      z-index: 1;
-      border: 3px solid transparent;
-
-      &.left {
-        border-bottom-color: $white;
-        border-right-color: $white;
-        border-top-color: $white;
-        left: 0;
-        top: calc(50% - 67px);
-      }
-
-      &.right {
-        border-bottom-color: $white;
-        border-left-color: $white;
-        border-top-color: $white;
-        right: 0;
-        top: calc(50% - 67px);
-      }
+    &:hover {
+      animation: none;
+      transform: translate(-50%, -50%) scale(1.1);
     }
   }
-  .waterpolo-field {
-    width: 100%;
-    height: 100%;
-    background-color: $blue;
+}
 
-    .line {
-      width: 100%;
-      height: 100%;
-      border: 5px solid #ffffff;
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      z-index: 2;
+@keyframes play-pulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.06);
+  }
+}
 
-      &::before {
-        border: 5px solid $blue;
-        bottom: -9px;
-        content: "";
-        left: -9px;
-        position: absolute;
-        right: -9px;
-        top: -9px;
-      }
-    }
-
-    .half {
-      width: 50%;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      border-right-color: $white;
-      border-right-style: solid;
-      border-right-width: 4px;
-      left: 0;
-      z-index: 1;
-    }
-
-    .goal-line {
-      width: 65px;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      z-index: 1;
-
-      &.left{
-        left: 0;
-        border-right-color: $white;
-        border-right-style: solid;
-        border-right-width: 4px;
-      }
-      &.right{
-        right: 0;
-        border-left-color: $white;
-        border-left-style: solid;
-        border-left-width: 4px;
-      }
-    }
-
-    .twometer-line {
-      width: 115px;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      z-index: 1;
-
-      &.left{
-        left: 0;
-        border-right-color: $red;
-        border-right-style: solid;
-        border-right-width: 4px;
-      }
-      &.right{
-        right: 0;
-        border-left-color: $red;
-        border-left-style: solid;
-        border-left-width: 4px;
-      }
-    }
-
-    .fivemeter-line {
-      width: 225px;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      z-index: 1;
-
-      &.left{
-        left: 0;
-        border-right-color: $yellow;
-        border-right-style: solid;
-        border-right-width: 4px;
-      }
-      &.right{
-        right: 0;
-        border-left-color: $yellow;
-        border-left-style: solid;
-        border-left-width: 4px;
-      }
-    }
-
-    .panelty {
-      width: 110px;
-      height: 220px;
-      position: absolute;
-      z-index: 2;
-
-      &.left {
-        left: 3px;
-        top: calc(50% - 110px);
-        border-left-color: transparent;
-        border-left-width: 0;
-
-        &::after {
-          border: 3px solid #ffffff;
-          border-left: 0 transparent;
-          bottom: 45px;
-          content: "";
-          left: 0;
-          position: absolute;
-          right: 55px;
-          top: 45px;
-        }
-      }
-
-      &.right {
-        right: 0;
-        top: calc(50% - 110px);
-        border-right-color: transparent;
-        border-right-width: 0;
-
-        &::after {
-          border: 3px solid #ffffff;
-          border-right: 0 transparent;
-          bottom: 45px;
-          content: "";
-          left: 55px;
-          position: absolute;
-          right: 0;
-          top: 45px;
-        }
-      }
-    }
+@keyframes play-ping {
+  0% {
+    box-shadow: 0 0 0 0 rgba(17, 17, 18, 0.4);
+  }
+  75% {
+    box-shadow: 0 0 0 28px rgba(17, 17, 18, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(17, 17, 18, 0);
   }
 }
 
@@ -692,236 +446,6 @@ export default {
         }
       }
       .right{
-      }
-    }
-    .football-field {
-
-      .half {
-        width: 100%;
-        height: 50%;
-        border-bottom-color: $white;
-        border-bottom-style: solid;
-        border-bottom-width: 4px;
-        border-right-width: 0;
-      }
-
-      .panelty {
-        width: 220px;
-        height: 110px;
-
-        &.left {
-          left: calc(50% - 110px);
-          top: 3px;
-          border-top-color: transparent;
-          border-top-width: 0;
-          border-left-color: $white;
-          border-left-width: 3px;
-
-
-          &::after {
-            border-top-color: transparent;
-            border-top-width: 0;
-            border-left: solid;
-            border-left-color: $white;
-            border-left-width: 3px;
-            left: 45px;
-            top: 0;
-            bottom: 55px;
-            right: 45px;
-          }
-        }
-
-        &.right {
-          left: calc(50% - 110px);
-          bottom: 0;
-          right: auto;
-          top: auto;
-          border-bottom-color: transparent;
-          border-bottom-width: 0;
-          border-right-color: $white;
-          border-right-width: 3px;
-
-          &::after {
-            border-bottom-color: transparent;
-            border-bottom-width: 0;
-            border-right: solid;
-            border-right-color: $white;
-            border-right-width: 3px;
-            left: 45px;
-            top: 55px;
-            bottom: 0;
-            right: 45px;
-          }
-        }
-      }
-
-      .p-spot {
-        &.left {
-          &:after {
-            left: calc(50% - 8px);
-            top: 60px;
-          }
-        }
-
-        &.right {
-          &:after {
-            bottom: 60px;
-            left: calc(50% - 8px);
-            right: auto;
-            top: auto;
-          }
-        }
-      }
-
-      .p-place {
-        height: 150px;
-        width: 130px;
-
-        &.left {
-          border-top-color: transparent;
-          border-bottom-color: $white;
-          border-right-color: $white;
-          border-left-color: $white;
-          left: calc(50% - 68px);
-          top: 0;
-        }
-
-        &.right {
-          border-top-color: $white;
-          border-bottom-color: transparent;
-          border-right-color: $white;
-          border-left-color: $white;
-          left: calc(50% - 68px);
-          bottom: 0;
-          right: auto;
-          top: auto;
-        }
-      }
-    }
-    .waterpolo-field {
-
-      .half {
-        width: 100%;
-        height: 50%;
-        border-bottom-color: $white;
-        border-bottom-style: solid;
-        border-bottom-width: 4px;
-        border-right-width: 0;
-      }
-      .goal-line {
-        width: 100%;
-        height: 65px;
-        top: auto;
-        left: 0;
-
-        &.left{
-          top: 0;
-          border-right: 0 transparent;
-          border-bottom-color: $white;
-          border-bottom-style: solid;
-          border-bottom-width: 4px;
-        }
-        &.right{
-          bottom: 0;
-          border-left: 0 transparent;
-          border-top-color: $white;
-          border-top-style: solid;
-          border-top-width: 4px;
-        }
-      }
-
-      .twometer-line {
-        width: 100%;
-        height: 115px;
-        top: auto;
-        left: 0;
-
-        &.left{
-          top: 0;
-          border-right: 0 transparent;
-          border-bottom-color: $red;
-          border-bottom-style: solid;
-          border-bottom-width: 4px;
-        }
-        &.right{
-          bottom: 0;
-          border-left: 0 transparent;
-          border-top-color: $red;
-          border-top-style: solid;
-          border-top-width: 4px;
-        }
-      }
-
-      .fivemeter-line {
-        width: 100%;
-        height: 225px;
-        top: auto;
-        left: 0;
-
-        &.left{
-          top: 0;
-          border-right: 0 transparent;
-          border-bottom-color: $yellow;
-          border-bottom-style: solid;
-          border-bottom-width: 4px;
-        }
-        &.right{
-          bottom: 0;
-          border-left: 0 transparent;
-          border-top-color: $yellow;
-          border-top-style: solid;
-          border-top-width: 4px;
-        }
-      }
-
-      .panelty {
-        width: 220px;
-        height: 110px;
-
-        &.left {
-          left: calc(50% - 110px);
-          top: 3px;
-          border-top-color: transparent;
-          border-top-width: 0;
-          border-left-color: $white;
-          border-left-width: 3px;
-
-
-          &::after {
-            border-top-color: transparent;
-            border-top-width: 0;
-            border-left: solid;
-            border-left-color: $white;
-            border-left-width: 3px;
-            left: 45px;
-            top: 0;
-            bottom: 55px;
-            right: 45px;
-          }
-        }
-
-        &.right {
-          left: calc(50% - 110px);
-          bottom: 0;
-          right: auto;
-          top: auto;
-          border-bottom-color: transparent;
-          border-bottom-width: 0;
-          border-right-color: $white;
-          border-right-width: 3px;
-
-          &::after {
-            border-bottom-color: transparent;
-            border-bottom-width: 0;
-            border-right: solid;
-            border-right-color: $white;
-            border-right-width: 3px;
-            left: 45px;
-            top: 55px;
-            bottom: 0;
-            right: 45px;
-          }
-        }
       }
     }
   }

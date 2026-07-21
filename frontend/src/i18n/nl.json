@@ -177,7 +177,12 @@
     "player1Wins": "Speler 1 wint!",
     "player2Wins": "Speler 2 wint!",
     "rematch": "Nog een keer",
-    "runnerHint": "Tik, klik of druk op spatie om te springen",
+    "km": "km",
+    "time": "Tijd",
+    "bestTime": "Beste tijd",
+    "finished": "Gefinisht!",
+    "theWall": "De man met de hamer!",
+    "runnerHint": "Loop de marathon! Tik, klik of druk op spatie om over obstakels te springen. Ren door de waterposten om je energie op peil te houden, pak een biertje van een vriend voor een sprintboost (kost wel sneller energie!) — en pas op bij 30 km.",
     "penaltyHint": "Druk op de bal, sleep naar achteren om te richten en laat los om te schieten",
     "airHockeyHint": "Sleep je speler om de bal te raken",
     "shot": "Schot {current} van {total}"

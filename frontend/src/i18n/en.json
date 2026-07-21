@@ -177,7 +177,12 @@
     "player1Wins": "Player 1 wins!",
     "player2Wins": "Player 2 wins!",
     "rematch": "Rematch",
-    "runnerHint": "Tap, click or press space to jump",
+    "km": "km",
+    "time": "Time",
+    "bestTime": "Best time",
+    "finished": "Finished!",
+    "theWall": "The Wall!",
+    "runnerHint": "Run the marathon! Tap, click or press space to jump over obstacles. Run through water stations to keep your energy up, grab a beer from a friend for a sprint boost (it burns energy faster!) — and watch out at 30 km.",
     "penaltyHint": "Press the ball, drag back to aim and release to shoot",
     "airHockeyHint": "Drag your striker to hit the ball",
     "shot": "Shot {current} of {total}"
