@@ -52,6 +52,7 @@ import Footer from "@/components/Footer.vue";
 import SlideShow from "@/components/cards/SlideShow.vue";
 import svg from "@/assets/images/netherlands/netherlands.svg?raw"
 import {isMobile} from "@/utils/device";
+import {featuredProjects} from "@/data/projects";
 
 export default {
   name: "HomeView",
@@ -65,41 +66,8 @@ export default {
     return {
       sloganIndex: 0,
       timeOut: 0,
-      projectCards: [
-        {
-          type: 'image',
-          image: new URL(`../assets/images/projects/player0.0.png`, import.meta.url).href,
-          tag: {
-            color: 'black',
-            text: 'Livewall Group'
-          },
-          title: "Player 0.0",
-          description: "Player 0.0 is a cool gaming experience that we developed for Heineken 0.0 and has been released in 16 countries",
-          slug: 'player0.0'
-        },
-        {
-          type: 'image',
-          image: new URL(`../assets/images/projects/soundzam-app.png`, import.meta.url).href,
-          tag: {
-            color: 'blue',
-            text: 'Hobby Project'
-          },
-          title: "SoundZam app",
-          description: "After graduating I made an app for recognizing SoundCloud songs.",
-          slug: 'soundzam'
-        },
-        {
-          type: 'image',
-          image: new URL(`../assets/images/projects/internship/banner.png`, import.meta.url).href,
-          title: "Real-Time flex place reservation app",
-          tag: {
-            color: 'purple',
-            text: 'Internship at IO'
-          },
-          description: `For my final internship of school, me and Wessel made a real-time app for reserving a flex workplace for the office of IO.`,
-          slug: 'internship-io'
-        },
-      ],
+      // ImageCard resolves the per-locale fields itself.
+      projectCards: featuredProjects,
     }
   },
   computed: {

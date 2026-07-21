@@ -73,6 +73,7 @@ import Menu from "../components/Menu.vue";
 import Footer from "@/components/Footer.vue";
 import ImageCard from "@/components/cards/ImageCard.vue";
 import {isMobile} from "@/utils/device";
+import {publishedProjects} from "@/data/projects";
 
 export default {
   name: "ProjectsView",
@@ -82,118 +83,9 @@ export default {
     ImageCard,
   },
   data() {
-    const projects = [
-      {
-        type: 'image',
-        image: new URL(`../assets/images/projects/shooting-stars-banner.png`, import.meta.url).href,
-        tag: {
-          color: 'blue',
-          text: 'Hobby Project'
-        },
-        slug: "shooting-stars",
-        title: "Shooting stars meme generator",
-        description: "Learn how a backflip fail inspired the creation of a Shooting Stars meme generator!"
-      },
-      {
-        type: 'image',
-        image: new URL(`../assets/images/projects/player0.0.png`, import.meta.url).href,
-        tag: {
-          color: 'black',
-          text: 'Livewall Group'
-        },
-        title: "Player 0.0",
-        description: "Player 0.0 is a cool gaming experience that we developed for Heineken 0.0 and has been released in 16 countries",
-        slug: 'player0.0'
-      },
-      {
-        type: 'image',
-        image: new URL(`../assets/images/projects/soundzam-app.png`, import.meta.url).href,
-        tag: {
-          color: 'blue',
-          text: 'Hobby Project'
-        },
-        slug: "soundzam",
-        title: "SoundZam app",
-        description: "After graduating I made an app for recognizing SoundCloud songs."
-      },
-      {
-        type: 'image',
-        image: new URL(`../assets/images/projects/internship/banner.png`, import.meta.url).href,
-        title: "Real-Time flex place reservation app",
-        tag: {
-          color: 'purple',
-          text: 'Internship at IO'
-        },
-        description: `For my final internship of school, me and Wessel made a real-time app for reserving a flex workplace for the office of IO.`,
-        slug: 'internship-io'
-      },
-      {
-        type: 'image',
-        image: new URL(`../assets/images/projects/motm.jpg`, import.meta.url).href,
-        tag: {
-          color: 'black',
-          text: 'Livewall Group'
-        },
-        title: "Line-up, Substitution and MOTM tool",
-        description: "During my part-time job I made a line-up, substitution and player of the match tool for DPG Media for the 2022 World Cup.",
-        slug: 'dpg-motm'
-      },
-      {
-        type: 'image',
-        image: new URL(`../assets/images/projects/accessibility/banner.png`, import.meta.url).href,
-        title: "Accessibility questionnaire app",
-        tag: {
-          color: 'avans',
-          text: 'Avans university'
-        },
-        description: "We build a questionnaire app for the dutch accessibility organization",
-        slug: 'accessibility'
-      },
-      {
-        type: 'image',
-        image: new URL(`../assets/images/projects/trainingsplatform.png`, import.meta.url).href,
-        title: "Trainingsplatform",
-        tag: {
-          color: 'black',
-          text: 'Livewall Group'
-        },
-        description: "During my part-time job, I created a training platform that enables local police officers, BOAs and bailiffs to recognize the signals of unusual possession better, faster and more effectively.",
-        slug: 'nh-samen-veilig'
-      },
-      {
-        type: 'image',
-        image: new URL(`../assets/images/projects/internship-livewall/banner.jpg`, import.meta.url).href,
-        title: "My first internship",
-        tag: {
-          color: 'black',
-          text: 'Internship at Livewall Group'
-        },
-        description: "My first internship at LiveWall: backend development, exciting projects, and real-world growth!",
-        slug: 'internship-livewall'
-      },
-      {
-        type: 'image',
-        image: new URL(`../assets/images/projects/tegelogy/banner.png`, import.meta.url).href,
-        tag: {
-          color: 'blue',
-          text: 'Hobby Project'
-        },
-        slug: "tegelogy",
-        title: "Tegelogy",
-        description: "How a fake university course helped my friend crash student parties and score cheap beer—meet Tegelogy!"
-      },
-      {
-        type: 'image',
-        image: new URL(`../assets/images/projects/city-life/banner.png`, import.meta.url).href,
-        tag: {
-          color: 'blue',
-          text: 'Hobby Project'
-        },
-        slug: "city-life-game",
-        title: "Monopoly Simulation Game",
-        description: "Building a Java game inspired by CityInc: huge numbers, save systems, and a summer of coding!"
-      },
-    ];
+    // Clone is mandatory: loadProjects/loadMore shift() this array, and the
+    // shared module array must stay intact across route visits.
+    const projects = [...publishedProjects];
     return {
       icons: {
         down: new URL(`../assets/images/icons/down-arrow.svg`, import.meta.url).href

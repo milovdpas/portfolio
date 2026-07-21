@@ -73,13 +73,14 @@ Architecture: drop the Web Worker (freeze was main-thread SVG decomposition, not
 - [x] Icon-less shapes shrink less on mobile (0.65 vs 0.5) so labels stay readable
 - [x] Grab/grabbing cursor feedback on hover/drag
 
-## Phase E — Projects: single data source + 8 draft projects
+## Phase E — Projects: single data source + 8 draft projects ✅
 
-- [ ] `src/data/slugs.js` (also imported by `vite.config.js` sitemap — fixes missing `player0.0`)
-- [ ] `src/data/projects.js` — cards + detail blocks, per-locale text fields, `publishedProjects`/`featuredProjects`/`getProject`
-- [ ] Rewire ProjectsView (clone array!), ProjectView (unknown slug → 404), HomeView (featured), vite.config.js
-- [ ] 8 new projects as `draft: true` with draft EN+NL copy: jet-cache, rituals-launches, proximus-monopoly, heineken-fhmf, wehkamp (LiveWall/black) · espressions, drinking-games, marathon-planner (hobby/blue)
-- [ ] Per project later: banner image (~1200×800) + approved copy → flip `draft: false`
+- [x] `src/data/slugs.js` (imported by `vite.config.js` for the sitemap — fixes missing `player0.0`)
+- [x] `src/data/projects.js` — cards + detail blocks, per-locale `{en, nl}` text fields (ALL 10 existing projects fully translated to Dutch, drafts to refine), `publishedProjects`/`featuredProjects`/`getProject`
+- [x] Rewire ProjectsView (clone array!), ProjectView (unknown slug → 404), HomeView (featured), vite.config.js; ImageCard resolves per-locale fields itself so cards re-translate live
+- [x] 8 new projects as `draft: true` with draft EN+NL copy: jet-cache, rituals-launches, proximus-monopoly, heineken-fhmf, wehkamp (LiveWall/black) · espressions, drinking-games, marathon-planner (hobby/blue)
+- [x] Verified in browser: 10 cards + load-more + counter, list resets after navigating away/back, detail pages EN+NL, unknown slug → 404, home shows 3 featured, zero console errors
+- [ ] Per project later: banner image (~1200×800) + approved copy → flip `draft: false` and add slug to `data/slugs.js`
 
 ## Phase F — Hobbies: Running + three mini-games
 
