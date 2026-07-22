@@ -13,7 +13,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.2.0",
     "@fortawesome/vue-fontawesome": "^3.0.1",
     "animejs": "^3.2.1",
-    "axios": "^0.27.2",
+    "axios": "^1.7.9",
     "bootstrap": "^5.2.2",
     "gsap": "^3.11.4",
     "lodash": "^4.17.21",
