@@ -25,7 +25,7 @@
     "socialSkills": "Social Skills",
     "jobs": "Jobs",
     "general": "General",
-    "generalText": "<p>I am a {age}-year-old developer who is passionate about programming and the people around him.</p><p>I have recently completed my bachelor's degree in computer science at Avans University in Den Bosch.</p>",
+    "generalText": "<p>I am a {age}-year-old developer who is passionate about programming and the people around me.</p><p>I have recently completed my bachelor's degree in computer science at Avans University in Den Bosch.</p>",
     "countryOfOrigin": "Country of origin",
     "hobbies": "Hobbies",
     "programSkillsList": [
@@ -134,7 +134,7 @@
   },
   "contact": {
     "title": "Contact",
-    "description": "Please contact me for questions or business proposals",
+    "description": "Contact me for questions or if you want to make cool projects together",
     "mail": "Mail",
     "phone": "Phone"
   },
