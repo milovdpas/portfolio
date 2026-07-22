@@ -85,4 +85,16 @@ export default {
     transform: scale(1.1);
   }
 }
+
+@include mobile {
+  .flag-button {
+    width: 40px;
+    height: 40px;
+
+    svg {
+      width: 34px;
+      height: 34px;
+    }
+  }
+}
 </style>
