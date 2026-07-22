@@ -27,6 +27,7 @@ const TAGS = {
 export const projects = [
     {
         slug: 'shooting-stars',
+        date: '2024-10-06',
         type: 'image',
         image: new URL(`../assets/images/projects/shooting-stars-banner.png`, import.meta.url).href,
         tag: TAGS.hobby,
@@ -84,6 +85,7 @@ export const projects = [
     },
     {
         slug: 'player0.0',
+        date: '2024-05-01',
         type: 'image',
         featured: true,
         image: new URL(`../assets/images/projects/player0.0.png`, import.meta.url).href,
@@ -141,6 +143,7 @@ export const projects = [
     },
     {
         slug: 'soundzam',
+        date: '2023-08-31',
         type: 'image',
         featured: true,
         image: new URL(`../assets/images/projects/soundzam-app.png`, import.meta.url).href,
@@ -212,6 +215,7 @@ export const projects = [
     },
     {
         slug: 'internship-io',
+        date: '2023-06-30',
         type: 'image',
         featured: true,
         image: new URL(`../assets/images/projects/internship/banner.png`, import.meta.url).href,
@@ -331,6 +335,7 @@ export const projects = [
     },
     {
         slug: 'dpg-motm',
+        date: '2022-11-20',
         type: 'image',
         image: new URL(`../assets/images/projects/motm.jpg`, import.meta.url).href,
         tag: TAGS.livewall,
@@ -406,6 +411,7 @@ export const projects = [
     },
     {
         slug: 'accessibility',
+        date: '2022-06-01',
         type: 'image',
         image: new URL(`../assets/images/projects/accessibility/banner.png`, import.meta.url).href,
         tag: TAGS.avans,
@@ -506,6 +512,7 @@ export const projects = [
     },
     {
         slug: 'nh-samen-veilig',
+        date: '2022-09-27',
         type: 'image',
         image: new URL(`../assets/images/projects/trainingsplatform.png`, import.meta.url).href,
         tag: TAGS.livewall,
@@ -560,6 +567,7 @@ export const projects = [
     },
     {
         slug: 'internship-livewall',
+        date: '2021-08-01', // TODO: confirm real date
         type: 'image',
         image: new URL(`../assets/images/projects/internship-livewall/banner.jpg`, import.meta.url).href,
         tag: TAGS.livewallInternship,
@@ -676,6 +684,7 @@ export const projects = [
     },
     {
         slug: 'tegelogy',
+        date: '2022-07-26',
         type: 'image',
         image: new URL(`../assets/images/projects/tegelogy/banner.png`, import.meta.url).href,
         tag: TAGS.hobby,
@@ -737,6 +746,7 @@ export const projects = [
     },
     {
         slug: 'city-life-game',
+        date: '2020-08-15', // approximate: summer break after first bachelor year
         type: 'image',
         image: new URL(`../assets/images/projects/city-life/banner.png`, import.meta.url).href,
         tag: TAGS.hobby,
@@ -811,32 +821,65 @@ export const projects = [
     // ------------------------------------------------------------------
     {
         slug: 'jet-cache',
+        date: '2024-11-01',
         type: 'image',
-        draft: true,
-        image: null, // TODO: assets/images/projects/jet-cache/banner.png
+        image: new URL(`../assets/images/projects/jet-cache/banner.png`, import.meta.url).href,
         tag: TAGS.livewall,
         title: {
             en: 'JET write-through cache',
             nl: 'JET write-through cache',
         },
         description: {
-            en: 'A write-through caching layer for Just Eat Takeaway campaigns that keeps responses fast and the backend healthy under heavy load.',
-            nl: 'Een write-through cachinglaag voor Just Eat Takeaway-campagnes die responses snel houdt en de backend gezond onder hoge druk.',
+            en: 'How we rebuilt a Just Eat Takeaway campaign on a Redis write-through cache to survive the entire UK market ordering dinner at once.',
+            nl: 'Hoe we een Just Eat Takeaway-activatie herbouwden op een Redis write-through cache om de hele UK-markt aan te kunnen toen die tegelijk het avondeten bestelde.',
         },
         blocks: [
             {type: 'title', content: {en: 'JET write-through cache', nl: 'JET write-through cache'}},
             {
+                type: 'image',
+                src: new URL(`../assets/images/projects/jet-cache/banner.png`, import.meta.url).href,
+                alt: 'Just Eat Takeaway winner voucher screen',
+            },
+            {
                 type: 'paragraph',
                 content: {
-                    en: 'For Just Eat Takeaway campaigns at LiveWall I built a write-through caching layer: every write updates both the cache and the database, so reads are served from cache at full speed without ever going stale.',
-                    nl: 'Voor Just Eat Takeaway-campagnes bij LiveWall bouwde ik een write-through cachinglaag: elke write werkt zowel de cache als de database bij, zodat reads razendsnel uit de cache komen zonder ooit verouderd te raken.',
+                    en: 'This project pushed us into a completely different league of load. We were already used to big campaigns, but this was the whole UK market arriving at once. Just Eat Takeaway users received a link to our activation to win prizes, and they all showed up at dinner time, exactly when people order their food. That created an enormous, concentrated spike of traffic.',
+                    nl: 'Dit project bracht ons in een compleet andere klasse qua load. We waren al gewend aan grote campagnes, maar dit was de hele UK-markt die tegelijk binnenkwam. Gebruikers van Just Eat Takeaway kregen een link naar onze activatie om prijzen te winnen, en ze kwamen allemaal tijdens het avondeten, precies wanneer mensen hun eten bestellen. Dat zorgde voor een enorme, geconcentreerde piek in verkeer.',
                 }
             },
             {
                 type: 'paragraph',
                 content: {
-                    en: 'The interesting challenges were cache invalidation strategies, keeping the cache and the database transactionally in sync, and proving with load tests that the layer actually held up at campaign-level traffic.',
-                    nl: 'De interessante uitdagingen zaten in cache-invalidatiestrategieën, het transactioneel synchroon houden van cache en database, en met loadtests aantonen dat de laag campagneverkeer echt aankon.',
+                    en: 'Our usual setup, a regular API with the database tricks we normally rely on, simply could not hold that load.',
+                    nl: 'Onze gebruikelijke opzet, een normale API met de databasetrucs waar we normaal op leunen, kon die load simpelweg niet aan.',
+                }
+            },
+            {
+                type: 'paragraph',
+                content: {
+                    en: 'So for the first time we rebuilt the application around a write-through cache. Everything was written to a Redis cache, and through a pub/sub system that same data was also persisted to the database. Reads stayed lightning fast because they never had to hit the database directly.',
+                    nl: 'Daarom bouwden we de applicatie voor het eerst om naar een write-through cache. Alles werd naar een Redis-cache geschreven, en via een pub/sub-systeem werd diezelfde data ook in de database gepersisteerd. Reads bleven razendsnel, omdat ze nooit direct de database hoefden te raken.',
+                }
+            },
+            {
+                type: 'paragraph',
+                content: {
+                    en: 'Because Redis only gave us keys and hashes to work with, it really challenged me to think differently about how to model and solve problems in code. It was a different way of programming than I was used to, and I learned a lot from it.',
+                    nl: 'Omdat Redis ons alleen keys en hashes gaf om mee te werken, daagde het me echt uit om anders na te denken over hoe je problemen in code modelleert en oplost. Het was een andere manier van programmeren dan ik gewend was, en ik heb er veel van geleerd.',
+                }
+            },
+            {
+                type: 'paragraph',
+                content: {
+                    en: 'On top of that we built a complex dynamic win-chance system. The win chance changed live during the campaign based on how many prizes had already been won in a given period, automatically scaling up or down to keep the prize distribution even. With so many prizes being won in such a short window, that live balancing was essential.',
+                    nl: 'Daarbovenop bouwden we een complex dynamisch winkanssysteem. De winkans veranderde live tijdens de campagne op basis van hoeveel prijzen er in een bepaalde periode al gewonnen waren, en schaalde automatisch op of af om de prijsverdeling gelijkmatig te houden. Met zoveel prijzen die in zo’n korte tijd gewonnen werden, was die live balancering essentieel.',
+                }
+            },
+            {
+                type: 'paragraph',
+                content: {
+                    en: 'For the very first campaign that went live, from the 3rd to the 23rd of December, we handled around 2 million visitors in a short and intense period. All in all it was a great learning experience for me and the team.',
+                    nl: 'Voor de allereerste campagne die live ging, van 3 tot en met 23 december, verwerkten we ongeveer 2 miljoen bezoekers in een korte en intense periode. Al met al een mooie leerervaring voor mij en het team.',
                 }
             },
         ],
@@ -1039,7 +1082,10 @@ export const projects = [
     },
 ];
 
-export const publishedProjects = projects.filter(project => !project.draft);
+// Newest first, so the projects overview reads in reverse-chronological order.
+export const publishedProjects = projects
+    .filter(project => !project.draft)
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
 
 export const featuredProjects = publishedProjects.filter(project => project.featured);
 

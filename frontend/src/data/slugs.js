@@ -16,8 +16,9 @@ export const publishedSlugs = [
     'internship-livewall',
     'tegelogy',
     'city-life-game',
+    'jet-cache',
 ];
 
 // Drafts, waiting for banner images + final copy:
-// 'jet-cache', 'rituals-launches', 'proximus-monopoly', 'heineken-fhmf',
+// 'rituals-launches', 'proximus-monopoly', 'heineken-fhmf',
 // 'wehkamp', 'espressions', 'drinking-games', 'marathon-planner'

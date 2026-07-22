@@ -4,7 +4,10 @@
     <div class="container">
       <div class="blog">
         <div v-for="projectItem in blocks">
-          <h1 v-if="projectItem.type==='title'" v-html="projectItem.content"></h1>
+          <template v-if="projectItem.type==='title'">
+            <h1 v-html="projectItem.content"></h1>
+            <p v-if="relativeDate" class="project-date">{{ relativeDate }}</p>
+          </template>
           <div v-if="projectItem.type==='image'" class="image" :style="`background: ${projectItem.background};`">
             <img :width="projectItem.width" :src="projectItem.src" :alt="projectItem.alt"/>
           </div>
@@ -31,6 +34,7 @@ import Menu from "@/components/Menu.vue";
 import Footer from "@/components/Footer.vue";
 import {getProject} from "@/data/projects";
 import {localized} from "@/i18n";
+import {relativeTime} from "@/utils/relativeTime";
 
 export default {
   name: "ProjectView",
@@ -58,7 +62,11 @@ export default {
         ...block,
         content: localized(block.content),
       }));
-    }
+    },
+    relativeDate() {
+      this.$i18n.locale;
+      return this.project ? relativeTime(this.project.date) : '';
+    },
   },
 }
 </script>
@@ -72,6 +80,12 @@ export default {
   .blog {
     max-width: 720px;
     text-align: left;
+
+    .project-date {
+      margin: -12px 0 24px;
+      font-style: italic;
+      color: #8a8a8a;
+    }
 
     div {
       max-width: 100%;

@@ -8,7 +8,7 @@
   >
     <swiper-slide v-for="card in cards">
       <ImageCard v-if="card.type === 'image'" :image="card.image" :tag="card.tag" :title="card.title"
-                 :description="card.description" :slug="card.slug"/>
+                 :description="card.description" :slug="card.slug" :date="card.date"/>
       <NormalCard v-else-if="card.type === 'skill'" :title="card.title">
         <div class="skill bar-container" v-for="skill in card.skills">
           <div class="title">{{ skill.label }}</div>
@@ -49,7 +49,7 @@
   <div v-else class="slide-show">
     <div v-for="card in cards" class="d-flex justify-content-center">
       <ImageCard v-if="card.type === 'image'" :image="card.image" :tag="card.tag" :title="card.title"
-                 :description="card.description" :slug="card.slug"/>
+                 :description="card.description" :slug="card.slug" :date="card.date"/>
       <NormalCard v-else-if="card.type === 'skill'" :title="card.title">
         <div class="skill bar-container" v-for="skill in card.skills">
           <div class="title">{{ skill.label }}</div>

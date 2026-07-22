@@ -6,6 +6,7 @@
         <span v-if="tag" :class="'badge mb-1 ' + tag.color">{{ localizedTagText }}</span>
         <h3 class="card-title">{{ localizedTitle }}</h3>
         <div class="card-text mb-3" v-html="localizedDescription"></div>
+        <p v-if="relativeDate" class="card-date">{{ relativeDate }}</p>
       </div>
     </div>
   </div>
@@ -16,6 +17,7 @@
         <span v-if="tag" :class="'badge mb-1 ' + tag.color">{{ localizedTagText }}</span>
         <h3 class="card-title"  @click="toProject">{{ localizedTitle }}</h3>
         <div class="card-text mb-3" v-html="localizedDescription"  @click="toProject"></div>
+        <p v-if="relativeDate" class="card-date" @click="toProject">{{ relativeDate }}</p>
       </div>
     </div>
   </div>
@@ -24,6 +26,7 @@
 <script>
 import {isMobile} from "@/utils/device";
 import {localized} from "@/i18n";
+import {relativeTime} from "@/utils/relativeTime";
 
 export default {
   name: "ImageCard",
@@ -34,6 +37,7 @@ export default {
     title: [String, Object],
     description: [String, Object],
     slug: String,
+    date: String,
   },
   components: {
   },
@@ -50,6 +54,10 @@ export default {
     localizedTagText() {
       this.$i18n.locale;
       return this.tag ? localized(this.tag.text) : '';
+    },
+    relativeDate() {
+      this.$i18n.locale;
+      return relativeTime(this.date);
     },
   },
   methods: {

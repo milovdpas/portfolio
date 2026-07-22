@@ -27,13 +27,15 @@
             <ImageCard v-for="project in projectsLeftLoaded" :image="project.image" :tag="project.tag"
                        :title="project.title"
                        :description="project.description"
-                       :slug="project.slug"></ImageCard>
+                       :slug="project.slug"
+                       :date="project.date"></ImageCard>
           </div>
           <div class="col-md-6 right">
             <ImageCard v-for="project in projectsRightLoaded" :image="project.image" :tag="project.tag"
                        :title="project.title"
                        :description="project.description"
-                       :slug="project.slug"></ImageCard>
+                       :slug="project.slug"
+                       :date="project.date"></ImageCard>
           </div>
         </div>
         <div class="row" v-if="isMobile()">
@@ -47,7 +49,8 @@
             <ImageCard v-for="project in projectsLoaded" :image="project.image" :tag="project.tag"
                        :title="project.title"
                        :description="project.description"
-                       :slug="project.slug"></ImageCard>
+                       :slug="project.slug"
+                       :date="project.date"></ImageCard>
           </div>
         </div>
         <div class="load-more-container">
