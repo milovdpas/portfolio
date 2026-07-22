@@ -1,8 +1,8 @@
 <template>
-  <nav>
-    <button id="menu-icon" class="menu-icon" @click="toggle" :aria-expanded="open ? 'true' : 'false'"
-            :aria-label="$t('menu.toggle')">
-      M
+  <nav :class="{ open }">
+    <button id="menu-icon" class="menu-icon" :class="{ open }" @click="toggle"
+            :aria-expanded="open ? 'true' : 'false'" :aria-label="$t('menu.toggle')">
+      {{ open ? 'X' : 'M' }}
     </button>
     <div class="menu">
       <router-link to="/projects" @click="toggle" class="menu-con">
@@ -74,54 +74,10 @@ export default {
     }
   },
   methods: {
+    // The panels drop/retract via CSS transitions on .menu-con (staggered
+    // transition-delay per panel in Menu.scss); this just flips the state.
     toggle() {
-      document.getElementsByTagName('nav')[0].classList.toggle('open');
-      const menuIcon = document.getElementById('menu-icon');
-      menuIcon.classList.toggle('open');
-      menuIcon.textContent = this.open ? 'M' : 'X';
-
-      let i;
-      if (this.open === false) {
-        for (i = 0; i < 5; i++) {
-          this.drop(i)
-        }
-        this.open = true
-      } else if (this.open === true) {
-        for (i = 0; i < 5; i++) {
-          this.close(i);
-        }
-        this.open = false;
-      }
-    },
-    drop(n) {
-      const elem = document.getElementsByClassName("menu-con")[n];
-      let pos = -1 * window.innerHeight - n * 100;
-      const id = setInterval(frame, 5);
-
-      function frame() {
-        if (pos >= -10) {
-          clearInterval(id);
-          elem.style.top = 0 + 'px';
-        } else {
-          pos += 10;
-          elem.style.top = pos + 'px';
-        }
-      }
-    },
-    close(n) {
-      const elems = document.getElementsByClassName("menu-con")[n];
-      let poss = 0;
-      const ids = setInterval(frames, 5);
-
-      function frames() {
-        if (poss <= -1 * window.innerHeight) {
-          clearInterval(ids);
-          elems.style.top = -1 * window.innerHeight + 'px';
-        } else {
-          poss += -7 - n * 2;
-          elems.style.top = poss + 'px';
-        }
-      }
+      this.open = !this.open;
     },
     showInstaQr() {
       document.getElementById('popup').classList.toggle('active');
