@@ -434,7 +434,7 @@ export const projects = [
                 type: 'paragraph',
                 content: {
                     en: 'During my third year of college, my classmates and I worked on a school project for a real organization. Our task was to create an app for people with visual impairments to fill out questionnaires about buildings they visited. This project was done for Accessibility, an organization based in the Netherlands. Additionally, we were required to develop a web portal to manage all the questionnaires. The exciting part of this project was that it was open-source, and the codebase is still available <a href="https://github.com/Project-Accessibility" target="_blank">here</a>.',
-                    nl: 'In mijn derde studiejaar werkten mijn studiegenoten en ik aan een schoolproject voor een echte organisatie. Onze opdracht was een app te maken waarmee mensen met een visuele beperking vragenlijsten konden invullen over gebouwen die ze bezochten. Dit project deden we voor Accessibility, een organisatie in Nederland. Daarnaast moesten we een webportaal ontwikkelen om alle vragenlijsten te beheren. Het mooie van dit project was dat het open source was — de codebase is nog steeds <a href="https://github.com/Project-Accessibility" target="_blank">hier</a> beschikbaar.',
+                    nl: 'In mijn derde studiejaar werkten mijn studiegenoten en ik aan een schoolproject voor een echte organisatie. Onze opdracht was een app te maken waarmee mensen met een visuele beperking vragenlijsten konden invullen over gebouwen die ze bezochten. Dit project deden we voor Accessibility, een organisatie in Nederland. Daarnaast moesten we een webportaal ontwikkelen om alle vragenlijsten te beheren. Het mooie van dit project was dat het open source was. De codebase is nog steeds <a href="https://github.com/Project-Accessibility" target="_blank">hier</a> beschikbaar.',
                 }
             },
             {
@@ -618,8 +618,8 @@ export const projects = [
             {
                 type: 'paragraph',
                 content: {
-                    en: 'While the framework research was my main gig, I also got to work on a ton of side projects, 17 to be exact. Some of the most fun ones included:<br/>- <b>DPG Speler van de Wedstrijd</b>: Developing APIs and managing match data.<br/>- <b>StukTV Website</b>: Adding features for video content and viewer submissions.<br/>- <b>Legacy of Music</b>: Building a dynamic comment section with moderator tools.<br/>- <b>McDonald\'s Games</b>: Creating leaderboards for Belgian and Spanish campaigns.<br/>- <b>Donald Duck Personalized Comic</b>: Letting users create their own comic strip—over 13,000 registrations in the first week!',
-                    nl: 'Het frameworkonderzoek was mijn hoofdtaak, maar ik mocht ook aan een hoop nevenprojecten werken — 17 om precies te zijn. Een paar van de leukste:<br/>- <b>DPG Speler van de Wedstrijd</b>: API’s ontwikkelen en wedstrijddata beheren.<br/>- <b>StukTV-website</b>: features toevoegen voor videocontent en inzendingen van kijkers.<br/>- <b>Legacy of Music</b>: een dynamische commentsectie bouwen met moderatortools.<br/>- <b>McDonald\'s Games</b>: leaderboards maken voor Belgische en Spaanse campagnes.<br/>- <b>Donald Duck gepersonaliseerde strip</b>: gebruikers hun eigen stripverhaal laten maken — ruim 13.000 registraties in de eerste week!',
+                    en: 'While the framework research was my main gig, I also got to work on a ton of side projects, 17 to be exact. Some of the most fun ones included:<br/>- <b>DPG Speler van de Wedstrijd</b>: Developing APIs and managing match data.<br/>- <b>StukTV Website</b>: Adding features for video content and viewer submissions.<br/>- <b>Legacy of Music</b>: Building a dynamic comment section with moderator tools.<br/>- <b>McDonald\'s Games</b>: Creating leaderboards for Belgian and Spanish campaigns.<br/>- <b>Donald Duck Personalized Comic</b>: Letting users create their own comic strip, with over 13,000 registrations in the first week!',
+                    nl: 'Het frameworkonderzoek was mijn hoofdtaak, maar ik mocht ook aan een hoop nevenprojecten werken, 17 om precies te zijn. Een paar van de leukste:<br/>- <b>DPG Speler van de Wedstrijd</b>: API’s ontwikkelen en wedstrijddata beheren.<br/>- <b>StukTV-website</b>: features toevoegen voor videocontent en inzendingen van kijkers.<br/>- <b>Legacy of Music</b>: een dynamische commentsectie bouwen met moderatortools.<br/>- <b>McDonald\'s Games</b>: leaderboards maken voor Belgische en Spaanse campagnes.<br/>- <b>Donald Duck gepersonaliseerde strip</b>: gebruikers hun eigen stripverhaal laten maken, met ruim 13.000 registraties in de eerste week!',
                 }
             },
             {
@@ -635,8 +635,8 @@ export const projects = [
             {
                 type: 'paragraph',
                 content: {
-                    en: 'These projects weren’t just fun—they were incredibly educational. From setting up APIs to dealing with legacy code, each task helped me level up my skills.',
-                    nl: 'Deze projecten waren niet alleen leuk — ze waren ook ontzettend leerzaam. Van API’s opzetten tot omgaan met legacy code: elke taak hielp me mijn skills naar een hoger niveau te tillen.',
+                    en: 'These projects weren’t just fun, they were incredibly educational. From setting up APIs to dealing with legacy code, each task helped me level up my skills.',
+                    nl: 'Deze projecten waren niet alleen leuk, ze waren ook ontzettend leerzaam. Van API’s opzetten tot omgaan met legacy code: elke taak hielp me mijn skills naar een hoger niveau te tillen.',
                 }
             },
             {
@@ -649,8 +649,8 @@ export const projects = [
             {
                 type: 'paragraph',
                 content: {
-                    en: 'The LiveWall team was amazing—always willing to teach, help, or just share a laugh after hours. Shoutout to my mentors, the backend Platforms team, and the other interns for making every day enjoyable.',
-                    nl: 'Het LiveWall-team was geweldig — altijd bereid om iets uit te leggen, te helpen of gewoon te lachen na werktijd. Shout-out naar mijn mentoren, het backend Platforms-team en de andere stagiairs die elke dag leuk maakten.',
+                    en: 'The LiveWall team was amazing: always willing to teach, help, or just share a laugh after hours. Shoutout to my mentors, the backend Platforms team, and the other interns for making every day enjoyable.',
+                    nl: 'Het LiveWall-team was geweldig: altijd bereid om iets uit te leggen, te helpen of gewoon te lachen na werktijd. Shout-out naar mijn mentoren, het backend Platforms-team en de andere stagiairs die elke dag leuk maakten.',
                 }
             },
             {
@@ -684,8 +684,8 @@ export const projects = [
             nl: 'Tegelogy',
         },
         description: {
-            en: 'How a fake university course helped my friend crash student parties and score cheap beer—meet Tegelogy!',
-            nl: 'Hoe een nep-studierichting mijn vriend studentenfeesten binnenloodste met goedkoop bier — dit is Tegelogy!',
+            en: 'How a fake university course helped my friend crash student parties and score cheap beer. Meet Tegelogy!',
+            nl: 'Hoe een nep-studierichting mijn vriend studentenfeesten binnenloodste met goedkoop bier. Dit is Tegelogy!',
         },
         blocks: [
             {
@@ -722,8 +722,8 @@ export const projects = [
             {
                 type: 'paragraph',
                 content: {
-                    en: 'It became a running joke within our friend group, and to our surprise, the website worked like a charm. Students totally fell for it, and my friend managed to join the parties, enjoying cheap beer and great company—all thanks to his (fake) course!',
-                    nl: 'Het werd een running gag in onze vriendengroep, en tot onze verrassing werkte de website perfect. Studenten trapten er volledig in en mijn vriend kon gewoon mee naar de feesten, genietend van goedkoop bier en goed gezelschap — allemaal dankzij zijn (nep)studie!',
+                    en: 'It became a running joke within our friend group, and to our surprise, the website worked like a charm. Students totally fell for it, and my friend managed to join the parties, enjoying cheap beer and great company, all thanks to his (fake) course!',
+                    nl: 'Het werd een running gag in onze vriendengroep, en tot onze verrassing werkte de website perfect. Studenten trapten er volledig in en mijn vriend kon gewoon mee naar de feesten, genietend van goedkoop bier en goed gezelschap, allemaal dankzij zijn (nep)studie!',
                 }
             },
             {
@@ -783,8 +783,8 @@ export const projects = [
             {
                 type: 'paragraph',
                 content: {
-                    en: 'One of the wildest parts of the project was working with absolutely massive numbers—like, nonillions (yeah, that’s a 1 followed by 30 zeros!). Handling those kinds of numbers was a challenge, but it pushed me to learn how to manage big calculations without crashing the game.',
-                    nl: 'Een van de wildste onderdelen van het project was het werken met absurd grote getallen — quintiljoenen (jep, een 1 met 30 nullen!). Met zulke getallen omgaan was een uitdaging, maar het dwong me te leren hoe je grote berekeningen uitvoert zonder de game te laten crashen.',
+                    en: 'One of the wildest parts of the project was working with absolutely massive numbers, like nonillions (yeah, that’s a 1 followed by 30 zeros!). Handling those kinds of numbers was a challenge, but it pushed me to learn how to manage big calculations without crashing the game.',
+                    nl: 'Een van de wildste onderdelen van het project was het werken met absurd grote getallen, zoals quintiljoenen (jep, een 1 met 30 nullen!). Met zulke getallen omgaan was een uitdaging, maar het dwong me te leren hoe je grote berekeningen uitvoert zonder de game te laten crashen.',
                 }
             },
             {
@@ -820,8 +820,8 @@ export const projects = [
             nl: 'JET write-through cache',
         },
         description: {
-            en: 'A write-through caching layer for Just Eat Takeaway campaigns — keeping responses fast and the backend healthy under heavy load.',
-            nl: 'Een write-through cachinglaag voor Just Eat Takeaway-campagnes — voor snelle responses en een gezonde backend onder hoge druk.',
+            en: 'A write-through caching layer for Just Eat Takeaway campaigns that keeps responses fast and the backend healthy under heavy load.',
+            nl: 'Een write-through cachinglaag voor Just Eat Takeaway-campagnes die responses snel houdt en de backend gezond onder hoge druk.',
         },
         blocks: [
             {type: 'title', content: {en: 'JET write-through cache', nl: 'JET write-through cache'}},
@@ -852,8 +852,8 @@ export const projects = [
             nl: 'Rituals productlaunches',
         },
         description: {
-            en: 'The platform behind all Rituals launch campaigns — repeatable infrastructure built to survive launch-day traffic spikes.',
-            nl: 'Het platform achter alle Rituals-launches — herbruikbare infrastructuur gebouwd om launch-pieken te overleven.',
+            en: 'The platform behind all Rituals launch campaigns: repeatable infrastructure built to survive launch-day traffic spikes.',
+            nl: 'Het platform achter alle Rituals-launches: herbruikbare infrastructuur gebouwd om launch-pieken te overleven.',
         },
         blocks: [
             {type: 'title', content: {en: 'Rituals product launches', nl: 'Rituals productlaunches'}},
@@ -884,8 +884,8 @@ export const projects = [
             nl: 'Proximus Monopoly-activatie',
         },
         description: {
-            en: 'Our first big Unity activation — where I learned how a Unity game and a backend should really talk to each other.',
-            nl: 'Onze eerste grote Unity-activatie — waar ik leerde hoe een Unity-game en een backend écht met elkaar moeten communiceren.',
+            en: 'Our first big Unity activation, where I learned how a Unity game and a backend should really talk to each other.',
+            nl: 'Onze eerste grote Unity-activatie, waar ik leerde hoe een Unity-game en een backend écht met elkaar moeten communiceren.',
         },
         blocks: [
             {type: 'title', content: {en: 'Proximus Monopoly activation', nl: 'Proximus Monopoly-activatie'}},
@@ -931,8 +931,8 @@ export const projects = [
             {
                 type: 'paragraph',
                 content: {
-                    en: 'The hosting setup also became considerably more complex — a great exercise in designing infrastructure that stays manageable while the platform around it grows.',
-                    nl: 'Ook de hosting-opzet werd flink complexer — een mooie oefening in infrastructuur ontwerpen die beheersbaar blijft terwijl het platform eromheen groeit.',
+                    en: 'The hosting setup also became considerably more complex, a great exercise in designing infrastructure that stays manageable while the platform around it grows.',
+                    nl: 'Ook de hosting-opzet werd flink complexer, een mooie oefening in infrastructuur ontwerpen die beheersbaar blijft terwijl het platform eromheen groeit.',
                 }
             },
         ],
@@ -948,8 +948,8 @@ export const projects = [
             nl: 'Wehkamp',
         },
         description: {
-            en: 'A project defined by a really nice cooperation with the client — short lines and fast iterations.',
-            nl: 'Een project gekenmerkt door een hele fijne samenwerking met de klant — korte lijntjes en snelle iteraties.',
+            en: 'A project defined by a really nice cooperation with the client: short lines and fast iterations.',
+            nl: 'Een project gekenmerkt door een hele fijne samenwerking met de klant: korte lijntjes en snelle iteraties.',
         },
         blocks: [
             {type: 'title', content: {en: 'Wehkamp', nl: 'Wehkamp'}},
@@ -973,8 +973,8 @@ export const projects = [
             nl: 'Espressions',
         },
         description: {
-            en: 'A personal hobby app project — more details coming soon.',
-            nl: 'Een persoonlijk hobby-appproject — meer details volgen binnenkort.',
+            en: 'A personal hobby app project. More details coming soon.',
+            nl: 'Een persoonlijk hobby-appproject. Meer details volgen binnenkort.',
         },
         blocks: [
             {type: 'title', content: {en: 'Espressions', nl: 'Espressions'}},
@@ -998,8 +998,8 @@ export const projects = [
             nl: 'Drankspelletjes-app',
         },
         description: {
-            en: 'A party app full of drinking games — a hobby project with its own privacy policy on this site.',
-            nl: 'Een party-app vol drankspelletjes — een hobbyproject met een eigen privacybeleid op deze site.',
+            en: 'A party app full of drinking games, built as a hobby project with its own privacy policy on this site.',
+            nl: 'Een party-app vol drankspelletjes, gebouwd als hobbyproject met een eigen privacybeleid op deze site.',
         },
         blocks: [
             {type: 'title', content: {en: 'Drinking games app', nl: 'Drankspelletjes-app'}},
@@ -1023,8 +1023,8 @@ export const projects = [
             nl: 'Marathon-trainingsplanner',
         },
         description: {
-            en: 'An app that builds marathon training schedules — my running hobby combined with code.',
-            nl: 'Een app die marathon-trainingsschema’s genereert — mijn hardloophobby gecombineerd met code.',
+            en: 'An app that builds marathon training schedules: my running hobby combined with code.',
+            nl: 'Een app die marathon-trainingsschema’s genereert: mijn hardloophobby gecombineerd met code.',
         },
         blocks: [
             {type: 'title', content: {en: 'Marathon training planner', nl: 'Marathon-trainingsplanner'}},

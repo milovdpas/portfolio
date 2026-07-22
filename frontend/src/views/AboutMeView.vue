@@ -100,6 +100,7 @@ export default {
     GameOverlay,
     // Games are lazy chunks: nothing loads until Play is pressed.
     RunnerGame: defineAsyncComponent(() => import('@/components/games/RunnerGame.vue')),
+    AirHockeyGame: defineAsyncComponent(() => import('@/components/games/AirHockeyGame.vue')),
   },
   data() {
     return {
@@ -119,7 +120,7 @@ export default {
     // and the mini-game that can be played on it.
     hobbies() {
       return [
-        {name: this.$t('about.hobbies.football'), component: 'FootballField', game: null},
+        {name: this.$t('about.hobbies.football'), component: 'FootballField', game: 'AirHockeyGame'},
         {name: this.$t('about.hobbies.waterpolo'), component: 'WaterpoloField', game: null},
         {name: this.$t('about.hobbies.running'), component: 'RunningRoute', game: 'RunnerGame'},
       ];

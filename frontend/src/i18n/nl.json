@@ -170,6 +170,7 @@
     "youLose": "Verloren",
     "goal": "Goal!",
     "saved": "Gered!",
+    "blocked": "Geblokt!",
     "missed": "Gemist!",
     "choosePlayers": "Met hoeveel spelers?",
     "onePlayer": "1 speler",
@@ -182,9 +183,10 @@
     "bestTime": "Beste tijd",
     "finished": "Gefinisht!",
     "theWall": "De man met de hamer!",
-    "runnerHint": "Loop de marathon! Tik, klik of druk op spatie om over obstakels te springen. Ren door de waterposten om je energie op peil te houden, pak een biertje van een vriend voor een sprintboost (kost wel sneller energie!) — en pas op bij 30 km.",
-    "penaltyHint": "Druk op de bal, sleep naar achteren om te richten en laat los om te schieten",
-    "airHockeyHint": "Sleep je speler om de bal te raken",
+    "runnerHint": "Loop de marathon! Tik, klik of druk op spatie om over obstakels te springen. Ren door de waterposten om je energie op peil te houden, pak een biertje van een vriend voor een sprintboost (kost wel sneller energie!) en pas op bij 30 km.",
+    "penaltyHint": "Swipe de bal richting het doel om te schieten. Swipe snel voor een hard schot en maak een gebogen beweging om de bal om verdedigers en keeper heen te draaien. 3 goals uit 5 wint!",
+    "airHockeyHint": "Schiet de bal in het andere doel, wie er het eerst 5 maakt wint! Sleep je speler (rood) met muis of vinger, of gebruik de pijltjestoetsen. Speler 2 (blauw) speelt met WASD, of met een tweede vinger op een touchscreen.",
+    "winStreak": "Winstreak",
     "shot": "Schot {current} van {total}"
   }
 }

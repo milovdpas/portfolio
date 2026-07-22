@@ -170,6 +170,7 @@
     "youLose": "You lose",
     "goal": "Goal!",
     "saved": "Saved!",
+    "blocked": "Blocked!",
     "missed": "Missed!",
     "choosePlayers": "How many players?",
     "onePlayer": "1 player",
@@ -182,9 +183,10 @@
     "bestTime": "Best time",
     "finished": "Finished!",
     "theWall": "The Wall!",
-    "runnerHint": "Run the marathon! Tap, click or press space to jump over obstacles. Run through water stations to keep your energy up, grab a beer from a friend for a sprint boost (it burns energy faster!) — and watch out at 30 km.",
-    "penaltyHint": "Press the ball, drag back to aim and release to shoot",
-    "airHockeyHint": "Drag your striker to hit the ball",
+    "runnerHint": "Run the marathon! Tap, click or press space to jump over obstacles. Run through water stations to keep your energy up, grab a beer from a friend for a sprint boost (it burns energy faster!) and watch out at 30 km.",
+    "penaltyHint": "Swipe the ball towards the goal to shoot. Swipe fast for a hard shot, and curve your swipe to bend the ball around defenders and keeper. 3 goals out of 5 wins!",
+    "airHockeyHint": "Hit the ball into the other goal, first to 5 wins! Drag your player (red) with mouse or finger, or use the arrow keys. Player 2 (blue) plays with WASD, or with a second finger on touch screens.",
+    "winStreak": "Win streak",
     "shot": "Shot {current} of {total}"
   }
 }

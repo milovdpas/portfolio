@@ -168,8 +168,8 @@ export const socialSkills = [
         color: '#9c3660',
         textColor: '#FFFFFF',
         description: {
-            en: 'I communicate openly about progress, blockers and mistakes — that is how teams stay fast.',
-            nl: 'Ik communiceer open over voortgang, blokkades en fouten — zo blijft een team snel.',
+            en: 'I communicate openly about progress, blockers and mistakes. That is how teams stay fast.',
+            nl: 'Ik communiceer open over voortgang, blokkades en fouten. Zo blijft een team snel.',
         },
     },
     {
@@ -180,8 +180,8 @@ export const socialSkills = [
         color: '#FF6BB5',
         textColor: '#111112',
         description: {
-            en: 'When an employer is good to me and treats me right, I am truly loyal in return — you can see that in my years at the Friethuys and LiveWall.',
-            nl: 'Als mijn werkgever goed voor mij is en mij correct behandelt, ben ik echt loyaal — dat zie je terug in mijn jaren bij het Friethuys en LiveWall.',
+            en: 'When an employer is good to me and treats me right, I am truly loyal in return. You can see that in my years at the Friethuys and LiveWall.',
+            nl: 'Als mijn werkgever goed voor mij is en mij correct behandelt, ben ik echt loyaal. Dat zie je terug in mijn jaren bij het Friethuys en LiveWall.',
         },
     },
 ];
