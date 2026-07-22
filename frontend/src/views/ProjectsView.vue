@@ -24,14 +24,16 @@
                 {{ $t('projects.introduction') }}
               </p>
             </div>
-            <ImageCard v-for="project in projectsLeftLoaded" :image="project.image" :tag="project.tag"
+            <ImageCard v-for="project in columns.left" :key="project.slug"
+                       :image="project.image" :tag="project.tag"
                        :title="project.title"
                        :description="project.description"
                        :slug="project.slug"
                        :date="project.date"></ImageCard>
           </div>
           <div class="col-md-6 right">
-            <ImageCard v-for="project in projectsRightLoaded" :image="project.image" :tag="project.tag"
+            <ImageCard v-for="project in columns.right" :key="project.slug"
+                       :image="project.image" :tag="project.tag"
                        :title="project.title"
                        :description="project.description"
                        :slug="project.slug"
@@ -78,6 +80,13 @@ import ImageCard from "@/components/cards/ImageCard.vue";
 import {isMobile} from "@/utils/device";
 import {publishedProjects} from "@/data/projects";
 
+// Height (px) of the intro block that sits atop the left column, so the
+// balancer knows the left column starts taller (see columns()).
+const INTRO_HEIGHT = 175;
+// Fallback card height used before a card has been measured, so the very
+// first paint is already close to balanced.
+const ESTIMATED_CARD_HEIGHT = 450;
+
 export default {
   name: "ProjectsView",
   components: {
@@ -98,37 +107,75 @@ export default {
       length: projects.length,
       projects: projects,
       projectsLoaded: [],
-      projectsLeftLoaded: [],
-      projectsRightLoaded: []
+      // slug -> measured card height (px); fills in after each render so the
+      // two columns can be balanced by real height instead of card count.
+      cardHeights: {},
     }
+  },
+  computed: {
+    // Split the loaded projects across two columns, always adding the next
+    // card to whichever column is currently shorter in pixels. The left column
+    // starts "taller" because it carries the intro block, so the first card
+    // lands top-right (level with the intro) and the columns stay level at the
+    // bottom, keeping the interlocking masonry look without a dangling card.
+    columns() {
+      const left = [], right = [];
+      let leftHeight = INTRO_HEIGHT, rightHeight = 0;
+      for (const project of this.projectsLoaded) {
+        const height = this.cardHeights[project.slug] || ESTIMATED_CARD_HEIGHT;
+        if (leftHeight <= rightHeight) {
+          left.push(project);
+          leftHeight += height;
+        } else {
+          right.push(project);
+          rightHeight += height;
+        }
+      }
+      return {left, right};
+    },
   },
   mounted() {
     this.loadProjects();
   },
+  updated() {
+    // Re-render can change which cards sit in which column; re-measure so the
+    // balance settles. measureCards only writes when a height actually changes,
+    // so this converges after a pass or two rather than looping.
+    this.measureCards();
+  },
   methods: {
     isMobile,
     loadProjects() {
-      const length = this.projects.length;
-      for (let index = 0; index < length && index < this.limit; index++) {
-        const project = this.projects.shift();
-        if (index % 2 === 0)
-          this.projectsRightLoaded.push(project);
-        else
-          this.projectsLeftLoaded.push(project);
-        this.projectsLoaded.push(project);
-      }
+      this.take(this.limit);
     },
     loadMore() {
-      const length = this.projects.length;
-      if (length === 0) return;
-      for (let index = 0; index < length && index < this.steps; index++) {
-        const project = this.projects.shift();
-        if (this.projectsRightLoaded.length > this.projectsLeftLoaded.length)
-          this.projectsLeftLoaded.push(project);
-        else
-          this.projectsRightLoaded.push(project);
-        this.projectsLoaded.push(project);
+      this.take(this.steps);
+    },
+    // Move the next `count` projects from the queue into the rendered list,
+    // preserving the newest-first order from data/projects.js.
+    take(count) {
+      for (let index = 0; index < count && this.projects.length; index++) {
+        this.projectsLoaded.push(this.projects.shift());
       }
+      this.$nextTick(this.measureCards);
+    },
+    // Read each rendered card's height into cardHeights. The cards in each
+    // column render in the same order as columns.left / columns.right, so we
+    // map them back to their project by index.
+    measureCards() {
+      const read = (selector, projectsInColumn) => {
+        const elements = this.$el.querySelectorAll(selector);
+        elements.forEach((element, index) => {
+          const project = projectsInColumn[index];
+          if (!project) return;
+          const height = element.offsetHeight;
+          if (height && this.cardHeights[project.slug] !== height) {
+            this.cardHeights[project.slug] = height;
+          }
+        });
+      };
+      read('.left .image-card', this.columns.left);
+      read('.right .image-card', this.columns.right);
     },
   },
 }
