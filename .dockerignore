@@ -1,0 +1,10 @@
+# Docker build context is the repo root, so the ignore file must live here
+# (frontend/.dockerignore is not read for a root-context build). Keeps the
+# build clean and lets `npm ci` inside the image own node_modules.
+**/node_modules
+**/dist
+.git
+.github
+**/.env
+dist.zip
+docs
