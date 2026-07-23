@@ -19,8 +19,9 @@ export const publishedSlugs = [
     'jet-cache',
     'wehkamp',
     'marathon-planner',
+    'espressions',
+    'drinking-games',
 ];
 
 // Drafts, waiting for banner images + final copy:
-// 'rituals-launches', 'proximus-monopoly', 'heineken-fhmf',
-// 'espressions', 'drinking-games'
+// 'rituals-launches', 'proximus-monopoly', 'heineken-fhmf'

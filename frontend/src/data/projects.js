@@ -1045,50 +1045,140 @@ export const projects = [
     },
     {
         slug: 'espressions',
+        date: '2025-10-01',
         type: 'image',
-        draft: true,
-        image: null, // TODO: assets/images/projects/espressions/banner.png
+        image: new URL(`../assets/images/projects/espressions/banner.png`, import.meta.url).href,
         tag: TAGS.hobby,
         title: {
             en: 'Espressions',
             nl: 'Espressions',
         },
         description: {
-            en: 'A personal hobby app project. More details coming soon.',
-            nl: 'Een persoonlijk hobby-appproject. Meer details volgen binnenkort.',
+            en: 'A social check-in app for coffee lovers, like Untappd but for coffee. My excuse to build a proper new API and try out Expo and a monorepo.',
+            nl: 'Een sociale check-in-app voor koffieliefhebbers, net als Untappd maar dan voor koffie. Mijn excuus om een nette nieuwe API te bouwen en Expo en een monorepo uit te proberen.',
         },
         blocks: [
             {type: 'title', content: {en: 'Espressions', nl: 'Espressions'}},
             {
+                type: 'image',
+                src: new URL(`../assets/images/projects/espressions/banner.png`, import.meta.url).href,
+                alt: 'Espressions coffee check-in app',
+            },
+            {
                 type: 'paragraph',
                 content: {
-                    en: 'A hobby app project. Full write-up coming soon.',
-                    nl: 'Een hobby-appproject. Uitgebreid verhaal volgt binnenkort.',
+                    en: 'This was a hobby project where I wanted to refresh my app-building skills by writing a brand new API, and this time I wanted to do it really properly and professionally, which I did. The idea was to build something like Untappd, but instead of beer you use it to check in coffees, made for real coffee fanatics.',
+                    nl: 'Dit was een hobbyproject waarin ik mijn app-skills wilde opfrissen door een compleet nieuwe API te bouwen, en dit keer wilde ik het echt netjes en professioneel aanpakken, wat ook gelukt is. Het idee was om iets als Untappd te maken, maar dan check je in plaats van bier juist koffies in, gemaakt voor echte koffiefanaten.',
+                }
+            },
+            {
+                type: 'image',
+                src: new URL(`../assets/images/projects/espressions/showcase.png`, import.meta.url).href,
+                alt: 'The welcome screen, discovering coffees and a coffee detail page with social stats',
+            },
+            {
+                type: 'paragraph',
+                content: {
+                    en: 'Building it was genuinely fun. I made the app with Expo, a framework I had never used before. I normally reach for React Native, and Expo turned out to be a really good replacement for it.',
+                    nl: 'Het maken was echt leuk. Ik bouwde de app met Expo, een framework dat ik nog nooit eerder had gebruikt. Normaal pak ik React Native, en Expo bleek daar een hele goede vervanger voor te zijn.',
+                }
+            },
+            {
+                type: 'paragraph',
+                content: {
+                    en: 'It became a full social media app with its own backend: users have profiles, post coffee check-ins, and friends can react to and like each other\'s posts. I also built an algorithm for the feed, so you see a mix of your friends\' check-ins and posts from public profiles.',
+                    nl: 'Het werd een volledige social media app met een eigen backend: gebruikers hebben profielen, plaatsen koffie-check-ins, en vrienden kunnen op elkaars posts reageren en ze liken. Ook bouwde ik een algoritme voor de feed, zodat je een mix ziet van de check-ins van je vrienden en posts van openbare profielen.',
+                }
+            },
+            {
+                type: 'paragraph',
+                content: {
+                    en: 'One of the bigger challenges was the monorepo. This was the first time I really set one up, sharing types and utilities across the different applications, so it pushed me to think carefully about how to structure everything. On top of the app and its API, I also built a separate frontend to promote it.',
+                    nl: 'Een van de grotere uitdagingen was de monorepo. Dit was de eerste keer dat ik er echt een opzette, met gedeelde types en utils over de verschillende applicaties heen, dus het dwong me om goed na te denken over hoe ik alles wilde structureren. Naast de app en de API bouwde ik ook nog een aparte frontend om hem te promoten.',
+                }
+            },
+            {
+                type: 'paragraph',
+                content: {
+                    en: 'In the end I did not publish it to the Play Store or App Store. Coffee is not really my passion, I do not even drink coffee, haha, and getting an app all the way into the stores takes a lot of time, so I skipped that part for this one. I did take my drinking games app all the way into the Play Store, and you can read about that <a href="/project/drinking-games">here</a>.',
+                    nl: 'Uiteindelijk heb ik hem niet in de Play Store of App Store gepubliceerd. Koffie is niet echt mijn passie, ik drink zelf niet eens koffie, haha, en een app helemaal in de stores krijgen kost veel tijd, dus dat deel heb ik voor deze app overgeslagen. Mijn drankspelletjes-app heb ik wél helemaal in de Play Store gezet, en daarover lees je <a href="/project/drinking-games">hier</a> meer.',
                 }
             },
         ],
     },
     {
         slug: 'drinking-games',
+        date: '2025-05-01',
         type: 'image',
-        draft: true,
-        image: null, // TODO: assets/images/projects/drinking-games/banner.png
+        image: new URL(`../assets/images/projects/drinking-games/banner.png`, import.meta.url).href,
         tag: TAGS.hobby,
         title: {
             en: 'Drinking games app',
             nl: 'Drankspelletjes-app',
         },
         description: {
-            en: 'A party app full of drinking games, built as a hobby project with its own privacy policy on this site.',
-            nl: 'Een party-app vol drankspelletjes, gebouwd als hobbyproject met een eigen privacybeleid op deze site.',
+            en: 'A party app packed with drinking games, challenges and digital games. What started as a Unity side project became a full Expo rebuild, a Play Store launch, subscriptions and even my own marketing and mockup tools.',
+            nl: 'Een party-app boordevol drankspelletjes, challenges en digitale spellen. Wat begon als een Unity-zijproject werd een volledige Expo-rebuild, een Play Store-launch, abonnementen en zelfs mijn eigen marketing- en mockuptools.',
         },
         blocks: [
             {type: 'title', content: {en: 'Drinking games app', nl: 'Drankspelletjes-app'}},
             {
+                type: 'image',
+                src: new URL(`../assets/images/projects/drinking-games/banner.png`, import.meta.url).href,
+                alt: 'Drinking games app: games menu, challenges and digital games',
+            },
+            {
                 type: 'paragraph',
                 content: {
-                    en: 'A hobby app packed with drinking games for parties. Its privacy policy lives on this site: <a href="/privacy_policy_drinking_games">privacy policy</a>. Full write-up coming soon.',
-                    nl: 'Een hobby-app vol drankspelletjes voor feestjes. Het privacybeleid staat op deze site: <a href="/privacy_policy_drinking_games">privacybeleid</a>. Uitgebreid verhaal volgt binnenkort.',
+                    en: 'In the second year of my applied sciences bachelor I had a Unity course in the third period. Right after it, I used my fresh Unity skills to build a simple app with all the drinking games my friends and I played back then, and there were a lot of them. I only ever exported it as an APK, so it was Android only, and the UX was not exactly great. Still, it worked, we had a lot of fun with it over the years, and I kept adding more games. At some point I just left it as it was, and that was good enough.',
+                    nl: 'In het tweede jaar van mijn hbo-opleiding had ik in de derde periode een Unity-vak. Direct daarna gebruikte ik mijn verse Unity-skills om een simpele app te bouwen met alle drankspelletjes die mijn vrienden en ik toen speelden, en dat waren er nogal wat. Ik exporteerde hem alleen als APK, dus hij was enkel voor Android, en de UX was niet bepaald geweldig. Toch werkte hij, we hebben er jarenlang veel plezier mee gehad, en ik bleef er spelletjes aan toevoegen. Op een gegeven moment liet ik hem gewoon zoals hij was, en dat was goed genoeg.',
+                }
+            },
+            {
+                type: 'paragraph',
+                content: {
+                    en: 'After a two and a half month trip through Thailand last year, in 2025, I came back with new inspiration. I decided to rebuild the whole thing properly this time, and to actually publish it in the Play Store and App Store. In the same week I got home, in March, I rebuilt the app from scratch in Expo and added a lot of new features and even more games. New additions included drinking challenges, digital games, and support for multiple themes and languages.',
+                    nl: 'Na een reis van tweeënhalve maand door Thailand vorig jaar, in 2025, kwam ik terug met nieuwe inspiratie. Ik besloot om het geheel deze keer goed opnieuw te bouwen, en om de app echt in de Play Store en App Store te publiceren. In dezelfde week dat ik thuiskwam, in maart, bouwde ik de app volledig opnieuw in Expo en voegde ik veel nieuwe features en nog meer spellen toe. Nieuwe dingen waren onder andere drinkchallenges, digitale spellen, en ondersteuning voor meerdere thema\'s en talen.',
+                }
+            },
+            {
+                type: 'image',
+                src: new URL(`../assets/images/projects/drinking-games/showcase.png`, import.meta.url).href,
+                alt: 'Store screenshots: games with your mates, digital games and Tic Tac Toe',
+            },
+            {
+                type: 'paragraph',
+                content: {
+                    en: 'Then came the process of actually getting an app into the Play Store, and well, I really underestimated how much effort that would take. You need ten testers who test your app every single day for fourteen consecutive days, which turned out to be surprisingly hard to arrange. I ended up finding people on Reddit who were in the exact same boat, and we all tested each other\'s apps every day and gave feedback. It cost me a good chunk of time every day and it was hard to keep it up, but eventually I pulled it off and got the app into the Play Store.',
+                    nl: 'Daarna kwam het proces om een app daadwerkelijk in de Play Store te krijgen, en tja, ik had echt onderschat hoeveel werk dat zou zijn. Je hebt tien testers nodig die je app veertien dagen achter elkaar elke dag testen, en dat bleek verrassend lastig te regelen. Uiteindelijk vond ik mensen op Reddit die in precies hetzelfde schuitje zaten, en we testten allemaal elke dag elkaars apps en gaven feedback. Het kostte me elke dag flink wat tijd en het was lastig om vol te houden, maar uiteindelijk lukte het en kreeg ik de app in de Play Store.',
+                }
+            },
+            {
+                type: 'paragraph',
+                content: {
+                    en: 'After that I added subscriptions and purchases, so users can either pay once for the premium features or take a subscription of one euro per month. This was a genuinely challenging part of the project, since I had never worked with subscriptions or published an app in a store before.',
+                    nl: 'Daarna voegde ik abonnementen en aankopen toe, zodat gebruikers eenmalig voor de premiumfeatures kunnen betalen of een abonnement van één euro per maand kunnen nemen. Dit was een echt uitdagend deel van het project, want ik had nog nooit met abonnementen gewerkt of een app in een store gepubliceerd.',
+                }
+            },
+            {
+                type: 'paragraph',
+                content: {
+                    en: 'From there I kept adding more drinking games and challenges and improving the code. The one thing I did not really do was market the app. So after sitting still for about half a year, I started promoting it by building a marketing tool that generates AI videos about the drinking games in the app and explains them. It let me pump out videos really fast, so I could post one to TikTok and Instagram every day.',
+                    nl: 'Daarna bleef ik meer drankspelletjes en challenges toevoegen en de code verbeteren. Het enige wat ik eigenlijk niet deed, was de app promoten. Dus na ongeveer een half jaar stilzitten begon ik met promoten door een marketingtool te bouwen die AI-video\'s maakt over de drankspelletjes in de app en ze uitlegt. Daarmee kon ik razendsnel video\'s maken, zodat ik elke dag een video op TikTok en Instagram kon plaatsen.',
+                }
+            },
+            {
+                type: 'paragraph',
+                content: {
+                    en: 'I also started preparing the app for the App Store, which, unfortunately, I am still trying to get into. One of the first hurdles was that I had to deliver app mockups for a lot of different screen sizes, which was really hard to make, and every online tool for it cost money. So naturally I built my own mockup screenshot generator to create all the mockups and banners for the store page. The main reason Apple did not want to accept the app, though, was that they said there were already enough apps in the same category. I did not really agree, but after going back and forth with them a LOT of times and changing the app more than once, I could not find a way in without drastically changing the concept. So for now it is on hold, but I will get an app into the App Store one day. Stupid iOS, I really am not a fan, haha.',
+                    nl: 'Ik begon ook met het voorbereiden van de app voor de App Store, waar ik helaas nog steeds probeer binnen te komen. Een van de eerste hobbels was dat ik app-mockups moest aanleveren voor heel veel verschillende schermformaten, wat echt lastig te maken was, en elke online tool ervoor kostte geld. Dus bouwde ik logischerwijs mijn eigen mockup-screenshotgenerator om alle mockups en banners voor de storepagina te maken. De belangrijkste reden dat Apple de app niet wilde accepteren, was echter dat ze zeiden dat er al genoeg apps in dezelfde categorie waren. Ik was het daar niet echt mee eens, maar na heel veel heen en weer met ze en de app meerdere keren aangepast te hebben, vond ik geen manier om binnen te komen zonder het concept drastisch te veranderen. Dus voorlopig ligt het stil, maar ik krijg ooit een app in de App Store. Stomme iOS, ik ben er echt geen fan van, haha.',
+                }
+            },
+            {
+                type: 'paragraph',
+                content: {
+                    en: 'The app is live on the <a href="https://play.google.com/store/apps/details?id=com.milovdpas.drinkinggames" target="_blank" rel="noopener">Google Play Store</a>.',
+                    nl: 'De app staat live in de <a href="https://play.google.com/store/apps/details?id=com.milovdpas.drinkinggames" target="_blank" rel="noopener">Google Play Store</a>.',
                 }
             },
         ],
