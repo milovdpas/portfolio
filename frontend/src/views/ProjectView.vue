@@ -8,11 +8,13 @@
             <h1 v-html="projectItem.content"></h1>
             <p v-if="relativeDate" class="project-date">{{ relativeDate }}</p>
           </template>
-          <div v-if="projectItem.type==='image'" class="image" :style="`background: ${projectItem.background};`">
+          <div v-if="projectItem.type==='image'" class="image clickable" :style="`background: ${projectItem.background};`"
+               @click="openGallery(projectItem.galleryIndex)">
             <img :width="projectItem.width" :src="projectItem.src" :alt="projectItem.alt"/>
           </div>
-          <div v-if="projectItem.type==='video'" class="video" :style="`background: ${projectItem.background};`">
-            <video controls :width="projectItem.width">
+          <div v-if="projectItem.type==='video'" class="video clickable" :style="`background: ${projectItem.background};`"
+               @click="openGallery(projectItem.galleryIndex)">
+            <video controls :width="projectItem.width" @click.stop>
               <source :src="projectItem.src" type="video/mp4" />
 
               Download the
@@ -24,6 +26,7 @@
         </div>
       </div>
     </div>
+    <MediaGallery v-if="galleryOpen" :items="galleryItems" :start-index="galleryStart" @close="galleryOpen = false"/>
     <Footer/>
   </div>
 </template>
@@ -32,17 +35,23 @@
 
 import Menu from "@/components/Menu.vue";
 import Footer from "@/components/Footer.vue";
+import MediaGallery from "@/components/MediaGallery.vue";
 import {getProject} from "@/data/projects";
 import {localized} from "@/i18n";
 import {relativeTime} from "@/utils/relativeTime";
 
+// Block types that appear in the fullscreen media gallery.
+const GALLERY_TYPES = ['image', 'video'];
+
 export default {
   name: "ProjectView",
   props: {},
-  components: {Footer, Menu},
+  components: {Footer, Menu, MediaGallery},
   data() {
     return {
       project: getProject(this.$route.params.slug),
+      galleryOpen: false,
+      galleryStart: 0,
     }
   },
   created() {
@@ -58,14 +67,35 @@ export default {
       if (!this.project) {
         return [];
       }
-      return this.project.blocks.map(block => ({
-        ...block,
-        content: localized(block.content),
-      }));
+      // Assign each image/video block its position within the gallery so a
+      // click can open the lightbox on the right item.
+      let galleryIndex = -1;
+      return this.project.blocks.map(block => {
+        const mapped = {...block, content: localized(block.content)};
+        if (GALLERY_TYPES.includes(block.type)) {
+          mapped.galleryIndex = ++galleryIndex;
+        }
+        return mapped;
+      });
+    },
+    // All image and video blocks, in order, for the lightbox to page through.
+    galleryItems() {
+      if (!this.project) {
+        return [];
+      }
+      return this.project.blocks
+        .filter(block => GALLERY_TYPES.includes(block.type))
+        .map(block => ({type: block.type, src: block.src, alt: block.alt}));
     },
     relativeDate() {
       this.$i18n.locale;
       return this.project ? relativeTime(this.project.date) : '';
+    },
+  },
+  methods: {
+    openGallery(index) {
+      this.galleryStart = index;
+      this.galleryOpen = true;
     },
   },
 }
@@ -100,15 +130,35 @@ export default {
         img {
           max-width: 100%;
         }
+
+        &.clickable {
+          cursor: zoom-in;
+
+          img {
+            transition: opacity 0.15s ease;
+          }
+
+          &:hover img {
+            opacity: 0.9;
+          }
+        }
       }
 
       .video {
         display: flex;
         justify-content: center;
         min-width: 100%;
+        padding: 28px 0;
+        border-radius: 8px;
+
+        &.clickable {
+          cursor: zoom-in;
+        }
 
         video {
           max-width: 100%;
+          border-radius: 6px;
+          cursor: auto; // its own controls handle interaction
         }
       }
 
