@@ -1095,25 +1095,84 @@ export const projects = [
     },
     {
         slug: 'marathon-planner',
+        date: '2026-06-23',
         type: 'image',
-        draft: true,
-        image: null, // TODO: assets/images/projects/marathon-planner/banner.png
+        image: new URL(`../assets/images/projects/marathon-planner/banner.png`, import.meta.url).href,
         tag: TAGS.hobby,
         title: {
             en: 'Marathon training planner',
             nl: 'Marathon-trainingsplanner',
         },
         description: {
-            en: 'An app that builds marathon training schedules: my running hobby combined with code.',
-            nl: 'Een app die marathon-trainingsschema’s genereert: mijn hardloophobby gecombineerd met code.',
+            en: 'A marathon training planner I built for my own races: design a plan, let an AI schedule it, then log, track and reschedule your runs.',
+            nl: 'Een marathon-trainingsplanner die ik voor mijn eigen races bouwde: stel een plan samen, laat een AI het inplannen, en log, volg en verschuif daarna je trainingen.',
         },
         blocks: [
             {type: 'title', content: {en: 'Marathon training planner', nl: 'Marathon-trainingsplanner'}},
             {
+                type: 'image',
+                src: new URL(`../assets/images/projects/marathon-planner/banner.png`, import.meta.url).href,
+                alt: 'Marathon training planner dashboard with a countdown to race day',
+            },
+            {
                 type: 'paragraph',
                 content: {
-                    en: 'A hobby project that generates marathon training schedules, combining my running hobby with code. Full write-up coming soon.',
-                    nl: 'Een hobbyproject dat marathon-trainingsschema’s genereert en zo mijn hardloophobby met code combineert. Uitgebreid verhaal volgt binnenkort.',
+                    en: 'I am running a marathon in October 2026 and a backyard ultra in March 2027, so I needed a way to plan my runs and train more consistently.',
+                    nl: 'Ik loop in oktober 2026 een marathon en in maart 2027 een backyard ultra, dus ik had een manier nodig om mijn hardlooptrainingen te plannen en consistenter te trainen.',
+                }
+            },
+            {
+                type: 'paragraph',
+                content: {
+                    en: 'Back in February 2026 I just asked ChatGPT to put a training schedule together, but it kept losing the context. It was constantly wrong about what day it actually was and which workout it was supposed to update.',
+                    nl: 'In februari 2026 vroeg ik ChatGPT gewoon om een trainingsschema op te stellen, maar het bleef de context kwijtraken. Het had steeds verkeerd welke dag het eigenlijk was en welke training het moest aanpassen.',
+                }
+            },
+            {
+                type: 'paragraph',
+                content: {
+                    en: 'So I built this: a marathon training planner where you put a plan together through an interface, and at the end you hand that plan to an AI. The AI generates a full schedule for you, which you then import back into the app.',
+                    nl: 'Daarom bouwde ik dit: een marathon-trainingsplanner waarin je via een interface een plan samenstelt, en dat plan aan het eind aan een AI geeft. De AI genereert een compleet schema voor je, dat je vervolgens weer in de app importeert.',
+                }
+            },
+            {
+                type: 'image',
+                src: new URL(`../assets/images/projects/marathon-planner/showcase.png`, import.meta.url).href,
+                alt: 'Building a plan, the training calendar and the statistics overview',
+            },
+            {
+                type: 'paragraph',
+                content: {
+                    en: 'From there the app does the rest. You can easily change workouts, log what you actually ran with your pace and time, and keep an eye on a calendar and a stats overview. It even shows the weather for your training days, and you can connect your Google Drive to save your plans to the cloud.',
+                    nl: 'Vanaf daar doet de app de rest. Je kunt eenvoudig trainingen aanpassen, loggen wat je echt gelopen hebt met je tempo en tijd, en alles bijhouden via een kalender en een statistiekenoverzicht. Het laat zelfs het weer voor je trainingsdagen zien, en je kunt je Google Drive koppelen om je plannen in de cloud op te slaan.',
+                }
+            },
+            {
+                type: 'video',
+                src: new URL(`../assets/videos/projects/marathon-planner.mp4`, import.meta.url).href,
+                width: 340,
+                background: 'radial-gradient(circle at 50% 35%, #ff8a5c 0%, #f4512c 58%, #d83c15 100%)',
+                alt: 'Screen recording of the marathon training planner in action',
+            },
+            {
+                type: 'paragraph',
+                content: {
+                    en: 'The part I like most is rescheduling. When something comes up, a festival, or in my real case a skin infection on my leg, I just export the plan and give it to the AI. Because it now has all the context of the plan, we can reshuffle the trainings in no time, so I can still finish this October with a good time.',
+                    nl: 'Wat ik het leukst vind, is het herplannen. Als er iets tussenkomt, een festival, of in mijn geval wondroos op mijn been, exporteer ik gewoon het plan en geef ik het aan de AI. Omdat die nu alle context van het plan heeft, schuiven we de trainingen zo weer om, zodat ik deze oktober alsnog met een goede tijd kan finishen.',
+                }
+            },
+            {
+                type: 'paragraph',
+                content: {
+                    en: 'In the meantime friends, family and colleagues have started using it too. That is pretty validating: even though I originally built it just for myself, it feels rewarding to help other people with something you made, even if it is only a small group.',
+                    nl: 'Inmiddels zijn ook vrienden, familie en collega\'s het gaan gebruiken. Dat is best bevestigend: ook al bouwde ik het eigenlijk alleen voor mezelf, het voelt waardevol om andere mensen te kunnen helpen met iets wat je hebt gemaakt, ook al is het maar een kleine groep.',
+                }
+            },
+            {
+                type: 'paragraph',
+                content: {
+                    en: 'The code lives on GitHub: <a href="https://github.com/milovdpas/marathon_schema" target="_blank" rel="noopener">marathon_schema</a>.',
+                    nl: 'De code staat op GitHub: <a href="https://github.com/milovdpas/marathon_schema" target="_blank" rel="noopener">marathon_schema</a>.',
                 }
             },
         ],
