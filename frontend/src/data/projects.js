@@ -1157,8 +1157,8 @@ export const projects = [
             {
                 type: 'paragraph',
                 content: {
-                    en: 'The part I like most is rescheduling. When something comes up, a festival, or in my real case a skin infection on my leg, I just export the plan and give it to the AI. Because it now has all the context of the plan, we can reshuffle the trainings in no time, so I can still finish this October with a good time.',
-                    nl: 'Wat ik het leukst vind, is het herplannen. Als er iets tussenkomt, een festival, of in mijn geval wondroos op mijn been, exporteer ik gewoon het plan en geef ik het aan de AI. Omdat die nu alle context van het plan heeft, schuiven we de trainingen zo weer om, zodat ik deze oktober alsnog met een goede tijd kan finishen.',
+                    en: 'One of my favourite features is how easy rescheduling has become. When something comes up, a festival, or in my real case a skin infection on my leg, I just export the plan and give it to the AI. Because it now has all the context of the plan, we can reshuffle the trainings in no time, so I can still finish this October with a good time.',
+                    nl: 'Een van mijn favoriete features is hoe makkelijk het herplannen nu gaat. Als er iets tussenkomt, een festival, of in mijn geval wondroos op mijn been, exporteer ik gewoon het plan en geef ik het aan de AI. Omdat die nu alle context van het plan heeft, schuiven we de trainingen zo weer om, zodat ik deze oktober alsnog met een goede tijd kan finishen.',
                 }
             },
             {
