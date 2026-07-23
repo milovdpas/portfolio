@@ -982,25 +982,63 @@ export const projects = [
     },
     {
         slug: 'wehkamp',
+        date: '2024-11-01',
         type: 'image',
-        draft: true,
-        image: null, // TODO: assets/images/projects/wehkamp/banner.png
+        image: new URL(`../assets/images/projects/wehkamp/banner.png`, import.meta.url).href,
         tag: TAGS.livewall,
         title: {
-            en: 'Wehkamp',
-            nl: 'Wehkamp',
+            en: 'Wehkamp Wannagive Days',
+            nl: 'Wehkamp Wannagive Days',
         },
         description: {
-            en: 'A project defined by a really nice cooperation with the client: short lines and fast iterations.',
-            nl: 'Een project gekenmerkt door een hele fijne samenwerking met de klant: korte lijntjes en snelle iteraties.',
+            en: 'An advent calendar for Wehkamp, the smoothest client collaboration I had had up to that point, and the relaunch that taught me never to take that for granted.',
+            nl: 'Een adventskalender voor Wehkamp, de fijnste klantsamenwerking die ik tot dan toe had gehad, en de relaunch die me leerde dat nooit als vanzelfsprekend te zien.',
         },
         blocks: [
-            {type: 'title', content: {en: 'Wehkamp', nl: 'Wehkamp'}},
+            {type: 'title', content: {en: 'Wehkamp Wannagive Days', nl: 'Wehkamp Wannagive Days'}},
+            {
+                type: 'image',
+                src: new URL(`../assets/images/projects/wehkamp/banner.png`, import.meta.url).href,
+                alt: 'Wehkamp Wannagive Days landing screen',
+            },
             {
                 type: 'paragraph',
                 content: {
-                    en: 'What made the Wehkamp project stand out was the cooperation with the client: short lines, quick decisions and fast iterations made this one of the smoothest projects I have worked on.',
-                    nl: 'Wat het Wehkamp-project bijzonder maakte was de samenwerking met de klant: korte lijntjes, snelle beslissingen en vlotte iteraties maakten dit een van de soepelste projecten waaraan ik heb gewerkt.',
+                    en: 'In 2024 we built the Wannagive Days advent calendar for Wehkamp. Every day in the run-up to Christmas you could open a new package, collect cards and build up a streak. The longer your streak, the more you unlocked: discount coupons on things like Christmas sweaters and chances to win prizes.',
+                    nl: 'In 2024 bouwden we de Wannagive Days-adventskalender voor Wehkamp. Elke dag in de aanloop naar kerst kon je een nieuw pakket openen, kaartjes verzamelen en een reeks opbouwen. Hoe langer je reeks, hoe meer je vrijspeelde: kortingscoupons op bijvoorbeeld kersttruien en kansen om prijzen te winnen.',
+                }
+            },
+            {
+                type: 'image',
+                src: new URL(`../assets/images/projects/wehkamp/showcase.png`, import.meta.url).href,
+                alt: 'Collecting cards, redeeming a discount and building a daily streak',
+            },
+            {
+                type: 'paragraph',
+                content: {
+                    en: 'What made this project special was the collaboration with the client. It was the smoothest client cooperation I had had up to that point. The external connections we set up with Wehkamp came together easily, testing everything went really well, and the communication back and forth was just really good. It was honestly my favourite project of that year.',
+                    nl: 'Wat dit project bijzonder maakte, was de samenwerking met de klant. Het was de fijnste klantsamenwerking die ik tot dan toe had gehad. De externe koppelingen die we met Wehkamp opzetten kwamen soepel tot stand, het testen ging heel goed, en de communicatie over en weer was gewoon heel prettig. Het was eerlijk gezegd mijn favoriete project van dat jaar.',
+                }
+            },
+            {
+                type: 'paragraph',
+                content: {
+                    en: 'It reminded me that a project is not only about how cool the application is that you build, but just as much about how you experience the development along the way. It sounds a little corny, but it is really true.',
+                    nl: 'Het herinnerde me eraan dat een project niet alleen draait om hoe gaaf de applicatie is die je bouwt, maar net zo goed om hoe je het bouwen zelf ervaart. Het klinkt misschien een beetje soft, maar het is echt zo.',
+                }
+            },
+            {
+                type: 'paragraph',
+                content: {
+                    en: 'A year later we did a relaunch, and that time it felt different. Wehkamp was in the middle of another big launch, so they could not give this relaunch their full attention. That left us with very little time to test the older connections, and when we went live it caused some bugs.',
+                    nl: 'Een jaar later deden we een relaunch, en dat voelde anders. Wehkamp zat middenin een andere grote launch, waardoor ze deze relaunch niet hun volle aandacht konden geven. Daardoor hadden we heel weinig tijd om de oudere koppelingen te testen, en toen we live gingen leverde dat wat bugs op.',
+                }
+            },
+            {
+                type: 'paragraph',
+                content: {
+                    en: 'We fixed them pretty quickly, but the real takeaway stuck with me: a relaunch is never automatically smooth sailing, even when the collaboration was so good the year before. Every relaunch deserves the same attention and the same testing as building the activation for the very first time. That lesson has made me a sharper communicator and a sharper developer.',
+                    nl: 'We hadden ze vrij snel opgelost, maar de echte les is me bijgebleven: een relaunch verloopt nooit automatisch vlekkeloos, zelfs niet als de samenwerking het jaar ervoor zo goed was. Elke relaunch verdient dezelfde aandacht en dezelfde tests als het voor het eerst bouwen van een activatie. Die les heeft me een scherpere communicator en een scherpere developer gemaakt.',
                 }
             },
         ],

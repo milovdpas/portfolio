@@ -17,8 +17,9 @@ export const publishedSlugs = [
     'tegelogy',
     'city-life-game',
     'jet-cache',
+    'wehkamp',
 ];
 
 // Drafts, waiting for banner images + final copy:
 // 'rituals-launches', 'proximus-monopoly', 'heineken-fhmf',
-// 'wehkamp', 'espressions', 'drinking-games', 'marathon-planner'
+// 'espressions', 'drinking-games', 'marathon-planner'
