@@ -918,33 +918,64 @@ export const projects = [
     },
     {
         slug: 'proximus-monopoly',
+        date: '2025-05-01',
         type: 'image',
-        draft: true,
-        image: null, // TODO: assets/images/projects/proximus-monopoly/banner.png
+        image: new URL(`../assets/images/projects/proximus-monopoly/banner.png`, import.meta.url).href,
         tag: TAGS.livewall,
         title: {
-            en: 'Proximus Monopoly activation',
-            nl: 'Proximus Monopoly-activatie',
+            en: 'Proxipolus',
+            nl: 'Proxipolus',
         },
         description: {
-            en: 'Our first big Unity activation, where I learned how a Unity game and a backend should really talk to each other.',
-            nl: 'Onze eerste grote Unity-activatie, waar ik leerde hoe een Unity-game en een backend écht met elkaar moeten communiceren.',
+            en: 'Proximus\'s Monopoly-style activation game with a 3D city, mini-games and rewards. I built the backend and learned how much good flowcharts and communication matter on a big team.',
+            nl: 'De Monopoly-achtige activatiegame van Proximus met een 3D-stad, mini-games en rewards. Ik bouwde de backend en leerde hoeveel goede flowcharts en communicatie waard zijn in een groot team.',
         },
         blocks: [
-            {type: 'title', content: {en: 'Proximus Monopoly activation', nl: 'Proximus Monopoly-activatie'}},
+            {type: 'title', content: {en: 'Proxipolus', nl: 'Proxipolus'}},
+            {
+                type: 'image',
+                src: new URL(`../assets/images/projects/proximus-monopoly/banner.png`, import.meta.url).href,
+                alt: 'Proxipolus: the bonanza mini-game, the 3D city board and a runner mini-game',
+            },
             {
                 type: 'paragraph',
                 content: {
-                    en: 'The Proximus Monopoly activation was our first big Unity production and my first close cooperation with a Unity team. My side: the backend that the game talked to for authentication, game state and rewards.',
-                    nl: 'De Proximus Monopoly-activatie was onze eerste grote Unity-productie en mijn eerste nauwe samenwerking met een Unity-team. Mijn kant: de backend waar de game mee praatte voor authenticatie, gamestatus en rewards.',
+                    en: 'Proxipolus was Proximus\'s big Monopoly-style activation game. Players move around a 3D city board, reconnect connector tiles, play mini-games, spin for prizes and redeem their tickets for real rewards and vouchers. My role on the project was the backend.',
+                    nl: 'Proxipolus was de grote Monopoly-achtige activatiegame van Proximus. Spelers bewegen over een 3D-stadsbord, verbinden connector-tegels opnieuw, spelen mini-games, draaien aan het rad voor prijzen en wisselen hun tickets in voor echte rewards en vouchers. Mijn rol in het project was de backend.',
                 }
             },
             {
                 type: 'paragraph',
                 content: {
-                    en: 'The biggest lesson was communication between disciplines: agreeing early on contracts between the game and the backend (endpoints, payloads, error behaviour) saves days of debugging later. This project shaped how we set up Unity-to-backend cooperation ever since.',
-                    nl: 'De grootste les was communicatie tussen disciplines: vroeg afspraken maken over de contracten tussen game en backend (endpoints, payloads, foutafhandeling) scheelt later dagen debuggen. Dit project heeft bepaald hoe we sindsdien Unity-backend-samenwerkingen opzetten.',
+                    en: 'The most challenging part was actually the communication. A whole team of new Unity developers had been contracted while I was away travelling in Thailand, so once I was back I had to get everyone on the same page about how the game and the backend should talk to each other. This is where I feel I really shined. The collaboration went really well, and the flowcharts I made to map everything out were genuinely appreciated by the team.',
+                    nl: 'Het meest uitdagende deel was eigenlijk de communicatie. Er was een heel team nieuwe Unity-developers ingehuurd terwijl ik op reis was in Thailand, dus toen ik terug was moest ik iedereen op één lijn krijgen over hoe de game en de backend met elkaar zouden praten. Dit is waar ik echt uitblonk, denk ik. De samenwerking ging heel goed, en de flowcharts die ik maakte om alles in kaart te brengen werden echt gewaardeerd door het team.',
                 }
+            },
+            {
+                type: 'paragraph',
+                content: {
+                    en: 'It stuck with me. Ever since this project I make flowcharts and ERDs at the start of every new project, because they turned out to be such a nice add-on when you are working together with other teammates.',
+                    nl: 'Het is me bijgebleven. Sinds dit project maak ik bij elk nieuw project flowcharts en ERD\'s, omdat ze zo\'n fijne toevoeging bleken te zijn wanneer je met andere teamgenoten samenwerkt.',
+                }
+            },
+            {
+                type: 'image',
+                src: new URL(`../assets/images/projects/proximus-monopoly/showcase.png`, import.meta.url).href,
+                alt: 'Board navigation, the rewards and vouchers screen, and reconnecting all connector tiles',
+            },
+            {
+                type: 'paragraph',
+                content: {
+                    en: 'On the backend itself, the hardest part was the logic around tags, attributes and Airship push notifications. It had to support a lot of users in a very short period, so I really had to think about a solution that could handle that load. I ended up with multiple cron jobs combined with a Google Cloud Tasks queue to push all the API requests through quickly, and I made sure there was proper retry logic for any calls to the Airship API that failed.',
+                    nl: 'Op de backend zelf was het lastigste de logica rond tags, attributen en Airship-pushnotificaties. Het moest in korte tijd heel veel gebruikers aankunnen, dus ik moest echt nadenken over een oplossing die die load kon dragen. Uiteindelijk kwam ik uit op meerdere cron jobs in combinatie met een Google Cloud Tasks-queue om alle API-verzoeken snel te verwerken, en ik zorgde voor goede retry-logica voor alle calls naar de Airship API die faalden.',
+                }
+            },
+            {
+                type: 'video',
+                src: new URL(`../assets/videos/projects/proximus.mp4`, import.meta.url).href,
+                width: 340,
+                background: 'radial-gradient(circle at 50% 35%, #7b52b8 0%, #4d2c86 58%, #2c1852 100%)',
+                alt: 'Highlight reel of the Proxipolus game',
             },
         ],
     },

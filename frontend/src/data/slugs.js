@@ -21,7 +21,8 @@ export const publishedSlugs = [
     'marathon-planner',
     'espressions',
     'drinking-games',
+    'proximus-monopoly',
 ];
 
 // Drafts, waiting for banner images + final copy:
-// 'rituals-launches', 'proximus-monopoly', 'heineken-fhmf'
+// 'rituals-launches', 'heineken-fhmf'
