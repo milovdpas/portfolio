@@ -18,7 +18,7 @@
     </div>
     <div class="col-md-6 right">
       <h2 class="footer-header">{{ $t('footer.contactMe') }}</h2>
-      <Form :submit="submit">
+      <Form :submit="submit" :disabled="!isFormValid">
         <Label>{{ $t('footer.emailAddress') }}</Label>
         <Input v-model="form.email" name="email" type="text" :placeholder="$t('footer.emailAddress')"></Input>
         <Label>{{ $t('footer.name') }}</Label>
@@ -63,12 +63,22 @@ export default {
       error: null
     }
   },
+  computed: {
+    // The send button is only enabled once a name, a valid email address and a
+    // comment have all been filled in.
+    isFormValid() {
+      const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.form.email.trim());
+      const nameValid = this.form.name.trim().length > 0;
+      const messageValid = this.form.message.trim().length > 0;
+      return nameValid && emailValid && messageValid;
+    }
+  },
   methods: {
     scrollToTop() {
       window.scrollTo(0, 0);
     },
     async submit() {
-      if(this.loading)
+      if (this.loading || !this.isFormValid)
         return;
       this.loading = true;
       try {

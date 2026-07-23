@@ -1,5 +1,5 @@
 <template>
-  <button class="send-button" @click="method">
+  <button class="send-button" :disabled="disabled" @click="method">
     <span class="default">Send</span>
     <span class="success">Sent</span>
     <div class="left"></div>
@@ -13,7 +13,8 @@ import { gsap } from "gsap";
 export default {
   name: "SendButton",
   props:{
-    method: Function
+    method: Function,
+    disabled: {type: Boolean, default: false}
   },
   mounted(){
     document.querySelectorAll('.send-button').forEach(button => {
@@ -132,4 +133,12 @@ export default {
 </script>
 
 <style lang="scss" src="./SendButton.scss" scoped/>
+
+<style scoped>
+/* Disabled until the contact form has a valid email + comment */
+.send-button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+</style>
 

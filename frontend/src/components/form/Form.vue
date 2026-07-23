@@ -1,7 +1,7 @@
 <template>
   <div id="form" class="form">
     <slot></slot>
-    <SendButton :method="submit"/>
+    <SendButton :method="submit" :disabled="disabled"/>
   </div>
 </template>
 
@@ -16,6 +16,7 @@ export default {
   },
   props: {
     submit: Function,
+    disabled: {type: Boolean, default: false},
   },
   methods: {
     isMobile

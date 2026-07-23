@@ -136,7 +136,7 @@
   }
 }
 
-.send-button:hover{
+.send-button:not(:disabled):hover{
   --text: #0F68B0;
   .left,
   .right {
