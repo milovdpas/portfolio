@@ -567,7 +567,7 @@ export const projects = [
     },
     {
         slug: 'internship-livewall',
-        date: '2021-08-01', // TODO: confirm real date
+        date: '2022-01-01', // completion; internship ran Sept 2021 - Jan 2022
         type: 'image',
         image: new URL(`../assets/images/projects/internship-livewall/banner.jpg`, import.meta.url).href,
         tag: TAGS.livewallInternship,
