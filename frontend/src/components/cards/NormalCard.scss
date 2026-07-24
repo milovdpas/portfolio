@@ -1,7 +1,7 @@
 .normal-card {
   min-height: 100%;
   padding: 5px;
-  width: 300px;
+  width: 350px; // match the projects (ImageCard) width
   .card {
     height: 100%;
     box-shadow: 0 2px 5px rgb(0 0 0 / 20%);
@@ -45,6 +45,10 @@
 
 @include mobile {
   .normal-card {
+    // Match ImageCard on mobile so experience/about cards are the same width
+    // as the projects cards.
+    width: 100%;
+    max-width: 500px;
     .card{
       max-height: 375.5px;
     }

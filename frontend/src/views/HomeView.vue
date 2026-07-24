@@ -19,24 +19,57 @@
       </section>
       <section id="projects" class="section">
         <h2>{{ $t('home.projects') }}</h2>
-        <SlideShow :cards="projectCards"/>
-        <div class="button-container">
-          <MoreButton link="/projects">{{ $t('home.showMore') }}</MoreButton>
-        </div>
+        <!-- Desktop wraps slideshow + button so the button can align to the
+             cards' right edge; mobile stays unwrapped so Swiper (pagination,
+             equal slide heights) behaves exactly as before. -->
+        <template v-if="!isMobile()">
+          <div class="section-inner">
+            <SlideShow :cards="projectCards"/>
+            <div class="button-container">
+              <MoreButton link="/projects">{{ $t('home.showMore') }}</MoreButton>
+            </div>
+          </div>
+        </template>
+        <template v-else>
+          <SlideShow :cards="projectCards"/>
+          <div class="button-container">
+            <MoreButton link="/projects">{{ $t('home.showMore') }}</MoreButton>
+          </div>
+        </template>
       </section>
       <section id="experience" class="section">
         <h2>{{ $t('home.experience') }}</h2>
-        <SlideShow :cards="experienceCards"/>
-        <div class="button-container">
-          <MoreButton link="/experience">{{ $t('home.readMore') }}</MoreButton>
-        </div>
+        <template v-if="!isMobile()">
+          <div class="section-inner">
+            <SlideShow :cards="experienceCards"/>
+            <div class="button-container">
+              <MoreButton link="/experience">{{ $t('home.readMore') }}</MoreButton>
+            </div>
+          </div>
+        </template>
+        <template v-else>
+          <SlideShow :cards="experienceCards"/>
+          <div class="button-container">
+            <MoreButton link="/experience">{{ $t('home.readMore') }}</MoreButton>
+          </div>
+        </template>
       </section>
       <section id="about_me" class="section">
         <h2>{{ $t('home.aboutMe') }}</h2>
-        <SlideShow :cards="aboutCards"/>
-        <div class="button-container">
-          <MoreButton link="/about_me">{{ $t('home.learnMore') }}</MoreButton>
-        </div>
+        <template v-if="!isMobile()">
+          <div class="section-inner">
+            <SlideShow :cards="aboutCards"/>
+            <div class="button-container">
+              <MoreButton link="/about_me">{{ $t('home.learnMore') }}</MoreButton>
+            </div>
+          </div>
+        </template>
+        <template v-else>
+          <SlideShow :cards="aboutCards"/>
+          <div class="button-container">
+            <MoreButton link="/about_me">{{ $t('home.learnMore') }}</MoreButton>
+          </div>
+        </template>
       </section>
     </main>
     <section>
@@ -321,11 +354,21 @@ h1:nth-child(2) {
     margin-bottom: 1em;
   }
 
+  // Shrink-wrap to the cards' width and centre it, so the button below can
+  // right-align to the exact right edge of the last (3rd) card.
+  .section-inner {
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
   .button-container {
     display: flex;
     justify-content: end;
-    padding-right: 1em;
     padding-top: 1em;
+    // Match the card's inner padding so the button's right edge lines up with
+    // the visible right edge of the last card (not its padding box).
+    padding-right: 10px;
   }
 }
 
