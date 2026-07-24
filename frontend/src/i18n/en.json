@@ -188,5 +188,27 @@
     "airHockeyHint": "Hit the ball into the other goal, first to 5 wins! Drag your player (red) with mouse or finger, or use the arrow keys. Player 2 (blue) plays with WASD, or with a second finger on touch screens.",
     "winStreak": "Win streak",
     "shot": "Shot {current} of {total}"
+  },
+  "seo": {
+    "home": {
+      "title": "Software developer",
+      "description": "The portfolio of Milo van der Pas, a software developer from the Netherlands who builds web apps, backends and the occasional game."
+    },
+    "projects": {
+      "title": "Projects",
+      "description": "A selection of the projects I am most proud of, from client activations to personal apps and games."
+    },
+    "experience": {
+      "title": "Experience",
+      "description": "My work experience and the skills I have built up as a software developer."
+    },
+    "about": {
+      "title": "About me",
+      "description": "A bit more about who I am, where I am from and the hobbies I spend my time on."
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "Get in touch with me for questions or if you want to build something cool together."
+    }
   }
 }

@@ -1,5 +1,8 @@
 import {createRouter, createWebHistory} from 'vue-router'
-import anime from "animejs";
+import {watch} from 'vue'
+import anime from "animejs"
+import i18n from "@/i18n"
+import {applyRouteSeo} from "@/utils/routeSeo"
 
 const routes = [
     {
@@ -81,5 +84,10 @@ const router = createRouter({
         }
     },
 })
+
+// Set per-page title/description/OG on every navigation, and re-apply when the
+// language changes so the tags follow the active locale.
+router.afterEach((to) => applyRouteSeo(to))
+watch(() => i18n.global.locale, () => applyRouteSeo(router.currentRoute.value))
 
 export default router

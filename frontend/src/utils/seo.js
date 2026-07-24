@@ -11,7 +11,12 @@
  * each blog its own title/snippet in search results and correct link previews.
  */
 
-const SITE_NAME = 'Milo van der Pas';
+export const SITE_NAME = 'Milo van der Pas';
+
+// "Proxipolus" -> "Proxipolus | Milo van der Pas"
+export function withSiteName(segment) {
+    return segment ? `${segment} | ${SITE_NAME}` : SITE_NAME;
+}
 
 // The site's original tags, captured once so we can restore them on leave.
 let defaults = null;
@@ -68,23 +73,29 @@ function captureDefaults() {
     };
 }
 
-export function setPageMeta({title, description, image, url}) {
+export function setPageMeta({title, description, image, url, type = 'website'}) {
     captureDefaults();
-    const fullTitle = title ? `${title} | ${SITE_NAME}` : defaults.title;
-    document.title = fullTitle;
-    writeMeta('property', 'og:title', fullTitle);
-    writeMeta('name', 'twitter:title', fullTitle);
-    writeMeta('property', 'og:type', 'article');
+    const finalTitle = title || defaults.title;
+    document.title = finalTitle;
+    writeMeta('property', 'og:title', finalTitle);
+    writeMeta('name', 'twitter:title', finalTitle);
+    writeMeta('property', 'og:type', type);
     if (description) {
         writeMeta('name', 'description', description);
         writeMeta('property', 'og:description', description);
         writeMeta('name', 'twitter:description', description);
+    } else {
+        writeMeta('name', 'description', defaults.description);
+        removeMeta('property', 'og:description');
+        removeMeta('name', 'twitter:description');
     }
     if (image) {
         writeMeta('property', 'og:image', image);
         writeMeta('name', 'twitter:image', image);
         writeMeta('name', 'twitter:card', 'summary_large_image');
     } else {
+        removeMeta('property', 'og:image');
+        removeMeta('name', 'twitter:image');
         writeMeta('name', 'twitter:card', 'summary');
     }
     if (url) {

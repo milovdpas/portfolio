@@ -188,5 +188,27 @@
     "airHockeyHint": "Schiet de bal in het andere doel, wie er het eerst 5 maakt wint! Sleep je speler (rood) met muis of vinger, of gebruik de pijltjestoetsen. Speler 2 (blauw) speelt met WASD, of met een tweede vinger op een touchscreen.",
     "winStreak": "Winstreak",
     "shot": "Schot {current} van {total}"
+  },
+  "seo": {
+    "home": {
+      "title": "Softwareontwikkelaar",
+      "description": "Het portfolio van Milo van der Pas, een softwareontwikkelaar uit Nederland die web-apps, backends en af en toe een game bouwt."
+    },
+    "projects": {
+      "title": "Projecten",
+      "description": "Een selectie van de projecten waar ik het meest trots op ben, van klantactivaties tot persoonlijke apps en games."
+    },
+    "experience": {
+      "title": "Ervaring",
+      "description": "Mijn werkervaring en de skills die ik heb opgebouwd als softwareontwikkelaar."
+    },
+    "about": {
+      "title": "Over mij",
+      "description": "Wat meer over wie ik ben, waar ik vandaan kom en de hobby's waar ik mijn tijd aan besteed."
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "Neem contact met me op voor vragen of als je iets vets samen wil bouwen."
+    }
   }
 }

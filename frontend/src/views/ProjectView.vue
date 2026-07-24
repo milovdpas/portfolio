@@ -39,7 +39,6 @@ import MediaGallery from "@/components/MediaGallery.vue";
 import {getProject} from "@/data/projects";
 import {localized} from "@/i18n";
 import {relativeTime} from "@/utils/relativeTime";
-import {setPageMeta, resetPageMeta} from "@/utils/seo";
 
 // Block types that appear in the fullscreen media gallery.
 const GALLERY_TYPES = ['image', 'video'];
@@ -61,20 +60,8 @@ export default {
       this.$router.replace({name: 'not_found'});
     }
   },
-  mounted() {
-    this.applySeo();
-  },
-  watch: {
-    // Keep the title/description in sync with the active language.
-    '$i18n.locale'() {
-      this.applySeo();
-    },
-  },
-  beforeUnmount() {
-    // Restore the site's default tags so other pages don't inherit this
-    // project's title/description/OG image.
-    resetPageMeta();
-  },
+  // Per-page SEO (title/description/OG per project) is handled centrally by the
+  // router guard in utils/routeSeo.js.
   computed: {
     blocks() {
       // this.$i18n.locale is read so the page re-renders on locale switch.
@@ -111,18 +98,6 @@ export default {
     openGallery(index) {
       this.galleryStart = index;
       this.galleryOpen = true;
-    },
-    // Give this project its own title, description, canonical URL and share
-    // image so the blog page is indexed and previewed on its own merits.
-    applySeo() {
-      if (!this.project) return;
-      const url = window.location.origin + this.$route.path;
-      setPageMeta({
-        title: localized(this.project.title),
-        description: localized(this.project.description),
-        image: this.project.image,
-        url,
-      });
     },
   },
 }
