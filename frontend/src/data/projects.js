@@ -1108,6 +1108,13 @@ export const projects = [
                 alt: 'The welcome screen, discovering coffees and a coffee detail page with social stats',
             },
             {
+                type: 'video',
+                src: new URL(`../assets/videos/projects/espressions.mp4`, import.meta.url).href,
+                width: 340,
+                background: 'radial-gradient(circle at 50% 35%, #a55c1e 0%, #8b4513 58%, #6b350f 100%)',
+                alt: 'Demo of the Espressions app: signing in, the feed, discovering coffees and checking one in',
+            },
+            {
                 type: 'paragraph',
                 content: {
                     en: 'Building it was genuinely fun. I made the app with Expo, a framework I had never used before. I normally reach for React Native, and Expo turned out to be a really good replacement for it.',
@@ -1176,6 +1183,13 @@ export const projects = [
                 type: 'image',
                 src: new URL(`../assets/images/projects/drinking-games/showcase.png`, import.meta.url).href,
                 alt: 'Store screenshots: games with your mates, digital games and Tic Tac Toe',
+            },
+            {
+                type: 'video',
+                src: new URL(`../assets/videos/projects/drinking-games.mp4`, import.meta.url).href,
+                width: 340,
+                background: 'radial-gradient(circle at 50% 35%, #3a3560 0%, #1e1c2f 60%, #14121f 100%)',
+                alt: 'Demo of the drinking games app: challenges, the games menu, the spinning wheel and mini-games',
             },
             {
                 type: 'paragraph',
@@ -1292,8 +1306,8 @@ export const projects = [
             {
                 type: 'paragraph',
                 content: {
-                    en: 'The code lives on GitHub: <a href="https://github.com/milovdpas/marathon_schema" target="_blank" rel="noopener">marathon_schema</a>.',
-                    nl: 'De code staat op GitHub: <a href="https://github.com/milovdpas/marathon_schema" target="_blank" rel="noopener">marathon_schema</a>.',
+                    en: 'You can try it live at <a href="https://marathon-schema.vercel.app/" target="_blank" rel="noopener">marathon-schema.vercel.app</a>, and the code lives on GitHub: <a href="https://github.com/milovdpas/marathon_schema" target="_blank" rel="noopener">marathon_schema</a>.',
+                    nl: 'Je kunt hem live proberen op <a href="https://marathon-schema.vercel.app/" target="_blank" rel="noopener">marathon-schema.vercel.app</a>, en de code staat op GitHub: <a href="https://github.com/milovdpas/marathon_schema" target="_blank" rel="noopener">marathon_schema</a>.',
                 }
             },
         ],
