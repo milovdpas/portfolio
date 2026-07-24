@@ -1306,8 +1306,8 @@ export const projects = [
             {
                 type: 'paragraph',
                 content: {
-                    en: 'You can try it live at <a href="https://marathon-schema.vercel.app/" target="_blank" rel="noopener">marathon-schema.vercel.app</a>, and the code lives on GitHub: <a href="https://github.com/milovdpas/marathon_schema" target="_blank" rel="noopener">marathon_schema</a>.',
-                    nl: 'Je kunt hem live proberen op <a href="https://marathon-schema.vercel.app/" target="_blank" rel="noopener">marathon-schema.vercel.app</a>, en de code staat op GitHub: <a href="https://github.com/milovdpas/marathon_schema" target="_blank" rel="noopener">marathon_schema</a>.',
+                    en: 'You can try it live <a href="https://marathon-schema.vercel.app/" target="_blank" rel="noopener">here</a>, and the code is on <a href="https://github.com/milovdpas/marathon_schema" target="_blank" rel="noopener">GitHub</a>.',
+                    nl: 'Je kunt hem live <a href="https://marathon-schema.vercel.app/" target="_blank" rel="noopener">hier</a> proberen, en de code staat op <a href="https://github.com/milovdpas/marathon_schema" target="_blank" rel="noopener">GitHub</a>.',
                 }
             },
         ],

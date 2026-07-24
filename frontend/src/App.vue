@@ -15,7 +15,26 @@ export default {
 </script>
 
 <style lang="scss">
-@import "~bootstrap/scss/bootstrap";
+// Trimmed Bootstrap: only the parts this site actually uses. The full
+// "~bootstrap/scss/bootstrap" import pulled in ~24 unused components
+// (buttons, navbar, dropdown, modal, carousel, tables, tooltip, ...).
+// Configuration (no CSS output):
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/maps";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/utilities";
+// Layout & the components in use:
+@import "~bootstrap/scss/root";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/containers";
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/forms";
+@import "~bootstrap/scss/card";
+@import "~bootstrap/scss/badge";
+// Utility classes (mt-*, mb-*, px-*, d-flex, justify-content-*, h-100, text-muted, ...):
+@import "~bootstrap/scss/utilities/api";
+
 @import "assets/scss/_fonts.scss";
 @import "assets/scss/_defaults.scss";
 
