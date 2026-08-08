@@ -22,6 +22,7 @@ export const publishedSlugs = [
     'espressions',
     'drinking-games',
     'proximus-monopoly',
+    'racepilot',
 ];
 
 // Drafts, waiting for banner images + final copy:

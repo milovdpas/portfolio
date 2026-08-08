@@ -1306,8 +1306,85 @@ export const projects = [
             {
                 type: 'paragraph',
                 content: {
-                    en: 'You can try it live <a href="https://marathon-schema.vercel.app/" target="_blank" rel="noopener">here</a>, and the code is on <a href="https://github.com/milovdpas/marathon_schema" target="_blank" rel="noopener">GitHub</a>.',
-                    nl: 'Je kunt hem live <a href="https://marathon-schema.vercel.app/" target="_blank" rel="noopener">hier</a> proberen, en de code staat op <a href="https://github.com/milovdpas/marathon_schema" target="_blank" rel="noopener">GitHub</a>.',
+                    en: 'You can try it live <a href="https://racepilot.milovanderpas.nl" target="_blank" rel="noopener">here</a>, and the code is on <a href="https://github.com/milovdpas/racepilot" target="_blank" rel="noopener">GitHub</a>.',
+                    nl: 'Je kunt hem live <a href="https://racepilot.milovanderpas.nl" target="_blank" rel="noopener">hier</a> proberen, en de code staat op <a href="https://github.com/milovdpas/racepilot" target="_blank" rel="noopener">GitHub</a>.',
+                }
+            },
+        ],
+    },
+    {
+        slug: 'racepilot',
+        date: '2026-08-08',
+        type: 'image',
+        image: new URL(`../assets/images/projects/racepilot/banner.png`, import.meta.url).href,
+        tag: TAGS.hobby,
+        title: {
+            en: 'RacePilot',
+            nl: 'RacePilot',
+        },
+        description: {
+            en: 'My marathon planner, reborn as RacePilot: one training planner for road, trail, ultra, cycling, swimming and triathlon, with an AI plan importer and a Strava splits scanner.',
+            nl: 'Mijn marathonplanner, herboren als RacePilot: één trainingsplanner voor weg, trail, ultra, fietsen, zwemmen en triatlon, met een AI-plan-importer en een Strava-splitsscanner.',
+        },
+        blocks: [
+            {type: 'title', content: {en: 'RacePilot', nl: 'RacePilot'}},
+            {
+                type: 'image',
+                src: new URL(`../assets/images/projects/racepilot/banner.png`, import.meta.url).href,
+                alt: 'RacePilot: choose what you train for',
+            },
+            {
+                type: 'paragraph',
+                content: {
+                    en: 'RacePilot is what my <a href="/project/marathon-planner">marathon training planner</a> grew into. I converted it so more people could use it, not just marathon runners but athletes training for all kinds of sports. A few friends of mine are training for triathlons, so it felt like a good moment to open the tool up to their sports too. Converting it was genuinely fun, because you get to rethink the whole user experience from scratch.',
+                    nl: 'RacePilot is waar mijn <a href="/project/marathon-planner">marathon-trainingsplanner</a> in is uitgegroeid. Ik heb hem omgebouwd zodat meer mensen hem kunnen gebruiken, niet alleen marathonlopers maar sporters die voor allerlei sporten trainen. Een paar vrienden van mij trainen voor triatlons, dus het voelde als een mooi moment om de tool ook voor hun sporten open te stellen. Het ombouwen was echt leuk, omdat je de hele user experience opnieuw mag bedenken.',
+                }
+            },
+            {
+                type: 'paragraph',
+                content: {
+                    en: 'When you open RacePilot for the first time it asks what you train for, so it only shows you what is relevant:<br>🏃 <strong>Road runner</strong> · 5K to marathon<br>🏔️ <strong>Trail runner</strong> · Hills and technical terrain<br>♾️ <strong>Ultra runner</strong> · Beyond the marathon<br>🏊🚴🏃 <strong>Triathlete</strong> · Swim, bike, run<br>🚴 <strong>Cyclist</strong> · Road, gravel or track<br>🏊 <strong>Swimmer</strong> · Pool or open water',
+                    nl: 'Als je RacePilot voor het eerst opent, vraagt hij waarvoor je traint, zodat je alleen ziet wat relevant is:<br>🏃 <strong>Wegloper</strong> · 5K tot marathon<br>🏔️ <strong>Trailloper</strong> · Heuvels en technisch terrein<br>♾️ <strong>Ultraloper</strong> · Voorbij de marathon<br>🏊🚴🏃 <strong>Triatleet</strong> · Zwemmen, fietsen, lopen<br>🚴 <strong>Wielrenner</strong> · Weg, gravel of baan<br>🏊 <strong>Zwemmer</strong> · Bad of open water',
+                }
+            },
+            {
+                type: 'image',
+                src: new URL(`../assets/images/projects/racepilot/showcase.png`, import.meta.url).href,
+                alt: 'RacePilot dashboard, training calendar and statistics',
+            },
+            {
+                type: 'paragraph',
+                content: {
+                    en: 'Under the hood I essentially restructured everything so it works for multi-sport races. A triathlon, for example, is now handled as one race across swimming, cycling and running instead of three separate races, and every sport gets its own stats instead of one shared summary.',
+                    nl: 'Onder de motorkap heb ik eigenlijk alles herstructureerd zodat het werkt voor multisport-races. Een triatlon wordt nu bijvoorbeeld behandeld als één race over zwemmen, fietsen en lopen in plaats van drie losse races, en elke sport krijgt zijn eigen statistieken in plaats van één gedeeld overzicht.',
+                }
+            },
+            {
+                type: 'paragraph',
+                content: {
+                    en: 'One feature I did not mention in the previous blog is a splits scanner. It uses OCR to read a screenshot of your Strava splits and pull the distances and paces straight out of the image, so you do not have to type them in by hand.',
+                    nl: 'Eén feature die ik in de vorige blog niet noemde, is een splitsscanner. Die gebruikt OCR om een screenshot van je Strava-splits te lezen en haalt de afstanden en tempo\'s rechtstreeks uit de afbeelding, zodat je ze niet met de hand hoeft in te typen.',
+                }
+            },
+            {
+                type: 'paragraph',
+                content: {
+                    en: 'I also added localization: distances and paces now show in the athlete\'s own units, so people in the US see miles while I see kilometers.',
+                    nl: 'Ook heb ik localisatie toegevoegd: afstanden en tempo\'s worden nu in de eigen eenheden van de sporter getoond, dus mensen in de VS zien mijlen terwijl ik kilometers zie.',
+                }
+            },
+            {
+                type: 'paragraph',
+                content: {
+                    en: 'On top of that I built a complete landing page and proper onboarding screens so everything is clear for new users, and I gave the whole thing a new name: RacePilot. There is no deep story behind the name, it just felt like a good fit for what the app had become.',
+                    nl: 'Daarbovenop bouwde ik een complete landingspagina en echte onboarding-schermen zodat alles duidelijk is voor nieuwe gebruikers, en ik gaf het geheel een nieuwe naam: RacePilot. Er zit geen diep verhaal achter de naam, het voelde gewoon als een goede match voor wat de app geworden was.',
+                }
+            },
+            {
+                type: 'paragraph',
+                content: {
+                    en: 'You can try it live <a href="https://racepilot.milovanderpas.nl" target="_blank" rel="noopener">here</a>, and the code is on <a href="https://github.com/milovdpas/racepilot" target="_blank" rel="noopener">GitHub</a>.',
+                    nl: 'Je kunt hem live <a href="https://racepilot.milovanderpas.nl" target="_blank" rel="noopener">hier</a> proberen, en de code staat op <a href="https://github.com/milovdpas/racepilot" target="_blank" rel="noopener">GitHub</a>.',
                 }
             },
         ],
