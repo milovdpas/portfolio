@@ -233,6 +233,7 @@ export default {
         y: point.y,
         text: localized(skill.description),
         mirror: point.x < (isMobile() ? 250 : 300),
+        maxX: this.$refs.section.clientWidth,
       });
     },
     onMouseDown(event) {
@@ -371,6 +372,9 @@ export default {
     width: 250px;
     height: 250px;
     border-radius: 150px;
+    // No UA default border: its 'outset' style draws a light rim on one half
+    // of the circle that visibly flips sides during the shake.
+    border: none;
     margin: auto;
     margin-top: 12.5%;
     left: 0;

@@ -72,26 +72,29 @@ body.game-active nav {
   display: none;
 }
 
-// Scroll bar
-/* width */
-::-webkit-scrollbar {
-  width: 11px !important;
-}
+// Scroll bar — mouse devices only: on touch screens a styled scrollbar turns
+// the native overlay one into a permanent 11px grey gutter.
+@media (hover: hover) and (pointer: fine) {
+  /* width */
+  ::-webkit-scrollbar {
+    width: 11px !important;
+  }
 
-/* Track */
-::-webkit-scrollbar-track {
-  background-color: lightgrey;
-}
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background-color: lightgrey;
+  }
 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: $blue;
-  border-radius: 10px;
-}
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: $blue;
+    border-radius: 10px;
+  }
 
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: $dark-blue;
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: $dark-blue;
+  }
 }
 
 @include mobile {

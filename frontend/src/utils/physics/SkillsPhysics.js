@@ -72,11 +72,15 @@ export default class SkillsPhysics {
         this.clearTitle();
         for (const item of items) {
             const body = Bodies.rectangle(item.x, item.y, item.width, item.height, {
-                isStatic: true,
                 restitution: 0.3,
                 friction: 0.3,
                 frictionAir: 0.01,
             });
+            // Made static after creation, not via the isStatic option: matter
+            // (>= 0.19) only remembers the original mass when a dynamic body
+            // turns static, so a body *created* static keeps an infinite mass
+            // once freed and its position turns NaN (drawn at the canvas origin).
+            Body.setStatic(body, true);
             body.plugin.letter = {char: item.char, fontSize: item.fontSize, color: item.color};
             this.letters.push(body);
         }

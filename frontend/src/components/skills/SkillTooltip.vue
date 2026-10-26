@@ -20,6 +20,14 @@
 </template>
 
 <script>
+// How far the bubble reaches left/right of and above its anchor point, per
+// orientation (matches the offsets in the styles below).
+const EXTENT = {
+  normal: {left: 230, right: 70},
+  mirror: {left: 50, right: 250},
+};
+const HEIGHT = 135;
+
 export default {
   name: "SkillTooltip",
   data() {
@@ -32,11 +40,22 @@ export default {
     }
   },
   methods: {
-    show({x, y, text, mirror}) {
-      this.x = x;
-      this.y = y;
+    /**
+     * @param mirror preferred orientation (bubble to the right of the point)
+     * @param maxX   container width; the bubble flips and/or shifts to stay inside
+     */
+    show({x, y, text, mirror, maxX = Infinity}) {
+      const overflow = side => Math.max(0, EXTENT[side].left - x) + Math.max(0, x + EXTENT[side].right - maxX);
+      let side = mirror ? 'mirror' : 'normal';
+      const other = mirror ? 'normal' : 'mirror';
+      if (overflow(other) < overflow(side)) {
+        side = other;
+      }
+      // On narrow screens neither side may fit as-is: nudge the anchor inward.
+      this.x = Math.max(EXTENT[side].left, Math.min(x, maxX - EXTENT[side].right));
+      this.y = Math.max(y, HEIGHT);
       this.text = text;
-      this.mirror = !!mirror;
+      this.mirror = side === 'mirror';
       this.visible = true;
     },
     hide() {
