@@ -1,7 +1,9 @@
-import {Bodies, Body, Composite, Constraint, Engine, Events, Query} from 'matter-js';
+import {Bodies, Body, Composite, Constraint, Engine, Events, Query, Vector} from 'matter-js';
 
 const WALL_THICKNESS = 200;
 const SPAWN_MARGIN = 150;
+// Speed (px per step) a loose letter must hit a fixed one with to knock it loose.
+const LETTER_KNOCK_SPEED = 2;
 
 /**
  * Main-thread matter.js wrapper for a skills section.
@@ -44,24 +46,33 @@ export default class SkillsPhysics {
             // Bodies wait in a spawn queue (not in the world) until the spawn button pops them.
             this.pending.push(body);
         }
-        // Title letters start as static bodies; the first dynamic body that
-        // touches one knocks it loose (freed letters then free their neighbours).
+        // Title letters start as static bodies; any shape that touches one
+        // knocks it loose, a loose letter only when it hits one hard enough.
         Events.on(this.engine, 'collisionStart', event => {
             for (const pair of event.pairs) {
-                this.#maybeFreeLetter(pair.bodyA, pair.bodyB);
-                this.#maybeFreeLetter(pair.bodyB, pair.bodyA);
+                this.#maybeFreeLetter(pair.bodyA, pair.bodyB, pair.collision.normal);
+                this.#maybeFreeLetter(pair.bodyB, pair.bodyA, pair.collision.normal);
             }
         });
     }
 
-    #maybeFreeLetter(letter, other) {
-        if (!letter.plugin.letter || !letter.isStatic) {
+    #maybeFreeLetter(letter, other, normal) {
+        if (!letter.plugin.letter || !letter.isStatic || other.isStatic) {
             return;
         }
-        const otherIsToy = other.plugin.skill || other.plugin.letter;
-        if (otherIsToy && !other.isStatic) {
+        // Letters sit edge to edge, so a freed letter starts out touching its
+        // neighbours: freeing on contact alone topples the whole word at once.
+        if (other.plugin.skill || (other.plugin.letter && this.#impactSpeed(letter, other, normal) > LETTER_KNOCK_SPEED)) {
             Body.setStatic(letter, false);
         }
+    }
+
+    /** Speed (px per step) at which `other` moves into `letter` along the contact normal. */
+    #impactSpeed(letter, other, normal) {
+        const towardLetter = Vector.dot(normal, Vector.sub(letter.position, other.position)) < 0
+            ? Vector.neg(normal)
+            : normal;
+        return Vector.dot(Vector.sub(other.velocity, letter.velocity), towardLetter);
     }
 
     /**
