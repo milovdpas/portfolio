@@ -12,6 +12,8 @@ const env = loadEnv('', process.cwd());
 
 const projectRoutes = publishedSlugs.map(project => `/project/${project}`);
 const dynamicRoutes = ['/', '/home', '/projects', '/experience', '/about_me' ,'/contact'];
+// Personal pages in public/ (noindex): the sitemap plugin would list every .html file in dist.
+const excludedRoutes = ['/sofia_dagoverzicht'];
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -41,7 +43,8 @@ export default defineConfig({
         }),
         Sitemap({
             hostname: 'https://milovanderpas.nl',
-            dynamicRoutes: [...dynamicRoutes, ...projectRoutes]
+            dynamicRoutes: [...dynamicRoutes, ...projectRoutes],
+            exclude: excludedRoutes,
         }),
     ],
     resolve: {
